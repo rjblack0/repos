@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="https://github.com/rjblack0/repos.git" id="5387ecaf-83c4-4105-b7b1-16d19dd44813" port="22" nameFormat="DESCRIPTIVE" username="rjblack0" useOpenSSHConfig="true" />
+    </configs>
+  </component>
+</project>
