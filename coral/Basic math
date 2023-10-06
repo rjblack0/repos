@@ -1,0 +1,20 @@
+//A half-life is the amount of time it takes for a substance or entity to fall to half its original value. Caffeine has a half-life of about 6 hours in humans. Given caffeine amount (in mg) as input, output the caffeine level after 6, 12, and 18 hours.
+//Ex: If the input is 100, the output is:
+//After 6 hours: 50.0 mg
+//After 12 hours: 25.0 mg
+//After 18 hours: 12.5 mg
+
+float caff
+
+caff = Get next input
+Put "After 6 hours: " to output
+Put caff / 2 to output
+Put " mg" to output
+Put "\n" to output
+Put "After 12 hours: " to output
+Put caff / 4 to output
+Put " mg" to output
+Put "\n" to output
+Put "After 18 hours: " to output
+Put caff / 8 to output
+Put " mg" to output

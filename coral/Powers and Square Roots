@@ -1,0 +1,30 @@
+//Given three floating-point numbers x, y, and z, output x to the power of y, x to the power of (y to the power of z), the absolute value of x, and the square root of (xy to the power of z).
+//Ex: If the input is 5.0 6.5 3.2, the output is:
+//34938.56214843421 1.2995143401732918e+279 5.0 262.42993783925596
+
+
+float x
+float y
+float z
+
+float result1
+float result2
+float result3
+float result4
+
+x = Get next input
+y = Get next input
+z = Get next input
+
+result1 = RaiseToPower(x, y)
+result2 = RaiseToPower(x, RaiseToPower(y, z))
+result3 = AbsoluteValue(x)
+result4 = SquareRoot(RaiseToPower (x*y, z))
+
+Put result1 to output
+Put " " to output
+Put result2 to output
+Put " " to output
+Put result3 to output
+Put " " to output
+Put result4 to output

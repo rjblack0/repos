@@ -1,0 +1,21 @@
+//Write a program whose inputs are three integers, and whose output is the largest of the three values.
+//Ex: If the input is 7 15 3, the output is:
+//15
+
+integer x
+integer y
+integer z
+integer max
+
+x = Get next input
+y = Get next input
+z = Get next input
+
+if x > y
+   max = x
+elseif y > z
+   max = y
+else
+   max = z
+
+Put max to output
