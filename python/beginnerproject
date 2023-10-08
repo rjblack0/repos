@@ -1,0 +1,30 @@
+//Define my three variables. Money and Ages are solid numbers and should be integers.
+integer parkPrice
+integer userAge
+integer userPrice
+
+//parkPrice is defined as a flat price, with discount for those under 15 to be applied later using userPrice
+parkPrice = 40
+
+//User is prompted to enter their age into the input prompt. 
+Put "Please enter your age: \n" to output
+
+//This will define user age
+userAge = Get next input
+
+//This first portion allows the price message to only be displayed if an age is entered.
+if userAge == 0
+   Put "" to output
+else
+   Put "The entrance price is " to output
+
+//The next code will calculate the price and put it into a new variable after calculation
+if userAge >= 15
+   userPrice = parkPrice
+elseif userAge < 15
+   userPrice = parkPrice - 20
+
+//This final section displays the users price adjusted for their age. It is also coded only to execute if the user has made an input.
+if userAge >= 1
+   Put userPrice to output
+   Put "." to output
