@@ -89,13 +89,15 @@ for i = 0; i < 10; i = i + 1
    compSel = RandomNumber(1,3)
    result = 0
 
+//Finally, output the number of times that the player 
+
 Put "You won: " to output
 Put winCount to output
-Put " times.\n\n" to output
+Put " times.\n" to output
 
 Put "The computer won: " to output
 Put loseCount to output
-Put " times.\n\n" to output
+Put " times.\n" to output
 
 Put "You tied: " to output
 Put tieCount to output
