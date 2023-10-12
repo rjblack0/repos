@@ -8,9 +8,11 @@ integer winCount
 integer loseCount
 integer compSel
 integer userSel
+integer result
+integer i
 SeedRandomNumbers(2)
 
-// Assign values
+// Assign values to Rock, paper, scissors
 
 Rock = 1
 Paper = 2
@@ -22,60 +24,79 @@ winCount = 0
 loseCount = 0
 tieCount = 0
 
-//Get the user and the computers selections
+//Get first round of inputs to start game
 
 userSel = Get next input
 compSel = RandomNumber(1,3)
 
-//Declare players choice to output
+//Result is a stored value that gets changed as the game progresses. This allows cleaner and more compact code
 
-Put "Your choice: " to output
-if userSel == 1
-   Put "rock\n" to output
-elseif userSel == 2
-   Put "paper\n" to output
-elseif userSel == 3
-   Put "scissors\n" to output
-   
-//Declare computers choice   
+result = 0
 
-Put "Computer: " to output
-if compSel == 1
-   Put "rock\n" to output
-elseif compSel == 2
-   Put "paper\n" to output
-elseif compSel == 3
-   Put "scissors\n" to output
+//Initialize a loop
+//If-Else statements alter the Result variable, and increment the win-lose-tie count
+//By running a tie check before the others, it eliminates the lines of code that would check for user == comp selection in the lines below
+for i = 0; i < 10; i = i + 1
+   if userSel == compSel
+      result = 2
+      tieCount = tieCount + 1
+   elseif userSel == 1
+      if compSel == 3
+         result = 1
+         winCount = winCount + 1
+      else
+         loseCount = loseCount + 1
+   elseif userSel == 2
+      if compSel == 1
+         result = 1
+         winCount = winCount + 1 
+      else
+         loseCount = loseCount + 1
+   elseif userSel == 3
+      if compSel == 2
+         result = 1
+         winCount = winCount + 1
+      else
+         loseCount = loseCount + 1
+//All output matter is read after the variables are set
+   Put "Your choice: " to output
+   if userSel == 1
+      Put "rock\n" to output
+   elseif userSel == 2
+      Put "paper\n" to output
+   elseif userSel == 3
+      Put "scissors\n" to output
 
-//Check for tie condition first
-
-while userSel == compSel
-   Put "It's a tie!\n\n" to output
-   tieCount = tieCount + 1
-
-//Check for win conditions based on users choice, resulting in a win or lose
-//Win, Lose and Tie counts are incremented based on result
-
-while userSel == 1
-   if compSel == 3
-      Put "You win!\n\n" to output
-      winCount = winCount + 1
-   else
-      Put "You lose!\n\n" to output
-      loseCount = loseCount + 1
-      
-while userSel == 2
+   Put "Computer: " to output
    if compSel == 1
+      Put "rock\n" to output
+   elseif compSel == 2
+      Put "paper\n" to output
+   elseif compSel == 3
+      Put "scissors\n" to output
+
+//The current value of result indicates whether to declare a win, lose or tie.
+//The initial value of result, 0, is set to lose.
+
+   if result == 1
       Put "You win!\n\n" to output
-      winCount = winCount + 1 
+   elseif result == 2
+      Put "It's a tie!\n\n" to output
    else
       Put "You lose!\n\n" to output
-      loseCount = loseCount + 1
-      
-while userSel == 3
-   if compSel == 2
-      Put "You win!\n\n" to output
-      winCount = winCount + 1
-   else
-      Put "You lose!\n\n" to output
-      loseCount = loseCount + 1
+//The next set of user and computer selection are grabbed, and result is reset to its initial value
+   userSel = Get next input
+   compSel = RandomNumber(1,3)
+   result = 0
+
+Put "You won: " to output
+Put winCount to output
+Put " times.\n\n" to output
+
+Put "The computer won: " to output
+Put loseCount to output
+Put " times.\n\n" to output
+
+Put "You tied: " to output
+Put tieCount to output
+Put " times." to output

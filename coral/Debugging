@@ -1,0 +1,37 @@
+//Visual inspection of each statement is a good first debugging process for small programs. However, if visual inspection doesn't detect a bug, another debugging process is to insert debug output statements whose output helps determine whether the preceding statement has the bug.
+
+
+float celsiusValue
+float fahrenheitValue
+float tempValue
+
+Put "Enter Celsius temperature: " to output
+celsiusValue = Get next input
+tempValue = celsiusValue * (9.0 * 5.0)
+fahrenheitValue = tempValue + 32.0
+
+Put "\nFahrenheit temperature is: " to output
+Put fahrenheitValue to output
+
+Put "\nDEBUG: celsiusValue is: " to output
+Put celsiusValue to output
+
+Put "\nDEBUG: tempValue is: " to output
+Put tempValue to output
+
+Put "\nDEBUG: fahrenheitValue is: " to output
+Put fahrenheitValue to output
+
+DEBUG: celsiusValue is: 100.0
+DEBUG: tempValue is: 4500.0
+Inspect output
+OK
+Inspect output
+Bad
+Visually inspect
+Bug found
+
+
+//For larger programs with 10s to 100s of statements, adding debug output statements for each statement is time-consuming. A hierarchical approach is beneficial. A programmer may divide the statements into regions, and insert one debug output statement after each region. If a region's output is bad (doesn't match expected output), the programmer can then create sub-hypotheses for the statements in that region.
+//Commonly a programmer strives to find regions of related statements. Ex: A region that gets all programmer input, or a region that together perform one computation.
+
