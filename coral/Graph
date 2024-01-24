@@ -1,0 +1,29 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Absolute value function
+def g(x):
+    return np.abs(x)
+
+# Transformed function
+def f(x):
+    return 2 * np.abs(x + 5) + 6
+
+# Generate x values
+x_values = np.linspace(-10, 10, 400)
+
+# Plot the functions
+plt.plot(x_values, g(x_values), label='g(x) = |x|', linestyle='--', color='blue')
+plt.plot(x_values, f(x_values), label='f(x) = 2|x + 5| + 6', color='red')
+
+# Add labels and legend
+plt.title('Graphs of g(x) and f(x)')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.axhline(0, color='black',linewidth=0.5)
+plt.axvline(0, color='black',linewidth=0.5)
+plt.grid(color = 'gray', linestyle = '--', linewidth = 0.5)
+plt.legend()
+
+# Show the graph
+plt.show()
