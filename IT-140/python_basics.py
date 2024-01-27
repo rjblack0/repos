@@ -93,6 +93,7 @@ string[5] #Reads character at index 5 of the string
 string[start:end] #Slice notation; creates value of only those indexes
 string[1:] #Yields everything after
 string[:3] #Yields everything before; Can be used to generate first 3 letters of last name
+string[-1]  # Accesses the last character of the string
 #    **Slice stride***
 print('All numbers: {}'.format(numbers[::])) #All numbers
 print('Every other number: {}'.format(numbers[::2])) #Every other number
@@ -195,7 +196,7 @@ print(alphabet[0], alphabet[1], alphabet[25]) #Access characters as they appear 
 print(f'string') #an F string allows you to embed expressions inside string literals
 print(f'String contains a {dictionary[value_inside_dictionary]}')
 
-print(String: {.2f} string'.format(variable))
+print('String: {.2f} string'.format(variable))
 # This will print with only 2 digits after decimal point
 print(len(variable) 'String')
 #This will print the number of characters in a variable, followed by a string
@@ -274,6 +275,7 @@ print()
 dictionary_keyword['new_entry'] = 'Element' #This will add a new entry to the dictionary
 dictionary_keyword['existing_entry'] = 'Element' #This will update the existing entry inside the dictionary
 del dictionary_keyword['key'] #This will delete a key from a dictionary
+dictionary_keyword.update({'new_entry': 'Element'})
 
 caffeine_content_mg = {
     'Mr. Goodbar chocolate': 122,
@@ -386,6 +388,46 @@ while user_input != 'exit':
         print('Unrecognized command.')
 
     user_input = input('Enter command:\n').strip().lower()
+
+
+#          ===== DECISION BRANCHING =====
+
+#Standard If;Else
+price = 20
+age = (input('What is your age?'))
+    if age > 60
+        price = price - 20
+print ('Cost:', price)
+
+#Standard If;Elseif;Else Branch
+
+year = (input)
+    if year = 1984
+        print ('Orwell!')
+    else if year = 2001
+        print ('Space Odyssey!')
+    else
+        print ('Nothing Special')
+
+#Create the Absolute value
+val = (input)
+    if val < 0
+        val = -val
+    print (val)
+
+#Find Max
+x = (input)
+y = (input)
+    if x > y
+        max = x
+    else
+        max = y
+print (max)
+
+
+
+
+
 
 #===========
 
