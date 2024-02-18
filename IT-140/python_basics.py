@@ -1,67 +1,34 @@
-#                                   ****Strings****
+#                                   **Recalling**
+(Groups a series of commands together)
+[Accesses an element inside a valiable] #Accesses element inside variable
+{Accesses a dictionary}
+action({dictionary[element]}) #Accesses an item in a dictionary
+'STRING_LITERAL' # String value specified in source code of program.
 
+#                                   **Inputs**
+
+name = (input)
+name = input('What is your name?')
+age = int(input('What is your age?'))
+
+
+#                                   ****Strings****
 variable = input()
 variable = int(input) # This will force input to be an integer
 variable = float(input) # This will force input to be a float
 variable = int/or/float/or/none(input('String')) #Int, float or none are optional. String will be attached as text with the input following
 \n #Newline, use with strings
 variable = ' ' #Assigns variable with empty string
-'STRING_LITERAL' # String value specified in source code of program.
-[] #Will recall a character or variable
 variable[0] #Accesses the first character of the indicated variable
 var1 = var2[-1] #Assigns first variable to second LAST character of second variable.
+concatenated_string = string1 + string2 # Will combine two strings, Add ' ' to put a space inbetween
 
-#String Concatenation
-string1 = 1
-string2 = 2
-concatenated_string = string1 + string2
-#Add ' ' to put a space inbetween
-
-#                                   **String Formatting**
-string.format() #The format function
-print('string {what:how}) more string.'.format(what))
-#Creates a string with placeholders; AKA Templates
-
-#All of these will produce the same result; "The cat in the hat is fat"
-
-'The {1} in the {0} is {2}.'.format('hat', 'cat', 'fat')#Positional replacement
-'The {} in the {} is {}.'.format('cat', 'hat', 'fat') #Inferred positional replacement
-'The {animal} in the {headwear} is {shape}.'.format(animal='cat', headwear='hat', shape='fat') #Named replacement
-
-print('April {}, {}'.format(22, 2020)) #April 22, 2020
-
-date = 'April {}, {}'
-print(date.format(22, 2020))
-print(date.format(23, 2024)) #Prints both
-
-print('{0}:{1}'.format(9, 43)) #9:43
-
-month = 'April'
-day = 22
-print('Today is {month} {0}'.format(day, month=month)) #Today is April 22
-
-print('Hi {{{0}}}!'.format('Bilbo')) #Hi {Bilbo}!
-#A single brace is printed by using the double brace {{ }} around the replacement field {0}.
-
-#     **Format Specification**
-{:Place inside the empty brackets in string}.format
-#When used inside replacement field, allows values formatting in the string to be customized.
-
-'{:s}'.format('Aiden') #:s = String (default presentation type - can be omitted)
-#Aiden
-'{:d}'.format(4) #d = Decimal (integer values only)
-#4
-'{:b}'.format(4) #b = Binary (integer values only)
-#100
-'{:x}'.format(15) #x, X = Hexadecimal in lowercase (x) and uppercase (X) (integer values only)
-#f
-'{:e}'.format(44) #e = Exponent notation
-#4.400000e+01
-'{:f}'.format(4) #f = Fixed-point notation (6 places of precision)
-# 4.000000
-'{:.2f}'.format(4) #.[precision]f = Fixed-point notation (programmer-defined precision)
-#4.00
-'{:.1f}'.format(1.725) #indicates a precision of 1, thus the resulting string would be '1.7'.
+#     **STRING Replace**
+string = string.replace ('old', 'new') #Replaces items in a string
+string.find('!') #Will return the first instance of !
+string.find('!', 2) #Will find ! starting at position 2
+string.find('!', 2, 4) #Will find ! between 2 and 4
+string.count('!') #Returns how many times ! appears
 
 #     **STRING CONVERSION**
 
@@ -94,7 +61,7 @@ string[start:end] #Slice notation; creates value of only those indexes
 string[1:] #Yields everything after
 string[:3] #Yields everything before; Can be used to generate first 3 letters of last name
 string[-1]  # Accesses the last character of the string
-#    **Slice stride***
+#    **Slice Stride***
 print('All numbers: {}'.format(numbers[::])) #All numbers
 print('Every other number: {}'.format(numbers[::2])) #Every other number
 print('Every third number between 1 and 8: {}'.format(numbers[1:9:3])) #Every 3rd number between 1 and 8
@@ -105,101 +72,80 @@ slice_variable = first_variable[4:6]
 print(slice_variable)
 #yields Dog
 
-#    ****String Replacing****
-
-string = 'String'
-
-string = string.replace ('old', 'new')
-
-#     ****Finding****
-#These are used to find the Specific location
-string.find('!') #Will return the first instance of !
-string.find('!', 2) #Will find ! starting at position 2
-string.find('!', 2, 4) #Will find ! between 2 and 4
-string.count('!') #Returns how many times ! appears
-
-#     **Comparing String**
-Relational Operators (<, <=, >, >=)
-Equality operators (==, !=)
-Membership operators (in, not in)
-Identity operators (is, is not)
-
-isalnum() -- #Returns True if all characters in the string are lowercase or uppercase letters, or the numbers 0-9.
-isdigit() -- #Returns True if all characters are the numbers 0-9.
-islower() -- #Returns True if all cased characters are lowercase letters.
-isupper() -- #Return True if all cased characters are uppercase letters.
-isspace() -- #Return True if all characters are whitespace.
-startswith(x) -- #Return True if the string starts with x.
-endswith(x) -- #Return True if the string ends with x.
-
 #     **Splitting**
 split() #Separates string into tokens
 
 string = 'Music/artist/song.mp3'
-my_tokens = string.split('/')
-#Returns my_tokens = ['Music', 'artist', 'song.mp3']
-
-song = "I scream; you scream; we all scream, for ice cream.\n"
-song.split('\n')
-#Returns [ Iscream; you scream; we all scream, for ice cream.', ' ']
-#The string ends with a separator character, so an empty string is created in the tokens list.
+my_tokens = string.split('/') #Returns my_tokens = ['Music', 'artist', 'song.mp3']
 
 #     **Joining**
 join() #Joins list of strings together into 1
 
 web_path = [ 'www.website.com', 'profile', 'settings' ] #Take a list of strings
 separator = '/' #Designate how to separate them (Separator is a variable, not a function)
-url = separator.join(web_path)
-#URL is a new variable;
-# separator.join means "join these with";
+url = separator.join(web_path) # separator.join means "join these with";
 # (web_path) is the library of data
 
-''.join(['http://', 'www.', 'ebay', '.com']) #Empty space string
+'variable'.join(['http://', 'www.', 'ebay', '.com']) #Empty space string
 #produces the string 'http://www.ebay.com'.
 
 #     **Examples**
-
 path = input('Enter file name: ')
-
 new_separator = input('Enter new separator: ')
 tokens = path.split('/')
 print(new_separator.join(tokens))
-
 # The program below reads in a URL and checks whether the fourth token (index 3) is 'wiki'
 #Wikipedia sample link format: http://language.wikipedia.org/wiki/topic
 
 url = input('Enter Wikipedia URL: ')
-
 tokens = url.split('/')
-
 if 'wiki' != tokens[3]:
     tokens.insert(3, 'wiki')
     new_url = '/'.join(tokens)
-
     print('{} is not a valid address.'.format(url))
     print('Redirecting to {}'.format(new_url))
 else:
     print('Loading {}'.format(url))
 
+#                                   **Format Specification**
 
+{:Place inside the empty brackets in string}.format
+#When used inside replacement field, allows values formatting in the string to be customized.
+
+'{:s}'.format('Aiden') #:s = String (default presentation type - can be omitted)
+#Aiden
+'{:d}'.format(4) #d = Decimal (integer values only)
+#4
+'{:b}'.format(4) #b = Binary (integer values only)
+#100
+'{:x}'.format(15) #x, X = Hexadecimal in lowercase (x) and uppercase (X) (integer values only)
+#f
+'{:e}'.format(44) #e = Exponent notation
+#4.400000e+01
+'{:f}'.format(4) #f = Fixed-point notation (6 places of precision)
+# 4.000000
+'{:.2f}'.format(4) #.[precision]f = Fixed-point notation (programmer-defined precision)
+#4.00
+'{:.1f}'.format(1.725) #indicates a precision of 1, thus the resulting string would be '1.7'.
 
 #                                   ****Printing****
-
 print(variable, 'string', )
 print(end=' ') #Creates a space
 
 alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 print(alphabet[0], alphabet[1], alphabet[25]) #Access characters as they appear in the sequence.
 #Sequences start at 0.
-#Using a negative [-1] will access from the right instead of the left. Negatives start at -1
 
 print(f'string') #an F string allows you to embed expressions inside string literals
 print(f'String contains a {dictionary[value_inside_dictionary]}')
 
-print('String: {.2f} string'.format(variable))
-# This will print with only 2 digits after decimal point
-print(len(variable) 'String')
-#This will print the number of characters in a variable, followed by a string
+print(len(variable) 'String') #This will print the number of characters in a variable, followed by a string
+
+declaration = ("When in the Course of human events, it becomes necessary for "
+               "one people to dissolve the political bands which have connected "
+               "them with another, and to assume among the powers of the earth...")
+#Will generate a single line
+
 
 #     **Examples**
 alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -208,33 +154,43 @@ print()
 print('\nLetter', user_number, 'of the alphabet is', alphabet[user_number])
 #This program will return the letter of the alphabet associated with the number input.
 
-#     **Recalling**
-(Groups a series of commands together)
-[Accesses an element inside a valiable] #Accesses element inside variable
-{Accesses a dictionary}
-action({dictionary[element]}) #Accesses an item in a dictionary
+#     **String Formatting**
+print(string.format()) #The format function
+
+print('string {what:how}) more string.'.format(what))#Creates a string with placeholders; AKA Templates
+print('April {}, {}'.format(22, 2020)) #April 22, 2020
+print('{0}:{1}'.format(9, 43)) #9:43
+
+month = 'April'
+day = 22
+print('Today is {month} {0}'.format(day, month=month)) #Today is April 22
+
+print('Hi {{{0}}}!'.format('Bilbo'))#A single brace is printed by using the double brace {{ }} around the replacement field {0}.
 
 #                                   ****Lists****
 #Created with [brackets], includes variables and literals
+list () #Basic list function
+#   list('abc') creates new list with elements ['a', 'b', 'c']
 
-my_list = [10, 'abc']
-#A list item is called an element.
+my_list = [10, 'abc'] #A list item is called an element.
 #A list itself is an object, and its value is a sequence of references to the list's elements.
-
 empty_list = [ ]
-
 my_nums = [5, 12, 20]
 my_nums[1] = -28 #This changes the 2nd value in the list
 print (my_nums)
 
-#     **Methods** Editing lists
+result_of_power = math.pow(long_variable_name_left_operand,
+                           long_variable_name_right_operand)
+#Preferable formatting
+
+#     **Editing lists**
 object.typeofmethod #Standard method. Object should be a list.
 
 object.append(value) #Adds value to end of list
 object.pop(value) #Removes element at value position
 object.remove(value) #Removes element containing the value
 
-#     **Sequence Type Methods** Describing Lists
+#     **Sequence Type Methods**
 
 len(list) #Find the length of the list.
 list1 + list2 #Produce a new list by concatenating list2 to the end of list1.
@@ -268,7 +224,6 @@ print(chevy_impala)
 
 dictionaryname = {'key1': Value, 'key2': Value} #This creates a dictionary with 2 keys, and their value.
 empty_dictionary = { }
-
 print()
 
 #     **Editing Dictionaries**
@@ -335,6 +290,33 @@ firstName middleName lastName (in one line)
 #and outputs the person's name in the following format:
 lastName, firstInitial.middleInitial.
 
+#                                   ****If / Else Statements****
+if variable
+else variable
+elif variable
+and, or, not #Boolean Operators
+in, not in #Membership operators
+is, is not #Identity operators
+(<, <=, >, >=) #Relational operators
+(==, !=) #Equality operators
+a < b < c = Operator Chaining
+isalnum() -- #Returns True if all characters in the string are lowercase or uppercase letters, or the numbers 0-9.
+isdigit() -- #Returns True if all characters are the numbers 0-9.
+islower() -- #Returns True if all cased characters are lowercase letters.
+isupper() -- #Return True if all cased characters are uppercase letters.
+isspace() -- #Return True if all characters are whitespace.
+startswith(x) -- #Return True if the string starts with x.
+endswith(x) -- #Return True if the string ends with x.
+#     **ORDER OF OPERATIONS**
+(Operations)        #Items in Parenthesis
+(*/%+-)             #Arithmetic operators
+(<,<=,>,>=,==,!=)   #Relational
+not                 #Not
+and                 #and
+or                  #or
+
+#     **EXAMPLES**
+
 full_name = input()
 name_parts = full_name.split()
 first_name = name_parts[0]
@@ -389,7 +371,6 @@ while user_input != 'exit':
 
     user_input = input('Enter command:\n').strip().lower()
 
-
 #          ===== DECISION BRANCHING =====
 
 #Standard If;Else
@@ -424,21 +405,318 @@ y = (input)
         max = y
 print (max)
 
+#Checking for an item in a list
+
+barcelona_fc_roster = ['Alves', 'Messi', 'Fabregas']
+
+name = input('Enter name to check: ')
+
+if name in barcelona_fc_roster:
+    print('Found', name, 'on the roster.')
+else:
+    print('Could not find', name, 'on the roster.')
+
+#Checking for Substrings
+
+request_str = 'GET index.html HTTP/1.1'
+
+if '/1.1' in request_str:
+    print('HTTP protocol 1.1')
+if 'HTTPS' not in request_str:
+    print('Unsecured connection')
+
+#Checking for membership in a string
+
+my_dict = {'A': 1, 'B': 2, 'C': 3}
+
+if 'B' in my_dict:
+   print("Found 'B'")
+else:
+   print("'B' not found")
+
+# Membership operator does not check values
+if 3 in my_dict:
+    print('Found 3')
+else:
+    print('3 not found')
+
+#                                   ****LOOPS****
+x += 1 #Returns to top and adds a value
+x -= 1 #Returns to top and subtracts a value
+x != '1' #Translates to 'Until'
+reversed() #Will pull items from a list back to front
+range(5) #Starts from 0 - 4 (Ranges are Non-inclusive)
+range(2,5) #Every integer from 2-4
+range(5, 0, -1) #Range counting down by 1
+range(5, 0, -2) #Every second integer from 5-0
+
+if end_condition == met
+    break #Simple check to see if the loop should end
+
+if total_cost + new_cost != 0
+    continue #Tells loop to skip to the 'while' or 'for' loop header
 
 
 
 
 
-#===========
+#While vs. For Loops Rules
+#  Use a for loop when the number of iterations is computable before
+#   entering the loop, as when counting down from X to 0, printing a string
+#   N times, etc.
+#  Use a for loop when accessing the elements of a container, as when
+#   adding 1 to every element in a list, or printing the key of every
+#   entry in a dict, etc.
+#  Use a while loop when the number of iterations is not computable
+#   before entering the loop, as when iterating until a user enters a
+#   particular character.
 
-#                                           ****NOTES****
+#     'For' loop generates everything in a range
+for i in range(1,1001)
+    print i
+#Results all between 1 and 1001
 
-#Lists should be used for Ordered Data, especially if the data can be changed.
-#Example is student scores which can be adjusted and ordered from best to worst
+#     'For' Loop accessing all elements in a container
+for name in ['Bill', 'Nicole', 'John']:
+    print('Hi {}!'.format(name)) #Prints 3 times with all names
 
-#Dict provides a map from names to grades
+#     'For' Loop assigning keys of dictionary to loop variable
+channels = {
+    'MTV': 35,
+    'CNN': 28,
+    'FOX': 11,
+    'NBC': 4,
+    'CBS': 12
+}
+for c in channels:
+    print('{} is on channel {}'.format(c, channels[c]))
 
-#Tuple can be used to tally the number of each grade in the class
+#     'For' Loop iterating over string
+my_str = ''
+for character in "Take me to the moon.":
+    my_str += character + '_'
+print(my_str) #T_a_k_e_ _m_e_ _t_o_ _t_h_e_ _m_o_o_n_._
+
+#     Printing a Dictionary
+contact_emails = {
+    'Sue Reyn' : 's.reyn@email.com',
+    'Mike Filt': 'mike.filt@bmail.com',
+    'Nate Arty': 'narty042@nmail.com'
+}
+new_contact = input()
+new_email = input()
+contact_emails[new_contact] = new_email
+
+for contact, email in contact_emails.items():
+    print(f'{email} is {contact}')
+
+#     **Nested Loops**
+
+for i in range(5):
+    for j in range(10, 12):
+        print('{}{}'.format(i, j))
+
+#     **'For' Loop, print all elements in a string**
+
+user_input = input('Enter phone number: ')
+
+index = 0
+for character in user_input:
+    print('Element {} is: {}'.format(index, character))
+    index += 1
 
 
 
+#     'While' loop executes until stop condition is met
+x = 20
+while x > 15:
+     print(x)
+     x -= 1
+#This will print 20, 19, 18, 17, 15
+
+#     Sentinel Value
+increment = 0
+user_value = '-'
+while value != 'q' #This creates an end status decided by user input
+    user_input = input ('Entering q will end sequence')
+    user_value = user_input
+print('This only prints once q is entered')
+
+#     While Loop with user input
+
+user_num = int(input())
+while user_num >= 0:
+  print('Body')
+  user_num = int(input())
+
+print('Done.')
+
+#     **Counting with a While Loop**
+# Iterating N times using a loop variable
+i = 1
+while i <= N:
+    # Loop body statements go here
+    i = i + 1
+
+#     **Looping an indicated number of times**
+names = ['Janice', 'Clarice', 'Martin', 'Veronica', 'Jason']
+num = int(input('Enter number of names to print: '))
+for i in range(len(names)):
+    if i == num:
+        break
+    print(names[i], end= ' ')
+else:
+    print('All names printed.')
+
+# Using range() and len() to iterate over a sequence.
+origins = [4, 8, 10]
+for index in range(len(origins)):
+    value = origins[index]  # Retrieve value of element in list.
+    print('Element {}: {}'.format(index, value))
+
+#Using list.index() to find the index of each element.
+origins = [4, 8, 10]
+for value in origins:
+    index = origins.index(value)  # Retrieve index of value in list
+    print('Element {}: {}'.format(index, value))
+
+#The enumerate() function.
+origins = [4, 8, 10]
+for (index, value) in enumerate(origins):
+    print('Element {}: {}'.format(index, value))
+
+#     **Data Validation**
+age = -1
+str_age = input(“What is your age? “)
+while !str_age.isdigit(): # This loop will run if the input is NOT a digit.
+     print(“You didn’t enter an integer.”)
+     str_age = input(“What is your age? “)
+age = int(str_age)
+
+#     **Counting values in a list of values**
+
+count = 0
+val = (input)
+
+While val is not 0
+     If val < 0
+     count = count + 1
+
+val = (input)
+
+#     **Find Max Value**
+
+max = -1
+val = (input)
+
+while val is not 0
+   If val > max
+      max = val
+
+   val = (input)
+
+#                                   **Functions**
+#Built in Functions:
+#input, print, int, len, etc.
+#Parameter: Used when defining
+#Argument: Used when calling
+#Variables: If assigned inside a function, its scope is restricted. If defined before, its scope extends from assignment
+print(globals) #This will print all of the global variables
+print(locals) #Prints the local ones. This is variables executing within a currently executing function
+
+def function_name(): #Creating a function
+    #Code goes here
+function_name() #Calling a function
+
+#     ***Optional Arguments***
+#These are both standard practice keywords; however anything with * and ** will perform the same
+*args #Collects optional positional parameters into an arbirary argument list
+**kwargs #Creates a dictionary of "extra" arguments not defined in the function definition
+
+
+
+#     **SIMPLE***
+add() #The add function, will combine two intergers or strings
+def add(x, y):
+    return x + y
+print('add(5, 7) is', add(5, 7))
+print("add('Tora', 'Bora') is", add('Tora', 'Bora'))
+
+print(add(5 * y)) #This will return BoraBoraBoraBoraBora
+
+#Pizza Argument Agreement
+def print_pizza_area(pizza_diameter):
+    pi_val = 3.14159265
+    pizza_radius = pizza_diameter / 2.0
+    pizza_area = pi_val * pizza_radius * pizza_radius
+    print('{:.1f} inch pizza is {:.3f} inches squared'
+        .format(pizza_diameter, pizza_area))
+
+print_pizza_area(12.0)
+print_pizza_area(16.0)
+
+---
+def print_name(name):
+    print(“My name is “ + name)
+
+my_name = "Scrappy"
+print_name(my_name)
+---
+def get_name():
+    name = input(“What is your name? “)
+    return name
+#This calls the user to input their name. This is stored
+def my_name = get_name()
+    print_name(my_name)
+#This runs the Get-Name function, which returns the users stored name, and stores 'that' into the new my_name function
+
+---
+
+user_input = int(input()) #the input() function is called and evaluates to a value that is then passed as an argument to the int() function.
+
+#     ***Functions with Branches / Loops***
+
+#     ***Functions are Objects***
+
+def print_face():
+   # print face statements...
+print_face()
+func = print_face
+func() #Calling Func is the same as calling print_face()
+
+#     ***KEYWORD ARGUMENTS***
+
+#Keyword arguments must come LAST if used in conjunction with position arguments
+def print_book_description(title, author, publisher, year, version, num_chapters, num_pages):
+    # Format and print description of a book...
+
+print_book_description(title='The Lord of the Rings', publisher='George Allen & Unwin',
+                       year=1954, author='J. R. R. Tolkien', version=1.0,
+                       num_pages=456, num_chapters=22)
+
+#     ***Parameters with default values***
+def print_date(day, month, year, style=0):
+
+#Mixing keywords with default parameters allows omitting arbitrary arguments
+# IE. Changing the argument only when necessary
+
+#     ***Mutiple Fucntion Outputs***
+# Package the multiple outputs into a single container, commonly a tuple, and to then return that container.
+
+student_scores = [75, 84, 66, 99, 51, 65]
+
+
+def get_grade_stats(scores):
+    # Calculate the arithmetic mean
+    mean = sum(scores) / len(scores)
+    # Calculate the standard deviation
+    tmp = 0
+    for score in scores:
+        tmp += (score - mean) ** 2
+    std_dev = (tmp / len(scores)) ** 0.5
+    # Package and return average, standard deviation in a tuple
+    return mean, std_dev
+# Unpack tuple
+average, standard_deviation = get_grade_stats(student_scores)
+print('Average score:', average)
+print('Standard deviation:', standard_deviation)
