@@ -172,12 +172,17 @@ print('Hi {{{0}}}!'.format('Bilbo'))#A single brace is printed by using the doub
 list () #Basic list function
 #   list('abc') creates new list with elements ['a', 'b', 'c']
 
-my_list = [10, 'abc'] #A list item is called an element.
-#A list itself is an object, and its value is a sequence of references to the list's elements.
+list[1] #Calls the first element in the list
+list[start:end] #Calls elements in a range
+mylist1 + mylist2 #Get a new list with elements from both lists
+
+my_list[len(mylist):] = [x] #Add elements in x to the end of my_list
+#Alternative Append x
+
 empty_list = [ ]
+
 my_nums = [5, 12, 20]
 my_nums[1] = -28 #This changes the 2nd value in the list
-print (my_nums)
 
 result_of_power = math.pow(long_variable_name_left_operand,
                            long_variable_name_right_operand)
@@ -187,11 +192,16 @@ result_of_power = math.pow(long_variable_name_left_operand,
 object.typeofmethod #Standard method. Object should be a list.
 
 object.append(value) #Adds value to end of list
+object.extend([x]) #Add all items in x to list
+object.insert(i, x) #Insert x into list BEFORE i
+object.remove(x) #Remove first item from list with value x
 object.pop(value) #Removes element at value position
 object.remove(value) #Removes element containing the value
+del my_list[i] #Delete element from list
 
 #     **Sequence Type Methods**
-
+list.sort() #Sort items in-place
+list.reverse() #Reverse the elements of list in place
 len(list) #Find the length of the list.
 list1 + list2 #Produce a new list by concatenating list2 to the end of list1.
 min(list) #Find the element in list with the smallest value.
@@ -199,6 +209,15 @@ max(list) #Find the element in list with the largest value.
 sum(list) #Find the sum of all elements of a list (numbers only).
 list.index(val) #Find the index of the first element in list whose value matches val.
 list.count(val) #Count the number of occurrences of the value val in list.
+
+#     **Quick Lists**
+my_list.sort()
+my_list.pop() #Sort and then remove largest element
+
+#Sort short_names in reverse alphabetic order.
+short_names = user_input.split()
+short_names.sort(reverse=True)
+
 
 #                                   **Tuples**
 #Created by using (parentheses).
