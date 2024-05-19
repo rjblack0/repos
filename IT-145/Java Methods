@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class LabProgram {
+   
+   /*First I am going to fulfill all of the parameters of the Method
+   *The method is public; the result itself will be a double, and all items are contained in the (Parenthesis)
+   *Each item is defined as a double and named appropriately
+   */
+   public static double drivingCost(double milesPerGallon, double dollarsPerGallon, double milesDriven)
+   {
+   //The method will return the dollar cost to drive, so it simply has to return the appropriate math using its items.
+   return (milesDriven / milesPerGallon) * dollarsPerGallon;
+   }
+   
+   //Now that I have created a Method for performing the math, I can create all of my different scenarios
+   
+   public static void main(String[] args) {
+      //Create generic Scanner
+      Scanner scnr = new Scanner(System.in);
+      
+      //Nothing will work without getting my input, so based on the parameters I am going to first gather Miles per Gallon and then Price Per Gallon to their respective variables
+      double milesPerGallon = scnr.nextDouble();
+      double dollarsPerGallon = scnr.nextDouble();
+      
+      //Now that it can read those two, I need to create the 3 separate programs that will call the program and add the final variable, miles driven
+      double cost10 = drivingCost(milesPerGallon, dollarsPerGallon, 10.0);
+      double cost50 = drivingCost(milesPerGallon, dollarsPerGallon, 50.0);
+      double cost400 = drivingCost(milesPerGallon, dollarsPerGallon, 400.0);
+      
+      //Since I made a new double, I tell the system to output the Result of drivingCost with the new information added
+      System.out.printf("%.2f ", cost10);
+      System.out.printf("%.2f ", cost50);
+      System.out.printf("%.2f\n", cost400);
+      
+   } // Close the calculation program, and then also close the LabProgram
+}

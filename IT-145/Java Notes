@@ -1,0 +1,291 @@
+// A basic program
+
+public static void main (String [] args) { // A program begins executing in 'main'
+int wage; //This declares an integer variable called 'wage'
+System.out.print("Salary is "); //Print to screen
+import java.util.Scanner; //This enables a program to get input
+Scanner scnr = new Scanner(System.in); //Creates a new scanner
+wage = scnr.nextInt(); //Assigns an input into variable wage
+
+//single line comment
+/*
+*Multi 
+*line 
+*comment 
+*/
+
+myChar = 'm'; //This creates a character literal
+
+
+//Initializing
+
+public class Salary {                       
+
+    public static void main (String [] args) { // A program begins executing in 'main'
+        int wage; //This declares an integer variable called 'wage'
+  
+        wage = 20;                        
+  
+        System.out.print("Salary is ");       
+        System.out.println(wage * 40 * 52);   
+    }
+  }
+
+//Getting Input
+
+import java.util.Scanner; //This enables a program to get input
+
+public class Salary {
+   public static void main(String [] args) {
+      int wage;
+
+      Scanner scnr = new Scanner(System.in); //Creates a new scanner
+      wage = scnr.nextInt(); //Assigns an input into variable wage
+
+      System.out.print("Salary is ");
+      System.out.println(wage * 40 * 52);
+   }
+}
+
+
+//Printing
+
+System.out.print ("Desired Text") // Basic printing
+System.out.println ("Desired Text") //Prints content followed by a newline
+
+//Getting this result:
+
+In 2014, the driving age is 18. 
+10 states have exceptions.
+
+public class DrivingAge {
+    public static void main (String [] args) {
+       int drivingYear;
+       int drivingAge;
+       int numStates;
+ 
+       drivingYear = 2014;
+       drivingAge = 18;
+       numStates = 10;
+ 
+       System.out.print("In ");
+       System.out.print(drivingYear);
+       System.out.print(", the driving age is ");
+       System.out.print(drivingAge);
+       System.out.println(".");
+       System.out.print(numStates);
+       System.out.println(" states have exceptions.");
+    }
+ }
+
+ System.out.print(userAge + "years is good.");
+
+
+//Floating Point Variables
+
+//A floating-point number is a real number containing a decimal point that can appear anywhere (or "float") in the number. Ex: 98.6, 0.0001, or -55.667. A double variable stores a floating-point number. Ex: double milesTravel; declares a double variable.
+
+//A floating-point literal is a number with a fractional part, even if the fraction is 0, as in 1.0, 0.0, or 99.573. Good practice is to always have a digit before the decimal point, as in 0.5, since .5 might mistakenly be viewed as 5.
+
+//Scanner's nextDouble() method reads a floating-point value from input. Ex: currentTemp = scnr.nextDouble(); reads a floating-point value from the input and assigns currentTemp with that value.
+
+import java.util.Scanner;
+
+public class TravelTime {
+   public static void main(String[] args) {
+      Scanner scnr = new Scanner(System.in);
+      double milesTravel; // User input of miles to travel
+      double hoursFly;    // Travel hours if flying those miles
+      double hoursDrive;  // Travel hours if driving those miles
+
+      System.out.print("Enter distance in miles: ");
+      milesTravel = scnr.nextDouble();
+
+      hoursFly   = milesTravel / 500.0;
+      hoursDrive = milesTravel / 60.0;
+
+      System.out.println(milesTravel + " miles would take:");
+      System.out.println("   " + hoursFly + " hours to fly,");
+      System.out.println("   " + hoursDrive + " hours to drive.");
+
+/*
+ * Objects
+ */
+
+Object = Programming model; created using a class
+Class = Pattern that describes characteristics (attributes or variables) and actions (method)
+Instantiating = Using a class to create actions
+
+Class
+      -name: String
+      -id: int
+      -age: int
+         -setName(var, var): String
+         -eat(): 
+
+-private = not accessible by any other class or subclass
++public = is accessible
+#protected = only accessible by same class or subclass
+~package/default = accessible only in the same package (the group above)
+
+Employee
+      -name: String
+      -employeeID: int
+      -phoneNumber
+         +setPhoneNumber // Nothing else can be accessed, but this can be changed
+
+Inheritance
+Create class: Animal
+Create new class: Tiger; then inherate attributes from the Animal class
+
+Called Superclass / Subclass, and called Parent / Child class
+
+Example of Class and calling:
+
+public class PizzaArea { 
+   public static double calcPizzaArea() {
+      double pizzaDiameter;
+      double pizzaRadius;
+      double pizzaArea;
+      double piVal = 3.14159265;
+
+      pizzaDiameter = 12.0;
+      pizzaRadius = pizzaDiameter / 2.0;
+      pizzaArea = piVal * pizzaRadius * pizzaRadius;
+      return pizzaArea;
+   }
+
+   public static void main(String[] args) {  
+      System.out.println("12 inch pizza is " +   
+       calcPizzaArea() + " inches squared"); 
+   }
+}
+
+//Method with multiple parameters:
+
+public class PizzaVolume {
+
+   public static double calcPizzaVolume(double pizzaDiameter, double pizzaHeight) {
+      double pizzaRadius;
+      double pizzaArea;
+      double pizzaVolume;
+      double piVal = 3.14159265;
+
+      pizzaRadius = pizzaDiameter / 2.0;
+      pizzaArea = piVal * pizzaRadius * pizzaRadius;
+      pizzaVolume = pizzaArea * pizzaHeight;
+      return pizzaVolume;
+   }
+
+   public static void main (String [] args) {
+      System.out.println("12.0 x 0.3 inch pizza is "  + calcPizzaVolume(12.0, 0.3) + " inches cubed");
+      System.out.println("12.0 x 0.8 inch pizza is "  + calcPizzaVolume(12.0, 0.8) + " inches cubed");
+      System.out.println("16.0 x 0.8 inch pizza is "  + calcPizzaVolume(16.0, 0.8) + " inches cubed");
+   }
+}
+
+//Method calling Method
+
+public class MethodsCallingMethods {
+
+   public static double calcCircleArea(double circleDiameter) {
+      double circleRadius;
+      double circleArea;
+      double piVal = 3.14159265;
+           
+      circleRadius = circleDiameter / 2.0;
+      circleArea = piVal * circleRadius * circleRadius;
+           
+      return circleArea;
+   }
+
+   public static double pizzaCalories(double pizzaDiameter) {
+      double totalCalories;
+      double caloriesPerSquareInch = 16.7;    // Regular crust pepperoni pizza
+           
+      totalCalories = calcCircleArea(pizzaDiameter) * caloriesPerSquareInch;
+           
+      return totalCalories;
+   }
+
+   public static void main (String [] args) {
+      System.out.printf("12 inch pizza has %.2f calories.\n", pizzaCalories(12.0));
+      System.out.printf("14 inch pizza has %.2f calories.\n", pizzaCalories(14.0));
+   }
+}
+
+//Printing Methods
+
+import java.util.Scanner;
+
+public class MenuSystem {
+   public static void printMenu() {
+      System.out.println("Today's Menu:");
+      System.out.println("   1) Gumbo");
+      System.out.println("   2) Jambalaya");
+      System.out.println("   3) Quit\n");
+   }
+   
+   public static void main(String[] args) {
+      Scanner scnr = new Scanner(System.in);
+      boolean quit = false;
+      int choice;
+
+      while (!quit) {
+         printMenu();
+         System.out.print("Enter choice: ");
+         choice = scnr.nextInt(); 
+         if (choice == 3) {
+            System.out.println("Goodbye");
+            quit = true;
+         }
+         else {
+            System.out.print("Order: ");
+            if (choice == 1) {
+               System.out.println("Gumbo");
+            }
+            else if (choice == 2) {
+               System.out.println("Jambalaya");
+            }
+            System.out.println();
+         }  
+      }  
+   }
+}
+
+//User Defined Main
+
+import java.util.Scanner;
+
+public class CalorieCalc {
+   public static double stepsToMiles(int numSteps) {
+      final double FEET_PER_STEP = 2.5;               // Typical adult
+      final int FEET_PER_MILE = 5280;
+
+      return numSteps * FEET_PER_STEP * (1.0 / FEET_PER_MILE);
+   }
+
+   public static double stepsToCalories(int numSteps) {
+      final double STEPS_PER_MINUTE = 70.0;           // Typical adult
+      final double CALORIES_PER_MINUTE_WALKING = 3.5; // Typical adult
+      double minutesTotal;
+      double caloriesTotal;
+
+      minutesTotal = numSteps / STEPS_PER_MINUTE;
+      caloriesTotal = minutesTotal * CALORIES_PER_MINUTE_WALKING;
+
+      return caloriesTotal;
+   }
+   
+   public static void main(String[] args) {
+      Scanner scnr = new Scanner(System.in);
+      int stepsWalked;
+      
+      System.out.print("Enter number of steps walked: ");
+      stepsWalked = scnr.nextInt();
+      
+      System.out.println("Miles walked: " + stepsToMiles(stepsWalked));
+      System.out.println("Calories: " + stepsToCalories(stepsWalked));
+   }
+}
+

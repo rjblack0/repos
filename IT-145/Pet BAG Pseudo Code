@@ -1,0 +1,196 @@
+/*
+
+PetCheckIn:
+    Initialize dogSpaces = 30
+    Initialize catSpaces = 12
+
+    Function CheckInPet(petType, isReturning, petInfo, lengthOfStay, wantsGrooming):
+        If petType is "dog":
+            If dogSpaces > 0:
+                If isReturning:
+                    UpdatePetInfo(petInfo)
+                Else:
+                    CollectPetInfo(petInfo)
+                Decrement dogSpaces
+
+                If wantsGrooming and lengthOfStay >= 2:
+                    ScheduleGrooming(petInfo)
+
+                AssignPetSpace("dog")
+                Return "Check-in successful for dog."
+            Else:
+                Return "No space available for dogs."
+
+        Else If petType is "cat":
+            If catSpaces > 0:
+                If isReturning:
+                    UpdatePetInfo(petInfo)
+                Else:
+                    CollectPetInfo(petInfo)
+                Decrement catSpaces
+
+                AssignPetSpace("cat")
+                Return "Check-in successful for cat."
+            Else:
+                Return "No space available for cats."
+
+        Else:
+            Return "Unsupported pet type."
+
+    Function CollectPetInfo(petInfo):
+        // Collect pet's name, age, breed, and owner's contact information
+        StorePetInfo(petInfo)
+
+    Function UpdatePetInfo(petInfo):
+        // Update existing pet information
+        ModifyPetInfo(petInfo)
+
+    Function ScheduleGrooming(petInfo):
+        // Add grooming to the pet's stay schedule
+        AddGroomingService(petInfo)
+
+    Function AssignPetSpace(petType):
+        // Assign a specific numbered space to the pet
+        AssignSpaceNumber(petType)
+
+// Usage example:
+result = CheckInPet("dog", False, {name: "Rex", age: 5, ownerContact: "123-456-7890"}, 3, True)
+Print result
+
+PetCheckOut:
+    Initialize dailyBoardingFee
+    Initialize groomingFee
+
+    Function CheckOutPet(petType, petWeight, lengthOfStay, hadGrooming):
+        If petType is "dog":
+            If petWeight >= 30:
+                dailyBoardingFee = 34.00
+                groomingFee = 29.95
+            Else If petWeight >= 20 and petWeight < 30:
+                dailyBoardingFee = 29.00
+                groomingFee = 24.95
+            Else If petWeight < 20:
+                dailyBoardingFee = 24.00
+                groomingFee = 19.95
+
+            totalFee = dailyBoardingFee * lengthOfStay
+            If hadGrooming and lengthOfStay >= 2:
+                totalFee += groomingFee
+
+        Else If petType is "cat":
+            dailyBoardingFee = 18.00
+            totalFee = dailyBoardingFee * lengthOfStay
+            // Cats do not have grooming options
+
+        Else:
+            Return "Unsupported pet type."
+
+        MarkSpaceAsVacant(petType, petWeight)
+        Return "Total fee for " + petType + " is $" + FormatAsCurrency(totalFee) + "."
+
+    Function MarkSpaceAsVacant(petType, petWeight):
+        // Mark the assigned boarding space as vacant
+        FreeSpace(petType, petWeight)
+
+    Function FormatAsCurrency(amount):
+        // Format the amount to currency format
+        Return "{:.2f}".format(amount)
+
+// Usage example:
+checkoutResult = CheckOutPet("dog", 25, 3, True)
+Print checkoutResult
+
+*/
+
+
+///Alternate version
+
+Pet Check-In
+Initialize dogSpace = 0, dogMax = 30, catSpace = 0, catMax = 12, grooming = false, stayDuration = 0, isReturning = false, petInfo = {}
+Prompt user for petType, petInfo, stayDuration, isReturning
+If isReturning:
+    UpdatePetInfo(petInfo)
+Else:
+    CreateNewPetFile(petInfo)
+
+If petType is "dog":
+    If dogSpace < dogMax:
+        Increment dogSpace
+        If stayDuration >= 2:
+            Prompt user for grooming
+            If user wants grooming:
+                Set grooming to true
+        If grooming:
+            Notify "Dog is set up for grooming."
+        Else:
+            Notify "Dog will not receive grooming."
+    Else:
+        Notify "No space available for dogs."
+ElseIf petType is "cat":
+    If catSpace < catMax:
+        Increment catSpace
+        Notify "Cat check-in successful."
+    Else:
+        Notify "No space available for cats."
+Else:
+    Notify "Invalid pet type entered."
+
+----
+
+
+String petType = ""
+int dogSpace = 0
+int catSpace = 0
+int DOG_MAX = 30
+int CAT_MAX = 12
+boolean grooming = false
+int stayDuration = 0
+boolean isReturning = false
+String petInfo = "Library"
+String petFile = ""
+INPUT "Enter the duration of stay:"
+SET stayDuration
+INPUT "Enter pet information:"
+SET petInfo
+INPUT "Is the pet returning? (yes/no):"
+SET isReturning
+IF isReturning = "yes" THEN
+    		
+            UPDATE petInfo profile
+ELSE
+    		CREATE new file with petFile and store petInfo
+END-IF
+INPUT "Enter pet type (dog/cat):"
+SET petType
+
+IF petType = "dog" THEN
+    IF dogSpace < DOG_MAX THEN
+        INPUT "Would you like grooming services? (yes/no):"
+        SET groomingResponse
+        IF groomingResponse = "yes" THEN
+            SET grooming = true
+        END-IF
+        IF stayDuration >= 2 THEN
+            SET grooming = true
+        END-IF
+        INCREMENT dogSpace by 1
+        IF grooming THEN
+            DISPLAY "Dog is set up for grooming."
+        ELSE
+            DISPLAY "Dog will not receive grooming."
+        END-IF
+    ELSE
+        DISPLAY "No space available for dogs."
+    END-IF
+
+ELSEIF petType = "cat" THEN
+    IF catSpace < CAT_MAX THEN
+        INCREMENT catSpace by 1
+        DISPLAY "Cat booking confirmed."
+    ELSE
+        DISPLAY "No space available for cats."
+    END-IF
+
+ELSE
+    DISPLAY "Invalid pet type. You cannot book your stay at this time."
+END-IF
