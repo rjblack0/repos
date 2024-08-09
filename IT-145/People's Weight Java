@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class PeopleWeights {
+   public static void main(String[] args) {
+      Scanner scnr = new Scanner(System.in);          // Create a scanner to pick up the data
+      final int numValues = 5;                        // Tell the system how many items are going to exist in the array
+      double[] userVals = new double[numValues];      // Array to store weights
+      int i;                                          // Loop variable
+
+      //Start off with a basic incrementing loop, which will ask the same question as long as it is smaller than the value of the array (5 times)
+      for (i = 0; i < numValues; ++i) {
+         System.out.println("Enter weight " + (i + 1) + ": "); //Prompt the user for their input
+         userVals[i] = scnr.nextDouble();                   //Store the input into the array
+      }
+
+       System.out.println();                     //Create a newline for ease of reading
+
+      // Next we want to output the weights
+      System.out.print("You entered: ");        //Print the beginning of the message
+      for (i = 0; i < numValues; ++i) {         //Repeat the print 5 times again
+         System.out.print(userVals[i] + " ");   //Fill the end of the line with the values stored int he array
+      }
+      System.out.println();                     //Create a newline for ease of reading
+
+      double totalWeight = 0.0;                 //Create a loop which will read the values of the array one after another
+      for (i = 0; i < numValues; ++i) {
+         totalWeight += userVals[i];            //The new variable will increase every time a new value is read by the loop
+      }
+      System.out.println("Total weight: " + totalWeight);   //Print the value after everything in the array is read
+
+      double averageWeight = totalWeight / numValues;          //Same process as above but with Averaging, using the two variables that I already have
+      System.out.println("Average weight: " + averageWeight);
+
+      double maxWeight = userVals[0];        //To find the max, first I have to make sure that I start with the first item in the array
+      for (i = 1; i < numValues; ++i) {      //Create a loop that will loop only as many times as there are items in the array (5)
+         if (userVals[i] > maxWeight) {      //Create an inner loop that will only execute if the item that is currently being looked at is greater than the value currently held by i
+            maxWeight = userVals[i];         //If it does, substitute that value into maxWeight
+         }
+      }
+      System.out.println("Max weight: " + maxWeight);    //Print it
+
+      return;
+   }
+}

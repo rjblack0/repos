@@ -1,0 +1,45 @@
+// First, create the Dog class and define the attributes, setting them with the appropriate data types.
+public class Dog {
+   private int dogSpaceNumber;
+   private int dogWeight;
+   private boolean grooming;
+
+   // Next, initialize all of the attributes using standard practices in the default constructor.
+   public Dog() {
+      this.dogSpaceNumber = -1; // Initial value indicating no space assigned.
+      this.dogWeight = -1;      // Initial value indicating no weight set.
+      this.grooming = false;    // Initial value indicating grooming is not scheduled.
+   }
+
+   /* Now, create the Accessor methods (getters) and Mutator methods (setters) for each attribute.
+    * Accessor methods retrieve the value of the attribute.
+    * Mutator methods set the value of the attribute.
+    */
+   
+   // Accessor and Mutator for dogSpaceNumber
+   public int getDogSpaceNumber() {
+      return this.dogSpaceNumber; // Accessor method returns the value of dogSpaceNumber.
+   }
+   
+   public void setDogSpaceNumber(int spaceID) {
+      this.dogSpaceNumber = spaceID; // Mutator method sets the value of dogSpaceNumber.
+   }
+   
+   // Accessor and Mutator for dogWeight
+   public int getDogWeight() {
+      return this.dogWeight; // Accessor method returns the value of dogWeight.
+   }
+
+   public void setDogWeight(int weight) {
+      this.dogWeight = weight; // Mutator method sets the value of dogWeight.
+   }
+   
+   // Accessor and Mutator for grooming
+   public boolean getG grooming() {
+      return this.grooming; // Accessor method returns the value of grooming.
+   }
+
+   public void setGrooming(boolean groom) {
+      this.grooming = groom; // Mutator method sets the value of grooming.
+   }
+}

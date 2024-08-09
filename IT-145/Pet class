@@ -1,0 +1,37 @@
+public class Pet {              //Creating my class
+    private String petType;     //Creating first a pair of Strings to hold my values
+    private String petName;
+    private int petAge;         //And a pair of integers
+    private int daysStay;
+
+    //Also making sure that these values start out private, so that they can only be accessed or modified through the defined accessor and mutator
+
+
+    //Starting out with my constructor, putting all of my variables into an array
+    public Pet(String petType, String petName, int petAge, int daysStay) {
+        this.petType = petType;     //Assigning all of these variables with the 'this.' keyword to ensure that it gets its info from within this loop and not outside of it
+        this.petName = petName;
+        this.petAge = petAge;
+        this.daysStay = daysStay;
+    }
+
+    //Assigning each of the variables a Getter, so that the mutator can do its work
+    public String getPetType() {
+        return petType; }
+    public String getPetName() {
+        return petName; }
+    public int getPetAge() {
+        return petAge; }
+    public int getDaysStay() {
+        return daysStay; }
+
+    //Finally using the mutators to write the information that its currently holding to 'this.' specific instance of the variable
+    public void setPetType(String petType) {
+        this.petType = petType; }
+    public void setPetName(String petName) {
+        this.petName = petName; }
+    public void setPetAge(int petAge) {
+        this.petAge = petAge; }
+    public void setDaysStay(int daysStay) {
+        this.daysStay = daysStay; }
+}

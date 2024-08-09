@@ -1,0 +1,58 @@
+public class Pet {              // Creating my class, and filling it with all of my variables
+    private String petType;     // Creating first a pair of Strings to hold written values
+    private String petName;
+    
+    private int petAge;         // And a set of integers for all of these specific numbers
+    private int daysStay;
+    private int dogSpaces;
+    private int catSpaces;
+    
+    private double amountDue;   //Setting amountDue as a double so that it can be incremented easier
+    
+    /* Making sure that these values start out private, so that they can only be accessed or 
+    *modified through the defined accessor and mutator*/
+
+    // Starting out with my constructor, putting all of my variables into an array
+    public Pet(String petType, String petName, int petAge, int daysStay, int dogSpaces, int catSpaces, double amountDue) {
+        this.petType = petType;     
+        this.petName = petName;
+        this.petAge = petAge;
+        this.daysStay = daysStay;
+        this.dogSpaces = dogSpaces;
+        this.catSpaces = catSpaces;
+        this.amountDue = amountDue;}
+        /*Assigning all of these variables with the 'this.' keyword to ensure that it gets its info from 
+        *within this loop and not outside of it */ 
+
+    // Assigning each of the variables a Getter, so that the mutator can do its work
+    public String getPetType() {
+        return petType;}
+    public String getPetName() {
+        return petName;}
+    public int getPetAge() {
+        return petAge;}
+    public int getDaysStay() {
+        return daysStay;}
+    public int getDogSpaces() {
+        return dogSpaces;}
+    public int getCatSpaces() {
+        return catSpaces;}
+    public double getAmountDue() {
+        return amountDue;}
+
+    // Finally using the mutators to write the information that it's currently holding to 'this.' specific instance of the variable
+    public void setPetType(String petType) {
+        this.petType = petType;}
+    public void setPetName(String petName) {
+        this.petName = petName;}
+    public void setPetAge(int petAge) {
+        this.petAge = petAge;}
+    public void setDaysStay(int daysStay) {
+        this.daysStay = daysStay;}
+    public void setDogSpaces(int dogSpaces) {
+        this.dogSpaces = dogSpaces;}
+    public void setCatSpaces(int catSpaces) {
+        this.catSpaces = catSpaces;}
+    public void setAmountDue(double amountDue) {
+        this.amountDue = amountDue;}
+}

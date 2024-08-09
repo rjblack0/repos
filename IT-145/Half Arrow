@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+//First create my public class and define my function
+
+public class DrawHalfArrow {
+   public static void main(String[] args) {
+      Scanner scnr = new Scanner(System.in);
+
+      //I want to initialize my variables so that they're available out the door
+
+      int arrowBaseHeight; //Variable for Height
+      int arrowBaseWidth; //Variable for Width
+      int arrowHeadWidth; //Variable to see how wide I want the arrow head to be since it can vary
+
+      //Ask the user for how high they want it to be and assign that to my Height
+      System.out.println("Enter arrow base height:");
+      arrowBaseHeight = scnr.nextInt();
+
+      //Next get the widgth from user
+      System.out.println("Enter arrow base width:");
+      arrowBaseWidth = scnr.nextInt();
+
+      /*Compliance check loop
+        *This loop ensures that the arrow head width is greater than arrow base width. This will only execute if the numbers are correct
+        */
+      do {
+         //Ask for final prompt, getting the width of the arrow head
+         System.out.println("Enter arrow head width:");
+         arrowHeadWidth = scnr.nextInt();
+      } while (arrowHeadWidth <= arrowBaseWidth); //This ensures that the program will only move forward if the proportions are correct. If not, the branch will continuously loop until a correct number is given
+
+      //Begin the Base loop, which draws the base by iterating over the users parameter set loops 
+      for (int i = 0; i < arrowBaseHeight; ++i) { //Basic loop
+         for (int j = 0; j < arrowBaseWidth; ++j) {
+            System.out.print("*"); //Printing the base
+         }
+         System.out.println(); //This line easily allows the code to skip to the next line after printing the base layer
+      }
+
+      /*Arrow head loop
+      This loop starts at the users designated greatest value and then iterates downwards until reaching 1
+      */
+      for (int i = arrowHeadWidth; i > 0; --i) {
+         //Starts at max and then goes downwards by 1
+         for (int j = 0; j < i; ++j) {
+            System.out.print("*");
+         }
+         System.out.println(); //again moves down to the next line after printing
+      }
+   }
+}
