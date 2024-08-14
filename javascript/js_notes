@@ -1,0 +1,72 @@
+//How do you declare a variable
+
+var
+let
+
+let message;
+message = 'Hello'; //store the string 'Hello' in the variable
+alert(message); //shows the variable content
+
+//alternative
+let message2 = 'Hello!';
+alert (message2);
+
+//multiple variables
+let user = 'John', age = 25, message3 = 'Hello';
+
+//this is recommended
+let user = 'Mitch'
+let age = 20
+let message4 = 'Hi'
+
+//another option is
+let user = 'Jason'
+    , age = 30
+    , message5 = 'Yes'
+
+//Variables can be interchanged
+let hello = 'Hello World!'
+let message
+    let message = hello
+
+alert(hello)
+alert(message)
+
+//adding together
+
+let $ = 1
+let _ = 2
+
+alert($ + _) // 3
+
+const
+//Constants cannot be reassigned
+const myBirthday = '20.12.1985';
+
+//Use ALL CAPS for alias' of difficult to remember / values
+const COLOR_RED = "#F00"
+
+//Practice
+let admin;
+let name;
+
+let name = 'John';
+let admin = name;
+alert(admin)
+
+
+
+
+
+//What are three different ways to declare a variable?
+//Which one should you use when?
+//What are the rules for naming variables?
+//What are operators, operands, and operations?
+//What is concatenation and what happens when you add numbers and strings together?
+//What are the different types of operators in JavaScript?
+//What is the difference between == and ===?
+//What are operator precedence values?
+//What are the increment/decrement operators?
+//What is the difference between prefixing and postfixing them?
+//What are assignment operators?
+//What is the Unary Plus Operator?

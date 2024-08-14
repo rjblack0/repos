@@ -1,3 +1,10 @@
+let hrsPerDay = 4;
+let days = 5;
+    let calcStuTime = hrsPerDay * days;
+
+console.log(calcStuTime);
+
+
 document.addEventListener('DOMContentLoaded', function() {
     // Basic Form Validation
     const loginForm = document.querySelector('form');
