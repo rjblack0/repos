@@ -1,0 +1,26 @@
+View(data)
+head(data)
+str(data)
+gwd()
+setwd("/Users/ryanblackburn/repos/repos-2/r")
+gwd()
+getwd()
+data <- read.csv("read.csv")
+head(data)
+View(data)
+data_matrix <- as.matrix(data)
+heatmap(data_matrix, Rowv = NA, Colv = NA, col = heat.colors(256), scale = "column")
+install.packages("ggplot2")
+library(ggplot2)
+install.packages("reshape2")#
+library(reshape2)#
+#
+data_melt <- melt(data_matrix)
+ggplot(data_melt, aes(x = Var2, y = Var1, fill = value)) +#
+  geom_tile() +#
+  scale_fill_gradient(low = "white", high = "red") +#
+  theme_minimal() +#
+  labs(x = "Columns", y = "Rows", fill = "Intensity") +#
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+view(data)
+View(data)
