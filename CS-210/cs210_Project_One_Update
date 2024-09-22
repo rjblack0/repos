@@ -1,8 +1,8 @@
 /*
 Ryan Blackburn
 CS210 Project One (Single File)
-This program simulates a digital clock that displays both 12-hour and 24-hour formats simultaneously.
-It allows the user to add hours, minutes, and seconds, or exit the program via a menu.
+This program first asks a user for input (Hours, minutes, seconds) and displays two clocks-- one 12 hour and one 24 hour-- side by side
+It then allows the user to add hours, minutes, and seconds to the clock, or will exit when prompted.
 */
 
 #include <iostream>             // Allows for standard input and output
@@ -16,7 +16,7 @@ struct TimeClock {
     int hour = 0;               // Initiate hours, minutes and seconds as 0.
     int minutes = 0;
     int seconds = 0;
-    string amPm = "AM";         // Keeps track of whether the time is AM or PM for 12 hour clock
+    string amPm = "AM";         // Keeps track of whether the time is AM or PM for 12-hour clock
 
     TimeClock() = default;      // This tells the structure that the current status of TimeClock is the default. This allows better clarity for the programs function.
 };  //Ends TimeClock structure
@@ -24,6 +24,11 @@ struct TimeClock {
             // This section sets the MAXIMUM value for valid input ranges
 const int MAX_HOURS = 23;               // Maximum valid hour value for 24-hour format
 const int MAX_MINUTES_SECONDS = 59;     // Maximum valid minute/second value
+
+// Function to generate a string of 'n' characters 'c'
+string nCharString(size_t n, char c) {
+    return string(n, c);    // Create and return a string of 'n' 'c' characters
+}
 
             /* Function to get valid user input within a specific range
                 When called in Main, the function sets the following parameters:
@@ -57,10 +62,10 @@ string twoDigitString(int num) {        //This variable twoDigitString is used i
 } //Ends twoDigitString function
 
             //First function which displays time in 12 hour format.
-string displayTime12Hour(TimeClock& clock) {                //This passes an instance of TimeClock, and allows the function in Main to define this as the 12hr clock
-    int displayHour = clock.hour % 12;                      //When using this clock type, 12 is Max
-    if (displayHour == 0) displayHour = 12;                 //When there is a 0, convert to 12 for handling midnight and noon
-    string period;                                      //Simple if/else which will determine whether to use AM or PM
+string displayTime12Hour(TimeClock& clock) {    //This passes an instance of TimeClock, and allows the function in Main to define this as the 12hr clock
+    int displayHour = clock.hour % 12;          //When using this clock type, 12 is Max
+    if (displayHour == 0) displayHour = 12;     //When there is a 0, convert to 12 for handling midnight and noon
+    string period;                              //Simple if/else which will determine whether to use AM or PM
     if (clock.hour >= 12) {
         period = " PM";
     } else {
@@ -80,24 +85,26 @@ string displayTime24Hour(TimeClock& clock) {
            twoDigitString(clock.seconds);
 } //Ends displayTime24Hour function
 
-// This function displays both clocks together side by side, calling the individual 12 hour and 24 hour clocks.
-
+/* This function displays both clocks together side by side, calling the individual 12 hour and 24 hour clocks.
+    After calling the parameter set displayClocks, it will next generate the menus based on a width of 27 for the top and bottom
+    And format calling displayTime to fit in the middle
+*/
 void displayClocks(TimeClock& clock) {
-    cout << "***************************\t***************************" << endl;
+    cout << nCharString(27, '*') << "\t" << nCharString(27, '*') << endl;    //Menu formatted to fit length
     cout << "*      12-Hour Clock       *\t*      24-Hour Clock       *" << endl;
     cout << "*      " << displayTime12Hour(clock) << "       *\t*      " << displayTime24Hour(clock) << "          *" << endl;
-    cout << "***************************\t***************************" << endl;
+    cout << nCharString(27, '*') << "\t" << nCharString(27, '*') << endl;    //Menu ends
 } //Ends displayClocks function
 
 // User Menu
     //Beginning here I display all of the users options first
 void displayMenu() {
-    cout << "***************************" << endl;
+    cout << nCharString(27, '*') << endl;            //Menu formatted to fit length
     cout << "* 1 - Add One Hour         *" << endl;
     cout << "* 2 - Add One Minute       *" << endl;
     cout << "* 3 - Add One Second       *" << endl;
     cout << "* 4 - Exit Program         *" << endl;
-    cout << "***************************" << endl;
+    cout << nCharString(27, '*') << endl;            //Menu ends
     cout << "Enter your choice: ";
 } //Ends displayMenu function
 
