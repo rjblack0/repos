@@ -1,37 +1,34 @@
-#include <iostream>
+#include <iostream>                    //Standard
 using namespace std;
 
-#include "ItemToPurchase.h"
+#include "ItemToPurchase.h"            //This allows this program to use the ItemToPurchase class file.
 
-// Default constructor
-ItemToPurchase::ItemToPurchase() {
-   itemName = "none";
-   itemPrice = 0;
+ItemToPurchase::ItemToPurchase() {     //Initialize all variables
+   itemName = "none";                     //All values are set to default values
+   itemPrice = 0; 
    itemQuantity = 0;
-}
+}//End ItemToPurchase
 
-// Setters
-void ItemToPurchase::SetName(string name) {
-   itemName = name;
-}
+void ItemToPurchase::SetName(string name) {     //Create the Mutator for Name
+   itemName = name;                             //Assigns input to name
+} //End SetName
 
-void ItemToPurchase::SetPrice(int price) {
-   itemPrice = price;
-}
+void ItemToPurchase::SetPrice(int price) {      //Create the Mutator for Price
+   itemPrice = price;                           //Assigns input to price
+}  //End SetPrice
 
-void ItemToPurchase::SetQuantity(int quantity) {
-   itemQuantity = quantity;
-}
+void ItemToPurchase::SetQuantity(int quantity) {   //Create the Mutator for Quantity
+   itemQuantity = quantity;                        //Assigns input to quantity
+}  //End SetQuantity
 
-// Getters
-string ItemToPurchase::GetName() const {
-   return itemName;
-}
+string ItemToPurchase::GetName() const {        //Access item Name
+   return itemName;                                //Retrieves the value of the itemName
+}  //End GetName
 
-int ItemToPurchase::GetPrice() const {
-   return itemPrice;
-}
+int ItemToPurchase::GetPrice() const {          //Access item Price
+   return itemPrice;                               //Retrieves the value of the itemPrice
+}  //End GetPrice
 
-int ItemToPurchase::GetQuantity() const {
-   return itemQuantity;
-}
+int ItemToPurchase::GetQuantity() const {       //Access item Quantity
+   return itemQuantity;                            //Retrieves the value of the itemQuantity
+}  //End GetQuantity

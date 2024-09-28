@@ -1,57 +1,61 @@
-#include <iostream>
+#include <iostream>                     //Standard for input/output operations.
 using namespace std;
 
-#include "ItemToPurchase.h"
+#include "ItemToPurchase.h"             //This allows Main to use the ItemToPurchase class file.
 
 int main() {
-   
-   ItemToPurchase item1;
+   ItemToPurchase item1;                //Declaring two objects that are of the ItemToPurchase class
    ItemToPurchase item2;
 
-   string name;
+   string name;                         //Declaring variables
    int price;
    int quantity;
 
-   // Input for item 1
-   cout << "Item 1" << endl;
-   cout << "Enter the item name: ";
+   cout << "Item 1" << endl;            //Gathering user input for Item 1 Name
+   cout << "Enter the item name:" << endl;          //Programming standards, using a new line for each prompt
    getline(cin, name);
-   item1.SetName(name);
-   
-   cout << "Enter the item price: ";
+   item1.SetName(name);                      //Setter for the Name of Item 1
+
+   cout << "Enter the item price:" << endl;    //Gathering user input for Item 1 Price
    cin >> price;
-   item1.SetPrice(price);
+   item1.SetPrice(price);                    //Setter for the Price of Item 1
 
-   cout << "Enter the item quantity: ";
+   cout << "Enter the item quantity:" << endl; //Gathering user input for Item 1 Quantity
    cin >> quantity;
-   item1.SetQuantity(quantity);
+   item1.SetQuantity(quantity);              //Setter for the Quantity of Item 1
 
-   cin.ignore();  // To clear newline for the next getline
+   cin.ignore();
 
-   // Input for item 2
-   cout << "\nItem 2" << endl;
-   cout << "Enter the item name: ";
+                                        //Repeating all previous tasks, for item 2
+   cout << "\nItem 2" << endl;               //Item 2 Name
+   cout << "Enter the item name:" << endl; 
    getline(cin, name);
-   item2.SetName(name);
+   item2.SetName(name); 
 
-   cout << "Enter the item price: ";
+   cout << "Enter the item price:" << endl;         //Item 2 Price
    cin >> price;
    item2.SetPrice(price);
 
-   cout << "Enter the item quantity: ";
-   cin >> quantity;
-   item2.SetQuantity(quantity);
+   cout << "Enter the item quantity:" << endl;      //Item 2 Quantity
+   cin >> quantity; 
+   item2.SetQuantity(quantity); 
 
-   // Output the total cost
-   cout << "\nTOTAL COST" << endl;
-   cout << item1.GetName() << " " << item1.GetQuantity() << " @ $" << item1.GetPrice() 
-        << " = $" << item1.GetQuantity() * item1.GetPrice() << endl;
-   cout << item2.GetName() << " " << item2.GetQuantity() << " @ $" << item2.GetPrice() 
-        << " = $" << item2.GetQuantity() * item2.GetPrice() << endl;
+   cout << "\nTOTAL COST" << endl;      //Output TOTAL COSt header
 
-   int totalCost = (item1.GetQuantity() * item1.GetPrice()) + (item2.GetQuantity() * item2.GetPrice());
+                                             //Display Item 1 Name, Quantity, Price, and Total cost.
+   cout << item1.GetName() << " " << item1.GetQuantity() << " @ $" 
+        << item1.GetPrice() << " = $" 
+        << item1.GetQuantity() * item1.GetPrice() << endl;
+
+                                             //Display Item 2 Name, Quantity, Price, and Total cost.
+   cout << item2.GetName() << " " << item2.GetQuantity() << " @ $" 
+        << item2.GetPrice() << " = $" 
+        << item2.GetQuantity() * item2.GetPrice() << endl;
+
+                                        //Combine items into total cost overall
+   int totalCost = (item1.GetQuantity() * item1.GetPrice()) + 
+                   (item2.GetQuantity() * item2.GetPrice()); 
    cout << "\nTotal: $" << totalCost << endl;
 
-   
-   return 0;
-}
+   return 0;  // End of the main function.
+}  // End of main()

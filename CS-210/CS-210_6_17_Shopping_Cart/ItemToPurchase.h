@@ -1,28 +1,26 @@
-#ifndef ITEM_TO_PURCHASE_H
+#ifndef ITEM_TO_PURCHASE_H             //Standard, restricts to this class type
 #define ITEM_TO_PURCHASE_H
 
-#include <string>
+#include <string>                      //Standard, allows strings, standard names
 using namespace std;
 
-class ItemToPurchase {
-   private:
+class ItemToPurchase {                 //Inititalize the Class ItemToPurchase
+   private:                               //Start out with the private variables that I want to be accessed inside this class Only.
       string itemName;
       int itemPrice;
       int itemQuantity;
 
    public:
-      // Default constructor
-      ItemToPurchase();
+      ItemToPurchase();                //Also declare one public variable for sharing with the other functions
 
-      // Setters
-      void SetName(string name);
-      void SetPrice(int price);
-      void SetQuantity(int quantity);
+      // Setter methods (mutators)
+      void SetName(string name);       //Mutator for itemName
+      void SetPrice(int price);        //Mutator for itemPrice
+      void SetQuantity(int quantity);  //Mutator for itemQuantity
 
-      // Getters
-      string GetName() const;
-      int GetPrice() const;
-      int GetQuantity() const;
-};
+      string GetName() const;          //Getter used for itemName
+      int GetPrice() const;            //Getter used for itemPrice
+      int GetQuantity() const;         //Getter used for itemQuantity
+};  //End ItemToPurchase
 
-#endif
+#endif  // End class ItemToPurchase
