@@ -117,11 +117,7 @@ double InvestmentCalculator::balanceWithMonthlyDeposit() {
             double monthlyInterest = balance * monthlyInterestRate;
             interestEarnedThisYear += monthlyInterest;
             balance += monthlyInterest;
-<<<<<<< HEAD
             balance += m_monthlyDeposit;  // Add monthly deposit after interest
-=======
-            balance += m_monthlyDeposit;  // Add the monthly deposit after interest
->>>>>>> 2278741312c056ba72c01f2510644bb9a12ed864
         }
 
         printDetails(year, balance, interestEarnedThisYear);
@@ -133,15 +129,7 @@ double InvestmentCalculator::balanceWithMonthlyDeposit() {
 // Method to print year-end details with proper alignment
 void InvestmentCalculator::printDetails(int year, double yearEndBalance, double interestEarned) const {
     std::cout << std::fixed << std::setprecision(2);
-<<<<<<< HEAD
     std::cout << std::setw(5) << year << "\t\t"
         << std::setw(10) << yearEndBalance << "\t\t"
         << std::setw(10) << interestEarned << std::endl;
-=======
-
-    // Print year, balance, and interest earned with proper alignment using std::setw()
-    std::cout << std::setw(5) << year << "\t\t"
-        << std::setw(10) << yearEndBalance << "\t\t"
-        << std::setw(10) << interestEarned << std::endl;
->>>>>>> 2278741312c056ba72c01f2510644bb9a12ed864
 }
