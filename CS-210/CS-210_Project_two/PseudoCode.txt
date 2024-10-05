@@ -1,0 +1,39 @@
+Start Program:
+	Import libraries
+	Include the header file for the class
+
+Main Function:
+	Create an object of Class
+	Call the method to gather input from the user.
+
+Start Menu:
+
+	Display Full Menu
+	Prompt user for:
+		Initial Investment Amount
+		Monthly Deposit
+		Annual Interest Rate
+		Number of Years
+			Input Validation (positive values)
+		Press any Key to continue
+
+Calculate growth without monthly deposits:
+
+	Display header for Balance
+		Call method for calculated balance
+	Loop over each year from input
+		Calculate monthly interest
+			Add interest to balance
+			Display Year-End balance
+
+Calculate growth With Monthly Deposits:
+
+	Display header for balance
+		Call method for calculated balance
+	Loop over each year from input
+		Calculate monthly interest
+			Add interest
+			Add monthly deposit
+		After each year, display balances
+
+Exit application
