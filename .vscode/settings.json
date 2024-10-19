@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "cs210 assignment wk 7": "cpp"
+        "cs210 assignment wk 7": "cpp",
+        "ostream": "cpp",
+        "iostream": "cpp",
+        "map": "cpp"
     }
 }
