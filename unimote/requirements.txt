@@ -1,0 +1,15 @@
+### 2. **`requirements.txt`**
+
+```plaintext
+roku
+pyHS100
+pysnmp
+requests
+colorama
+
+'''
+broadlink
+pychromecast
+paho-mqtt
+homeassistant
+'''
