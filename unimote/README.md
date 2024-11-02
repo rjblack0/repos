@@ -9,7 +9,7 @@ pychromecast - For controlling chromecast
 paho-mqtt - MQTT (IoT) support
 homeassistant - Home assistant support.
 
-Not implemented into code, uncomment from discovery.py if you want to implement.
+Not implemented into code, delete from discovery.py if you want to implement
 
 ## Overview
 
@@ -38,4 +38,12 @@ This program allows you to discover and control various devices on your local ne
    2.2 Implement in requirements.txt
 3. Update discovery.py to include the new device class in the discovery process
 
-##
+## Kali Linux
+
+Instructions to install requirements.txt using Kali
+
+Bash
+   python3 -m venv env
+   source env/bin/activate
+   pip install -r requirements.txt
+   deactivate
