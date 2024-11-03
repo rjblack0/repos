@@ -3,7 +3,8 @@
 import sys
 from devices import (
     RokuDevice, TPLinkDevice, PrinterDevice, RESTAPIDevice,
-    BroadlinkDevice, ChromecastDevice, MQTTDevice, HomeAssistantDevice
+    BroadlinkDevice, ChromecastDevice, MQTTDevice, HomeAssistantDevice,
+    SmartTVDevice, ComputerDevice, PhoneDevice, IPCameraDevice
 )
 from utils.discovery import discover_all_devices
 from colorama import init
@@ -25,6 +26,16 @@ def show_agreement():
 def display_main_menu():
     """Display the main menu options to the user."""
     print("\nMain Menu - Please select an option:")
+    print("1. Discover all devices on network")
+    print("2. Scan for Smart Devices")
+    print("3. Scan for Computers")
+    print("4. Scan for Phones")
+    print("9. Instructions")
+    print("0. Quit")
+
+def display_smart_devices_menu():
+    """Display the smart devices submenu options."""
+    print("\nSmart Devices - Please select a device type to scan:")
     print("1. Scan for Roku devices")
     print("2. Scan for TP-Link devices")
     print("3. Scan for Printers (SNMP)")
@@ -32,9 +43,8 @@ def display_main_menu():
     print("5. Scan for Chromecast devices")
     print("6. Scan for MQTT devices")
     print("7. Scan for Home Assistant devices")
-    print("8. Scan for all devices")
-    print("9. Instructions")
-    print("0. Quit")
+    print("8. Scan for Smart TVs")
+    print("9. Return to Main Menu")
 
 def show_instructions():
     """Display instructions for setting up the program."""
@@ -45,7 +55,6 @@ def show_instructions():
     print("   - API Token: For Home Assistant, you may need an API token. Generate this in Home Assistant settings.")
     print("3. Required Libraries:")
     print("   - Install all dependencies using 'pip install -r requirements.txt'.")
-    print("   - Libraries include 'roku', 'pyHS100', 'pysnmp', 'requests', 'colorama', 'broadlink', 'pychromecast', 'paho-mqtt', and 'homeassistant'.")
     print("4. Follow on-screen prompts to interact with devices.")
     input("\nPress Enter to return to the main menu.")
 
@@ -57,8 +66,8 @@ def prompt_for_token():
     """Prompt the user for an API token."""
     return input("Enter the API token: ").strip()
 
-def scan_for_devices(option):
-    """Scan for devices based on user selection."""
+def scan_for_smart_devices(option):
+    """Scan for specific smart devices based on user selection."""
     if option == "1":
         print("\nScanning for Roku devices...")
         devices = RokuDevice.discover()
@@ -84,26 +93,33 @@ def scan_for_devices(option):
         token = prompt_for_token()
         devices = HomeAssistantDevice.discover(hass_ip, token)
     elif option == "8":
-        print("\nScanning for all devices...")
-        devices = discover_all_devices()
+        print("\nScanning for Smart TVs...")
+        devices = SmartTVDevice.discover()
+    else:
+        print("Returning to main menu.")
+        return []
+
+    return devices
+
+def scan_for_devices(option):
+    """Scan for devices based on main menu selection."""
+    if option == "1":
+        return discover_all_devices()
+    elif option == "2":
+        while True:
+            display_smart_devices_menu()
+            sub_option = input("Enter your choice: ").strip()
+            if sub_option == "9":
+                break
+            devices = scan_for_smart_devices(sub_option)
+            if devices:
+                return devices
+    elif option == "3":
+        print("\nScanning for Computers...")
+        return ComputerDevice.discover()
+    elif option == "4":
+        print("\nScanning for Phones...")
+        return PhoneDevice.discover()
     else:
         print("\nInvalid option. Please try again.")
         return []
-
-    # Display results and ask to scan again or return to main menu
-    if devices:
-        print("\nDiscovered Devices:")
-        for idx, device in enumerate(devices, start=1):
-            print(f"{idx}. {device.__class__.__name__} at {device.ip}")
-    else:
-        print("\nNo devices found.")
-
-    # Prompt for next action
-    while True:
-        choice = input("\nWould you like to (r)escan, or return to (m)ain menu? ").strip().lower()
-        if choice == 'r':
-            return scan_for_devices(option)  # Rescan for the same option
-        elif choice == 'm':
-            return devices
-        else:
-            print("Invalid choice. Please enter 'r' to rescan or 'm' to return to main menu.")

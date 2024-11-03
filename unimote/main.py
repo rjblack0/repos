@@ -2,8 +2,8 @@
 
 import sys
 import logging
-from menu import show_agreement, display_main_menu, show_instructions
-from utils.discovery import discover_all_devices, discover_device_by_type
+from menu import show_agreement, display_main_menu, show_instructions, scan_for_devices
+from utils.discovery import discover_all_devices
 from utils.logging_config import setup_logging
 
 setup_logging()
@@ -67,26 +67,11 @@ def main():
         elif option == "9":
             show_instructions()
         else:
-            device_type = {
-                "1": "roku", "2": "tplink", "3": "printer", "4": "broadlink",
-                "5": "chromecast", "6": "mqtt", "7": "home_assistant", "8": "smart_tv",
-                "9": "computer", "10": "phone", "11": "ip_camera", "12": "all"
-            }.get(option)
-
-            if device_type:
-                if device_type == "all":
-                    devices = discover_all_devices()
-                else:
-                    devices = discover_device_by_type(device_type)
-
-                if devices:
-                    selected_device = select_device(devices)
-                    if selected_device:
-                        device_menu(selected_device)
-                else:
-                    print("No devices found.")
-            else:
-                print("Invalid option. Please try again.")
+            devices = scan_for_devices(option)
+            if devices:
+                selected_device = select_device(devices)
+                if selected_device:
+                    device_menu(selected_device)
 
 if __name__ == "__main__":
     main()
