@@ -1,11 +1,13 @@
+# main.py
+
 import sys
-from menu import show_agreement, display_main_menu, show_instructions, scan_for_devices
-from menu import prompt_for_ip, prompt_for_token  # Import prompt functions if needed
-from devices import (
-    RokuDevice, TPLinkDevice, PrinterDevice, RESTAPIDevice,
-    BroadlinkDevice, ChromecastDevice, MQTTDevice, HomeAssistantDevice
-)
-from utils.discovery import discover_all_devices
+import logging
+from menu import show_agreement, display_main_menu, show_instructions
+from utils.discovery import discover_all_devices, discover_device_by_type
+from utils.logging_config import setup_logging
+
+setup_logging()
+logger = logging.getLogger(__name__)
 
 def select_device(devices):
     """Prompt user to select a device from a list."""
@@ -38,11 +40,15 @@ def device_menu(device):
         option = input("Select an option: ").strip().lower()
 
         if option == '1':
-            print("Device Info:", device.get_info())
+            info = device.get_info()
+            print("Device Info:", info)
+            logger.info(f"Fetched info for device {device.ip}: {info}")
         elif option == '2':
             print("Supported Commands:", device.get_supported_commands())
             command = input("Enter command: ").strip()
-            device.send_command(command)
+            response = device.send_command(command)
+            print("Command Response:", response)
+            logger.info(f"Sent command '{command}' to {device.ip}. Response: {response}")
         elif option == 'q':
             break
         else:
@@ -54,17 +60,33 @@ def main():
     while True:
         display_main_menu()
         option = input("Enter your choice: ").strip()
+        
         if option == "0":
             print("Exiting... Goodbye!")
             sys.exit(0)
         elif option == "9":
             show_instructions()
         else:
-            devices = scan_for_devices(option)
-            if devices:
-                selected_device = select_device(devices)
-                if selected_device:
-                    device_menu(selected_device)
+            device_type = {
+                "1": "roku", "2": "tplink", "3": "printer", "4": "broadlink",
+                "5": "chromecast", "6": "mqtt", "7": "home_assistant", "8": "smart_tv",
+                "9": "computer", "10": "phone", "11": "ip_camera", "12": "all"
+            }.get(option)
+
+            if device_type:
+                if device_type == "all":
+                    devices = discover_all_devices()
+                else:
+                    devices = discover_device_by_type(device_type)
+
+                if devices:
+                    selected_device = select_device(devices)
+                    if selected_device:
+                        device_menu(selected_device)
+                else:
+                    print("No devices found.")
+            else:
+                print("Invalid option. Please try again.")
 
 if __name__ == "__main__":
     main()

@@ -1,11 +1,14 @@
-##requirements.txt
+# requirements.txt
 
+requests
+colorama
+paho-mqtt
+paramiko
+wakeonlan
+onvif-zeep
+broadlink
+pychromecast
 roku
 pyHS100
 pysnmp
-requests
-colorama
-broadlink
-pychromecast
-paho-mqtt
 homeassistant
