@@ -6,7 +6,7 @@ from devices import (
     BroadlinkDevice, ChromecastDevice, MQTTDevice, HomeAssistantDevice,
     SmartTVDevice, ComputerDevice, PhoneDevice, IPCameraDevice
 )
-from utils.discovery import discover_all_devices
+from utils.discovery import load_ip_addresses, scan_ip_addresses, discover_all_devices
 from colorama import init
 
 init(autoreset=True)
@@ -30,6 +30,7 @@ def display_main_menu():
     print("2. Scan for Smart Devices")
     print("3. Scan for Computers")
     print("4. Scan for Phones")
+    print("5. Scan IP Addresses")  # New option for IP address scanning
     print("9. Instructions")
     print("0. Quit")
 
@@ -101,25 +102,10 @@ def scan_for_smart_devices(option):
 
     return devices
 
-def scan_for_devices(option):
-    """Scan for devices based on main menu selection."""
-    if option == "1":
-        return discover_all_devices()
-    elif option == "2":
-        while True:
-            display_smart_devices_menu()
-            sub_option = input("Enter your choice: ").strip()
-            if sub_option == "9":
-                break
-            devices = scan_for_smart_devices(sub_option)
-            if devices:
-                return devices
-    elif option == "3":
-        print("\nScanning for Computers...")
-        return ComputerDevice.discover()
-    elif option == "4":
-        print("\nScanning for Phones...")
-        return PhoneDevice.discover()
-    else:
-        print("\nInvalid option. Please try again.")
-        return []
+def scan_for_ip_addresses():
+    """Load and scan a list of IP addresses from configuration or defaults."""
+    ip_addresses = load_ip_addresses()
+    reachable_ips = scan_ip_addresses(ip_addresses)
+    print("\nReachable IP Addresses:")
+    for ip in reachable_ips:
+        print(f"- {ip}")

@@ -41,3 +41,8 @@ This program allows you to discover and control various devices on your local ne
 2a. Implement new _device.py
 2b. Implement in requirements.txt
 3. Update discovery.py to include the new device class in the discovery process
+
+## IP Discovery
+
+- Search for IP Addresses on the menu
+- Configure config.json

@@ -1,52 +1,38 @@
 # utils/discovery.py
 
-from devices import (
-    RokuDevice, TPLinkDevice, PrinterDevice, RESTAPIDevice,
-    BroadlinkDevice, ChromecastDevice, MQTTDevice, HomeAssistantDevice,
-    SmartTVDevice, ComputerDevice, PhoneDevice, IPCameraDevice
-)
+import requests
+import json
+import os
 
-def discover_all_devices():
-    """Discover all device types available on the network."""
-    devices = []
-    devices.extend(RokuDevice.discover())
-    devices.extend(TPLinkDevice.discover())
-    devices.extend(PrinterDevice.discover())
-    devices.extend(RESTAPIDevice.discover())
-    devices.extend(BroadlinkDevice.discover())
-    devices.extend(ChromecastDevice.discover())
-    devices.extend(MQTTDevice.discover())
-    devices.extend(HomeAssistantDevice.discover())
-    devices.extend(SmartTVDevice.discover())
-    devices.extend(ComputerDevice.discover())
-    devices.extend(PhoneDevice.discover())
-    devices.extend(IPCameraDevice.discover())
-    return devices
+DEFAULT_IP_ADDRESSES = [
+    "http://10.0.0.1/",
+    "http://192.168.0.1/",
+    "http://192.168.1.1/"
+]
 
-def discover_device_by_type(device_type):
-    """Discover devices of a specific type."""
-    if device_type == "roku":
-        return RokuDevice.discover()
-    elif device_type == "tplink":
-        return TPLinkDevice.discover()
-    elif device_type == "printer":
-        return PrinterDevice.discover()
-    elif device_type == "broadlink":
-        return BroadlinkDevice.discover()
-    elif device_type == "chromecast":
-        return ChromecastDevice.discover()
-    elif device_type == "mqtt":
-        return MQTTDevice.discover()
-    elif device_type == "home_assistant":
-        return HomeAssistantDevice.discover()
-    elif device_type == "smart_tv":
-        return SmartTVDevice.discover()
-    elif device_type == "computer":
-        return ComputerDevice.discover()
-    elif device_type == "phone":
-        return PhoneDevice.discover()
-    elif device_type == "ip_camera":
-        return IPCameraDevice.discover()
-    else:
-        print(f"Unknown device type: {device_type}")
-        return []
+CONFIG_FILE_PATH = "config.json"
+
+def load_ip_addresses():
+    """Load IP addresses from a configuration file or use defaults."""
+    if os.path.exists(CONFIG_FILE_PATH):
+        with open(CONFIG_FILE_PATH, "r") as file:
+            config = json.load(file)
+            ip_addresses = config.get("ip_addresses", [])
+            if ip_addresses:
+                return ip_addresses
+    return DEFAULT_IP_ADDRESSES
+
+def scan_ip_addresses(ip_addresses):
+    """Scan a list of IP addresses to check if each one is reachable."""
+    reachable_ips = []
+    for ip in ip_addresses:
+        try:
+            response = requests.get(ip, timeout=2)  # Adjust timeout as needed
+            if response.status_code == 200:
+                print(f"IP {ip} is reachable.")
+                reachable_ips.append(ip)
+            else:
+                print(f"IP {ip} returned status code {response.status_code}.")
+        except requests.RequestException as e:
+            print(f"IP {ip} is not reachable. Error: {e}")
+    return reachable_ips
