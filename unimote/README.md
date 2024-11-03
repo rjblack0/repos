@@ -9,11 +9,11 @@ UI/UX improvements
 
 ## 0.1.001
 
-Added the following to requirements.py
-broadlink - For broadlink smart devices (IR/RF remotes)
-pychromecast - For controlling chromecast
-paho-mqtt - MQTT (IoT) support
-homeassistant - Home assistant support.
+Added support for
+- broadlink - For broadlink smart devices (IR/RF remotes)
+- pychromecast - For controlling chromecast
+- paho-mqtt - MQTT (IoT) support
+- homeassistant - Home assistant support.
 
 ## Overview
 
@@ -38,16 +38,6 @@ This program allows you to discover and control various devices on your local ne
 - To add support for a new device:
 1. Create a new file in the devices/ directory
 2. Implement the NetworkDevice interface
-   2.1 Implement new _device.py
-   2.2 Implement in requirements.txt
+2a. Implement new _device.py
+2b. Implement in requirements.txt
 3. Update discovery.py to include the new device class in the discovery process
-
-## Kali Linux
-
-Instructions to install requirements.txt using Kali
-
-Bash
-   python3 -m venv env
-   source env/bin/activate
-   pip install -r requirements.txt
-   deactivate
