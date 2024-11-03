@@ -1,3 +1,5 @@
+# devices/computer_device.py
+
 from wakeonlan import send_magic_packet
 import paramiko
 from .base_device import NetworkDevice
@@ -5,7 +7,7 @@ from .base_device import NetworkDevice
 class ComputerDevice(NetworkDevice):
     @staticmethod
     def discover():
-        # Discovery could be done by pinging a list of IPs or with custom logic
+        # This function should have actual logic to find computers
         print("Scanning for Computers...")
         return [ComputerDevice("192.168.1.101")]
 
