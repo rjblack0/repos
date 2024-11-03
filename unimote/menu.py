@@ -26,11 +26,11 @@ def show_agreement():
 def display_main_menu():
     """Display the main menu options to the user."""
     print("\nMain Menu - Please select an option:")
-    print("1. Discover all devices on network")
+    print("1. Discover all devices on network")  # New option for discovering all devices
     print("2. Scan for Smart Devices")
     print("3. Scan for Computers")
     print("4. Scan for Phones")
-    print("5. Scan IP Addresses")  # New option for IP address scanning
+    print("5. Scan IP Addresses")
     print("9. Instructions")
     print("0. Quit")
 

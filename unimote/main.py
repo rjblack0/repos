@@ -2,7 +2,7 @@
 
 import sys
 import logging
-from menu import show_agreement, display_main_menu, show_instructions, scan_for_devices, scan_for_ip_addresses
+from menu import show_agreement, display_main_menu, show_instructions, scan_for_smart_devices, scan_for_ip_addresses
 from utils.discovery import discover_all_devices
 from utils.logging_config import setup_logging
 
@@ -66,10 +66,13 @@ def main():
             sys.exit(0)
         elif option == "9":
             show_instructions()
+        elif option == "1":  # Discover all devices
+            discover_all_devices()
+            # Devices found are summarized by `discover_all_devices`, no further action needed here
         elif option == "5":
             scan_for_ip_addresses()  # Scan IP addresses
         else:
-            devices = scan_for_devices(option)
+            devices = scan_for_smart_devices(option)
             if devices:
                 selected_device = select_device(devices)
                 if selected_device:

@@ -1,56 +1,42 @@
 # utils/discovery.py
 
-import json
-import requests
 from devices import (
     RokuDevice, TPLinkDevice, PrinterDevice, RESTAPIDevice, BroadlinkDevice,
     ChromecastDevice, MQTTDevice, HomeAssistantDevice, SmartTVDevice,
     ComputerDevice, PhoneDevice, IPCameraDevice
 )
 
-CONFIG_FILE = "config.json"
-
-def load_ip_addresses():
-    """Load a list of IP addresses from the config.json file."""
-    try:
-        with open(CONFIG_FILE, 'r') as file:
-            config = json.load(file)
-            return config.get("ip_addresses", [])
-    except FileNotFoundError:
-        print(f"{CONFIG_FILE} not found. Please ensure it exists in the project root.")
-        return []
-    except json.JSONDecodeError:
-        print(f"Error decoding {CONFIG_FILE}. Please check the file format.")
-        return []
-
-def scan_ip_addresses(ip_addresses):
-    """Scan a list of IP addresses to see if they are reachable."""
-    reachable_ips = []
-    for ip in ip_addresses:
-        try:
-            response = requests.get(ip, timeout=5)
-            if response.status_code == 200:
-                reachable_ips.append(ip)
-                print(f"IP {ip} is reachable.")
-            else:
-                print(f"IP {ip} responded with status code {response.status_code}.")
-        except requests.RequestException:
-            print(f"IP {ip} is not reachable.")
-    return reachable_ips
-
 def discover_all_devices():
-    """Discover all device types available on the network."""
+    """Discover all device types available on the network and summarize results."""
     devices = []
-    devices.extend(RokuDevice.discover())
-    devices.extend(TPLinkDevice.discover())
-    devices.extend(PrinterDevice.discover())
-    devices.extend(RESTAPIDevice.discover())
-    devices.extend(BroadlinkDevice.discover())
-    devices.extend(ChromecastDevice.discover())
-    devices.extend(MQTTDevice.discover())
-    devices.extend(HomeAssistantDevice.discover())
-    devices.extend(SmartTVDevice.discover())
-    devices.extend(ComputerDevice.discover())
-    devices.extend(PhoneDevice.discover())
-    devices.extend(IPCameraDevice.discover())
+    found_device_types = []  # Track what types of devices were found
+    device_types = {
+        "Roku Devices": RokuDevice,
+        "TP-Link Devices": TPLinkDevice,
+        "Printers": PrinterDevice,
+        "REST API Devices": RESTAPIDevice,
+        "Broadlink Devices": BroadlinkDevice,
+        "Chromecast Devices": ChromecastDevice,
+        "MQTT Devices": MQTTDevice,
+        "Home Assistant Devices": HomeAssistantDevice,
+        "Smart TVs": SmartTVDevice,
+        "Computers": ComputerDevice,
+        "Phones": PhoneDevice,
+        "IP Cameras": IPCameraDevice
+    }
+
+    for device_name, device_class in device_types.items():
+        found_devices = device_class.discover()
+        if found_devices:
+            found_device_types.append(device_name)  # Only log the type if devices are found
+            devices.extend(found_devices)
+
+    # Display a summary of device types found
+    if found_device_types:
+        print("\nSummary of Devices Found:")
+        for device_type in found_device_types:
+            print(f"- {device_type}")
+    else:
+        print("\nNo devices found on the network.")
+
     return devices
