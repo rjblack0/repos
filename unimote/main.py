@@ -1,39 +1,70 @@
-from devices import RokuDevice, TPLinkDevice, PrinterDevice, RESTAPIDevice
+import sys
+from menu import show_agreement, display_main_menu, show_instructions, scan_for_devices
+from menu import prompt_for_ip, prompt_for_token  # Import prompt functions if needed
+from devices import (
+    RokuDevice, TPLinkDevice, PrinterDevice, RESTAPIDevice,
+    BroadlinkDevice, ChromecastDevice, MQTTDevice, HomeAssistantDevice
+)
 from utils.discovery import discover_all_devices
-from colorama import init
 
-init(autoreset=True)
-
-def main():
-    devices = discover_all_devices()
+def select_device(devices):
+    """Prompt user to select a device from a list."""
     if not devices:
-        print("No devices found on the network.")
-        return
+        print("No devices available.")
+        return None
 
-    print("Discovered Devices:")
+    print("\nSelect a Device to Control:")
     for idx, device in enumerate(devices, start=1):
         print(f"{idx}. {device.__class__.__name__} at {device.ip}")
 
-    choice = int(input("Select a device by number: ")) - 1
-    selected_device = devices[choice]
+    choice = input("Select a device by number: ").strip()
+    try:
+        choice_idx = int(choice) - 1
+        if choice_idx < 0 or choice_idx >= len(devices):
+            print("Invalid selection.")
+            return None
+        return devices[choice_idx]
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+        return None
 
+def device_menu(device):
+    """Display options for controlling the selected device."""
     while True:
         print("\nAvailable Commands:")
         print("1. Get Device Info")
         print("2. Send Command")
-        print("q. Quit")
+        print("q. Quit to Main Menu")
         option = input("Select an option: ").strip().lower()
 
         if option == '1':
-            print("Device Info:", selected_device.get_info())
+            print("Device Info:", device.get_info())
         elif option == '2':
-            print("Supported Commands:", selected_device.get_supported_commands())
+            print("Supported Commands:", device.get_supported_commands())
             command = input("Enter command: ").strip()
-            selected_device.send_command(command)
+            device.send_command(command)
         elif option == 'q':
             break
         else:
-            print("Invalid option.")
+            print("Invalid option. Please try again.")
+
+def main():
+    show_agreement()  # Display agreement before starting the main program
+
+    while True:
+        display_main_menu()
+        option = input("Enter your choice: ").strip()
+        if option == "0":
+            print("Exiting... Goodbye!")
+            sys.exit(0)
+        elif option == "9":
+            show_instructions()
+        else:
+            devices = scan_for_devices(option)
+            if devices:
+                selected_device = select_device(devices)
+                if selected_device:
+                    device_menu(selected_device)
 
 if __name__ == "__main__":
     main()

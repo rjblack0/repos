@@ -1,6 +1,12 @@
 # Unimote
 
 
+## 0.1.002
+
+UI/UX improvements
+- Implemented menu
+- Capability to select which devices to scan for
+
 ## 0.1.001
 
 Added the following to requirements.py
@@ -8,8 +14,6 @@ broadlink - For broadlink smart devices (IR/RF remotes)
 pychromecast - For controlling chromecast
 paho-mqtt - MQTT (IoT) support
 homeassistant - Home assistant support.
-
-Not implemented into code, delete from discovery.py if you want to implement
 
 ## Overview
 

@@ -1,0 +1,23 @@
+# Ignore virtual environment directory
+env/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore system-specific files (optional, based on platform)
+.DS_Store        # macOS
+Thumbs.db        # Windows
+.idea/           # PyCharm or JetBrains IDEs
+.vscode/         # VS Code settings
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
+# Ignore other potential environment-specific files
+.env             # Environment variables file if used
+
+# Ignore build or distribution directories
+build/
+dist/

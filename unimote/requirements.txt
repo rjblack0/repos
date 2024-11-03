@@ -5,3 +5,7 @@ pyHS100
 pysnmp
 requests
 colorama
+broadlink
+pychromecast
+paho-mqtt
+homeassistant
