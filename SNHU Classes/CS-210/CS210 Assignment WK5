@@ -1,0 +1,39 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+int main() {
+
+    string city = "";
+    int fahrenheit = 0;
+    double celsius = 0.0;   //I used a double here for celcius conversion
+    ifstream myInFile;
+    ofstream myOutFile;     // Added output file stream
+
+    myInFile.open("FahrenheitTemperature.txt");     //Default open the file
+
+    if (!myInFile) {
+        cout << "File not found." << endl;          //Error check
+    } 
+    else {
+        myOutFile.open("CelsiusTemperature.txt");   //Open output file
+
+        if (!myOutFile) {
+            cout << "File Error." << endl;    //Second redundency check.
+        } 
+        else {
+            while (myInFile >> city >> fahrenheit) {
+                celsius = (fahrenheit - 32) * (5.0 / 9);        //Convert to Celsius
+                myOutFile << city << " " << celsius << endl;    // Write to output file
+            }
+
+            myOutFile.close();  // Close output file
+        }
+
+        myInFile.close();  // Close input file
+    }
+
+    return 0;
+}
