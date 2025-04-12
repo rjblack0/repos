@@ -22,6 +22,25 @@ This repository documents my personal journey toward becoming a Security Operati
 - Linux & Windows Forensics
 - CompTIA, Cisco, AWS, and Red Hat Certification Prep
 
+# Gear & Lab Setup
+
+## Primary Workstation
+- **Laptop:** Lenovo ThinkPad (dual booted with Ubuntu and Windows)
+- **OS:** Ubuntu (for Splunk, Python dev), Windows (for compatibility testing)
+
+## Penetration Testing Environment
+- **Drive:** Samsung T9 P
+ortable SSD (1TB)
+- **OS:** Kali Linux (portable setup)
+- **Wi-Fi Adapter:** Panda PAU09 N600 (for wireless attacks and monitoring)
+
+## Target Lab Environment
+- **Device:** Raspberry Pi (Raspberry Pi OS)
+- **Network:** Connected via GL.iNet Mini Mobile Router to local network
+- **Use Case:** Serve as vulnerable host for logging, monitoring, and attack simulation (SSH brute-force, web server enumeration, etc.)
+
+This setup supports portable Red Team/Blue Team interaction, with the Pi acting as a live target system, and the main machine handling detection, logging, analysis, and automation tasks.
+
 # Source Materials
 
 A curated list of books used throughout this learning journey:
