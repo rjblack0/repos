@@ -29,8 +29,7 @@ This repository documents my personal journey toward becoming a Security Operati
 - **OS:** Ubuntu (for Splunk, Python dev), Windows (for compatibility testing)
 
 ## Penetration Testing Environment
-- **Drive:** Samsung T9 P
-ortable SSD (1TB)
+- **Drive:** Samsung T9 Portable SSD (1TB)
 - **OS:** Kali Linux (portable setup)
 - **Wi-Fi Adapter:** Panda PAU09 N600 (for wireless attacks and monitoring)
 
