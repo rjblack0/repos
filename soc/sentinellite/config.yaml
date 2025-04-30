@@ -1,0 +1,35 @@
+logs:
+  syslog: "/var/log/syslog"
+  ufw: "/var/log/ufw.log"
+  auth: "/var/log/auth.log"
+
+feeds:
+  otx:
+    enabled: true
+    limit: 50
+
+  abuseipdb:
+    enabled: true
+    limit: 50
+
+  shodan:
+    enabled: true
+    query: "port:3389 country:US"
+    limit: 50
+
+rules:
+  repeated_ioc_threshold: 3
+  allowed_countries: ["United States", "Canada"]
+  cloud_orgs:
+    - "Amazon.com"
+    - "Google LLC"
+    - "DigitalOcean"
+    - "OVH SAS"
+  suspicious_orgs:
+    - "M247 Ltd"
+    - "Contabo GmbH"
+
+digest:
+  output_dir: "output/digests"
+  max_iocs_displayed: 10
+  max_alerts_per_log: 5

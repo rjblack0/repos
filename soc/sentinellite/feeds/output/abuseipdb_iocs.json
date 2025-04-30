@@ -1,0 +1,452 @@
+[
+  {
+    "indicator": "183.236.130.182",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "CN",
+    "created": "2025-04-30T02:34:00.286641",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "195.211.191.221",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "NL",
+    "created": "2025-04-30T02:34:00.286657",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "193.32.162.135",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "RO",
+    "created": "2025-04-30T02:34:00.286660",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "132.145.56.35",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "GB",
+    "created": "2025-04-30T02:34:00.286663",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "218.92.0.187",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "CN",
+    "created": "2025-04-30T02:34:00.286665",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "193.176.23.7",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "US",
+    "created": "2025-04-30T02:34:00.286668",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "88.218.193.51",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "US",
+    "created": "2025-04-30T02:34:00.286671",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "38.132.109.101",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "US",
+    "created": "2025-04-30T02:34:00.286673",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "182.44.68.62",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "CN",
+    "created": "2025-04-30T02:34:00.286675",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "111.70.8.143",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "TW",
+    "created": "2025-04-30T02:34:00.286677",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "103.142.27.163",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "VN",
+    "created": "2025-04-30T02:34:00.286679",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "35.166.72.17",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "US",
+    "created": "2025-04-30T02:34:00.286681",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "185.220.101.90",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "DE",
+    "created": "2025-04-30T02:34:00.286683",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "111.70.6.20",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "TW",
+    "created": "2025-04-30T02:34:00.286685",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "96.1.40.151",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "CA",
+    "created": "2025-04-30T02:34:00.286687",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "154.83.103.201",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "FR",
+    "created": "2025-04-30T02:34:00.286689",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "180.97.90.143",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "CN",
+    "created": "2025-04-30T02:34:00.286693",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "167.172.153.88",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "US",
+    "created": "2025-04-30T02:34:00.286695",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "222.119.124.66",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "KR",
+    "created": "2025-04-30T02:34:00.286698",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "69.42.159.75",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "US",
+    "created": "2025-04-30T02:34:00.286699",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "81.88.49.11",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "IT",
+    "created": "2025-04-30T02:34:00.286701",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "181.209.63.113",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "AR",
+    "created": "2025-04-30T02:34:00.286702",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "160.250.247.221",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "VN",
+    "created": "2025-04-30T02:34:00.286705",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "103.183.74.198",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "ID",
+    "created": "2025-04-30T02:34:00.286707",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "103.232.53.196",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "VN",
+    "created": "2025-04-30T02:34:00.286708",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "182.76.71.82",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "IN",
+    "created": "2025-04-30T02:34:00.286709",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "103.179.191.162",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "VN",
+    "created": "2025-04-30T02:34:00.286711",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "111.70.49.104",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "TW",
+    "created": "2025-04-30T02:34:00.286712",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "58.17.6.119",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "CN",
+    "created": "2025-04-30T02:34:00.286713",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "27.254.235.3",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "TH",
+    "created": "2025-04-30T02:34:00.286715",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "180.76.151.217",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "CN",
+    "created": "2025-04-30T02:34:00.286716",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "124.225.185.148",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "CN",
+    "created": "2025-04-30T02:34:00.286717",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "211.96.160.30",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "CN",
+    "created": "2025-04-30T02:34:00.286718",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "14.14.160.190",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "JP",
+    "created": "2025-04-30T02:34:00.286720",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "222.87.49.250",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "CN",
+    "created": "2025-04-30T02:34:00.286721",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "40.124.175.188",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "US",
+    "created": "2025-04-30T02:34:00.286722",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "111.198.221.98",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "CN",
+    "created": "2025-04-30T02:34:00.286723",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "111.70.39.217",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "TW",
+    "created": "2025-04-30T02:34:00.286725",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "52.73.169.169",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "US",
+    "created": "2025-04-30T02:34:00.286726",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "111.70.39.163",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "TW",
+    "created": "2025-04-30T02:34:00.286727",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "92.118.39.34",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "RO",
+    "created": "2025-04-30T02:34:00.286729",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "64.62.156.103",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "US",
+    "created": "2025-04-30T02:34:00.286730",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "196.251.85.62",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "NL",
+    "created": "2025-04-30T02:34:00.286732",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "211.44.170.154",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "KR",
+    "created": "2025-04-30T02:34:00.286734",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "111.91.18.213",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "SG",
+    "created": "2025-04-30T02:34:00.286736",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "121.170.218.142",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "KR",
+    "created": "2025-04-30T02:34:00.286737",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "20.112.233.143",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "US",
+    "created": "2025-04-30T02:34:00.286739",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "92.255.57.132",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "RU",
+    "created": "2025-04-30T02:34:00.286740",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "176.65.134.17",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "GB",
+    "created": "2025-04-30T02:34:00.286742",
+    "source": "AbuseIPDB"
+  },
+  {
+    "indicator": "23.102.62.47",
+    "type": "IPv4",
+    "description": "High-confidence malicious IP (AbuseIPDB)",
+    "confidence": 100,
+    "country": "IE",
+    "created": "2025-04-30T02:34:00.286744",
+    "source": "AbuseIPDB"
+  }
+]
