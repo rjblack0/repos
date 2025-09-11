@@ -6,11 +6,21 @@ from utils.config_loader import load_config
 import json
 import os
 
+def _norm_str(v):
+    """Return a lowercase string, safely handling None."""
+    return (v or "").stripe().lower()
+
+def _in_norm_set(value, items):
+    """Case/whitespiace-insensitive membership."""
+    return _norm_str(value) in {_norm_str(x) for x in items or []}
+
 config = load_config()
 
 IOC_THRESHOLD = config.get("rules", {}).get("repeated_ioc_threshold", 3)
 ALLOWED_COUNTRIES = config.get("rules", {}).get("allowed_countries", [])
-CLOUD_ORGS = [org.lower() for org in config.get("rules", {}).get("cloud_orgs", [])]
+CLOUD_ORGS = cfg.get("cloud_orgs", [])
+if _in_norm_set(org, CLOUD_ORGS) or _in_norm_set(asn_org, CLOUD_ORGS):
+    flag.append({"type": "cloud_provider_block", "org": org or asn_org})    
 SUSPICIOUS_ORGS = [org.lower() for org in config.get("rules", {}).get("suspicious_orgs", [])]
 
 ENRICHED_IOCS_PATH = "output/enriched_alerts.json"
@@ -70,7 +80,7 @@ def rule_country_block(enriched):
 def rule_cloud_provider_block(enriched):
     flagged = []
     for ioc in enriched:
-        org = ioc.get("org", "").lower()
+        org     = _norm_str(ioc.get("org"))
         if any(cloud in org for cloud in CLOUD_ORGS):
             flagged.append({
                 "indicator": ioc.get("indicator"),
