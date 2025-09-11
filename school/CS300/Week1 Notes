@@ -1,0 +1,271 @@
+#########################################
+CS-300 Chapter 1: Algorithms & Data Structures
+#########################################
+
+#####
+What is an Algorithm?
+#####
+- A sequence of steps to solve a problem.
+- Must be: 
+  * Correct → produces the right output.
+  * Efficient → reasonable use of time and memory.
+  * Clear → easy to understand and maintain.
+
+# Example: Find maximum number in a list
+maxVal = list[0]
+for i = 1 to length(list) - 1
+    if list[i] > maxVal
+        maxVal = list[i]
+output maxVal
+
+#####
+Problem Decomposition
+#####
+- Large problems should be broken into smaller parts.
+- Standard pattern: INPUT → PROCESS → OUTPUT
+
+# Example: Calculate average of numbers
+1. Input numbers
+2. Sum numbers
+3. Divide sum by count
+4. Output result
+
+# Pseudocode
+sum = 0
+for each number in list
+    sum = sum + number
+average = sum / number_of_elements
+output average
+
+#####
+Flowcharts and Pseudocode
+#####
+- **Flowchart**: visual diagram (start → process → decision → end).
+- **Pseudocode**: plain-language outline of logic; not bound to syntax.
+
+# Pseudocode example: grade average
+sum = 0
+for each grade in list
+    sum = sum + grade
+average = sum / number_of_grades
+output average
+
+#####
+Data Structures Overview
+#####
+- A way to organize and store data for efficient operations.
+- Common operations:
+  * Insert
+  * Remove
+  * Find
+  * Sort
+- Each data structure differs in speed (time complexity) and memory (space complexity).
+
+
+
+#####
+Arrays
+#####
+- Fixed-size collection of same-type elements.
+- Indexed starting from 0.
+- Size must be known at compile time.
+
+# Example in C++:
+int nums[5];          // Array of 5 integers
+nums[0] = 10;
+nums[1] = 20;
+cout << nums[0];      // Output: 10
+
+# Limitation: Cannot resize an array once created.
+
+#####
+Vectors
+#####
+- Dynamic (resizable) arrays from C++ STL.
+- Declared with #include <vector>
+- Safer, more flexible than arrays.
+- Provide many built-in functions.
+
+# Example:
+#include <vector>
+#include <iostream>
+using namespace std;
+
+int main() {
+    vector<int> values;          // Empty vector
+    values.push_back(5);         // Add element at end
+    values.push_back(10);
+
+    cout << values.at(0) << endl;  // Output: 5
+    cout << "Size: " << values.size() << endl; // Output: 2
+}
+
+#####
+Vector Initialization
+#####
+- Create vectors with a given size and default value.
+
+# Example:
+vector<int> userVals(5, 0);   // 5 elements, all set to 0
+
+#####
+Vector Iteration
+#####
+- Use loops to process each element.
+
+# Example: Print values
+for (unsigned int i = 0; i < userVals.size(); ++i) {
+    cout << userVals.at(i) << " ";
+}
+
+#####
+Modifying Vector Elements
+#####
+- Elements can be changed during iteration.
+
+# Example: Replace negatives with 0
+for (unsigned int i = 0; i < userVals.size(); ++i) {
+    if (userVals.at(i) < 0) {
+        userVals.at(i) = 0;
+    }
+}
+
+#####
+Copying Vectors
+#####
+- Assign one vector to another (deep copy).
+
+# Example:
+vector<int> a = {1, 2, 3};
+vector<int> b;
+b = a;     // Copy all elements from a into b
+
+#####
+Comparing Vectors
+#####
+- Use relational operators for element-wise comparison.
+- == and != are most common.
+
+# Example:
+if (a == b) {
+    cout << "Vectors are equal";
+}
+
+#####
+Common Vector Functions
+#####
+.size()       → number of elements
+.push_back(x) → add element to end
+.at(i)        → access element with bounds-checking
+.clear()      → remove all elements
+.empty()      → true if vector has no elements
+
+# Example:
+if (!values.empty()) {
+    cout << "Vector has " << values.size() << " elements.";
+}
+
+#####
+Efficiency Concepts
+#####
+- All data structures can perform insert, remove, find, sort.
+- They differ in:
+  * Time Complexity → how long operations take.
+  * Space Complexity → how much memory they use.
+- Choosing the right structure is critical for efficiency.
+
+#########################################
+CS-300 Chapter 2: Algorithms & Problem-Solving
+#########################################
+
+#####
+2.1 Algorithms & Computational Problems
+#####
+- Algorithm = step-by-step instructions.
+- Computational problem = input, question, output.
+- Efficient algorithm → runtime grows polynomially.
+- NP-complete problems → no known efficient algorithm.
+
+Example (FindMax):
+max = arr[0]
+for i = 1 to arr.size-1
+    if arr[i] > max
+        max = arr[i]
+return max
+
+#####
+2.2 Problem Solving
+#####
+- Focus on solution approach, not just programming language.
+- Example: Matching socks → different strategies = different efficiency.
+- Example: Sorting name tags → divide into 26 stacks (radix-like sort) is better.
+
+#####
+2.3 Computational Thinking
+#####
+1. Decomposition → break into smaller problems.
+2. Pattern recognition → look for similarities.
+3. Algorithm → structured instructions.
+4. Abstraction → generalize to other problems.
+
+#####
+2.4 Recursion Basics
+#####
+- Recursive algorithm: applies itself to smaller subproblems.
+- Must include base case to stop.
+
+Example: Factorial
+Factorial(N):
+    if N == 1 return 1
+    else return N * Factorial(N-1)
+
+#####
+2.5 Recursive Algorithms
+#####
+- Fibonacci: F(n) = F(n-1) + F(n-2).
+- Recursive binary search: 
+BinarySearch(arr, low, high, key):
+    if low > high → return -1
+    mid = (low+high)/2
+    if arr[mid] == key → return mid
+    if arr[mid] < key → search right half
+    else → search left half
+
+#####
+2.6 Data Privacy
+#####
+- Protect confidential data (avoid breaches).
+- Best practices: minimize collection, anonymize, encrypt, lock devices.
+- Breaches can devastate individuals and companies.
+
+#####
+2.7 Ethics in Data
+#####
+- Integrity: unbiased, disclose conflicts.
+- Data methods: transparent, reproducible, accurate.
+- Protect participants, confidentiality.
+- Honest mistakes ≠ misconduct.
+
+#####
+2.8 Heuristics
+#####
+- Sacrifice accuracy for speed.
+- Example: Knapsack → heuristics faster than brute force.
+- Self-adjusting heuristic: move-to-front for frequently searched items.
+
+#####
+2.9 Greedy Algorithms
+#####
+- Always take best immediate option.
+- Examples:
+    - MakeChange (coins) → optimal for U.S. coins.
+    - Fractional knapsack → greedy is optimal.
+    - Activity selection → greedy is optimal.
+
+#####
+2.10 Dynamic Programming
+#####
+- Store/reuse subproblem solutions.
+- Example: Fibonacci → DP is O(n) vs recursion O(2^n).
+- Longest common substring → DP with matrix.
+- Common in DNA analysis, optimization.

@@ -1,0 +1,469 @@
+# ===========================
+# CS-300 Module 2 — Chapter 3
+# Data Structures & Algorithms (Notes + C++-style code)
+# Style: narrative blocks + C++ snippets, formatted for VS Code reading
+# ===========================
+
+
+#-----------------------------------------
+# 0) BIG PICTURE — ADTs ↔ Data Structures ↔ Algorithms
+#-----------------------------------------
+: '
+Concept:
+- ADT (Abstract Data Type) specifies WHAT operations exist (e.g., List: append, insert, remove, get) but not HOW they are done.
+- Data structure is the concrete layout (array, linked list, tree, hash table, heap, graph).
+- Algorithms are the step-by-step procedures implementing ADT operations for a chosen structure.
+
+Why it matters:
+- Choosing the right structure makes the operations your program needs efficient.
+- The same ADT (e.g., Queue) can be implemented by different data structures (array ring buffer vs linked list) with different performance trade-offs.
+'
+
+
+#-----------------------------------------
+# 1) CORE DATA STRUCTURES — Concept, When to Use, Trade-offs
+#-----------------------------------------
+: '
+#Arrays#
+- Contiguous block of memory with O(1) random access by index.
+- Inserts/removes in the middle require shifting (O(n)).
+- Great for binary search (needs random access + sorted data).
+
+#Linked Lists#
+- Nodes (value + pointer) define order; no shifting on insert/remove once node/position is known.
+- No random access; to reach index i costs O(i).
+- Good for frequent head/tail operations or many inserts/removes.
+
+#Stacks (LIFO)#
+- push, pop, top. Natural for recursion/undo, expression parsing.
+
+#Queues (FIFO)#
+- enqueue, dequeue. Scheduling, buffering, breadth-first traversals.
+
+#Priority Queue (Heap-backed)#
+- Access min or max in O(1), insert/remove in O(log n). Scheduling, Dijkstra’s.
+
+#Hash Table (Map/Dictionary)#
+- Average-case O(1) insert/find/erase for exact-key lookups; unordered. Depends on a good hash.
+
+#Trees / BST / Balanced Trees#
+- Ordered structure; supports range queries and ordered traversals.
+- Balanced variants keep O(log n) insert/find/delete.
+
+#Graphs#
+- Vertices + edges; model networks, dependencies, routes.
+'
+
+
+#-----------------------------------------
+# 2) RUNTIME ANALYSIS — How to Think in Big-O
+#-----------------------------------------
+: '
+Core complexities to recognize:
+- O(1), O(log n), O(n), O(n log n), O(n^2), O(2^n)
+Big-O rules:
+- Keep highest-order term; drop constants.
+- Nested loops multiply; sequential steps add (take max growth order).
+Focus on worst-case unless asked otherwise; also recognize best/average for sorts.
+'
+
+
+#-----------------------------------------
+# 3) SEARCHING
+#-----------------------------------------
+
+# 3.1 Linear Search — works on any sequence, O(n)
+cat <<'CPP'
+// Linear Search (C++-style)
+int LinearSearch(const int numbers[], int numbersSize, int key) {
+   for (int i = 0; i < numbersSize; ++i) {
+      if (numbers[i] == key) {
+         return i; // found
+      }
+   }
+   return -1; // not found
+}
+CPP
+
+: '
+Use When:
+- Data is unsorted or you only have one-pass access.
+Relation:
+- Baseline. Binary search will beat it if the data can be sorted and randomly accessed.
+'
+
+
+# 3.2 Binary Search — needs sorted + random access, O(log n)
+cat <<'CPP'
+// Binary Search (recursive, C++-style)
+int BinarySearch(const int numbers[], int low, int high, int key) {
+   if (low > high) {
+      return -1; // not found
+   }
+   int mid = low + (high - low) / 2;
+   if (numbers[mid] < key) {
+      return BinarySearch(numbers, mid + 1, high, key);
+   }
+   else if (numbers[mid] > key) {
+      return BinarySearch(numbers, low, mid - 1, key);
+   }
+   else {
+      return mid; // found
+   }
+}
+CPP
+
+: '
+Use When:
+- Array is sorted and indexable (random access).
+Relation:
+- Sorting once (O(n log n)) + many O(log n) searches is great when you have many queries.
+'
+
+
+#-----------------------------------------
+# 4) SORTING — Families and Implementations
+#-----------------------------------------
+
+# 4.1 Selection Sort — simple, predictable, O(n^2)
+cat <<'CPP'
+// Selection Sort (C++-style) — in-place
+void SelectionSort(int numbers[], int numbersSize) {
+   for (int i = 0; i < numbersSize - 1; ++i) {
+      int indexSmallest = i;
+      for (int j = i + 1; j < numbersSize; ++j) {
+         if (numbers[j] < numbers[indexSmallest]) {
+            indexSmallest = j;
+         }
+      }
+      // swap
+      int temp = numbers[i];
+      numbers[i] = numbers[indexSmallest];
+      numbers[indexSmallest] = temp;
+   }
+}
+CPP
+
+: '
+Use When:
+- Tiny inputs, teaching clarity, minimal swaps.
+Trade-off:
+- Always O(n^2) comparisons; slower for large n.
+'
+
+
+# 4.2 Insertion Sort — great on nearly-sorted, O(n) best / O(n^2) worst
+cat <<'CPP'
+// Insertion Sort (C++-style) — in-place
+void InsertionSort(int numbers[], int numbersSize) {
+   for (int i = 1; i < numbersSize; ++i) {
+      int j = i;
+      while (j > 0 && numbers[j] < numbers[j - 1]) {
+         int temp = numbers[j];
+         numbers[j] = numbers[j - 1];
+         numbers[j - 1] = temp;
+         --j;
+      }
+   }
+}
+CPP
+
+: '
+Use When:
+- Small arrays or arrays that are almost sorted.
+Relation:
+- Shell sort uses gapped insertions; insertion often used as base case for quick/merge.
+'
+
+
+# 4.3 Shell Sort — gapped insertions, faster than insertion/selection in practice
+cat <<'CPP'
+// Shell Sort (C++-style) — simple gap sequence (halve)
+void ShellSort(int numbers[], int numbersSize) {
+   for (int gap = numbersSize / 2; gap > 0; gap /= 2) {
+      for (int start = 0; start < gap; ++start) {
+         // gapped insertion sort starting at index 'start'
+         for (int i = start + gap; i < numbersSize; i += gap) {
+            int x = numbers[i];
+            int j = i - gap;
+            while (j >= start && numbers[j] > x) {
+               numbers[j + gap] = numbers[j];
+               j -= gap;
+            }
+            numbers[j + gap] = x;
+         }
+      }
+   }
+}
+CPP
+
+: '
+Use When:
+- You want a straightforward speedup over insertion/selection without implementing divide-and-conquer.
+Trade-off:
+- Not typically classified with the O(n log n) “fast” sorts by average-case definition; performance depends on gap sequence.
+'
+
+
+# 4.4 Quicksort — average O(n log n), in-place; worst O(n^2) with bad pivots
+cat <<'CPP'
+// Quicksort (C++-style) using Hoare partition (middle pivot)
+int Partition(int numbers[], int lowIndex, int highIndex) {
+   int midpoint = lowIndex + (highIndex - lowIndex) / 2;
+   int pivot = numbers[midpoint];
+   bool done = false;
+
+   while (!done) {
+      while (numbers[lowIndex] < pivot) {
+         lowIndex += 1;
+      }
+      while (pivot < numbers[highIndex]) {
+         highIndex -= 1;
+      }
+
+      if (lowIndex >= highIndex) {
+         done = true;
+      }
+      else {
+         int temp = numbers[lowIndex];
+         numbers[lowIndex] = numbers[highIndex];
+         numbers[highIndex] = temp;
+
+         lowIndex += 1;
+         highIndex -= 1;
+      }
+   }
+   return highIndex; // index of last element in low partition
+}
+
+void Quicksort(int numbers[], int lowIndex, int highIndex) {
+   if (lowIndex >= highIndex) {
+      return; // base case: 0 or 1 element
+   }
+   int lowEndIndex = Partition(numbers, lowIndex, highIndex);
+   Quicksort(numbers, lowIndex, lowEndIndex);
+   Quicksort(numbers, lowEndIndex + 1, highIndex);
+}
+CPP
+
+: '
+Use When:
+- General-purpose array sorting; typically fastest in practice due to locality and low constants.
+Mitigations:
+- Randomized or median-of-three pivots reduce chance of worst case.
+Relation:
+- Complement to merge sort: quicksort is in-place w/ average O(n log n); merge is stable with guaranteed O(n log n).
+'
+
+
+# 4.5 Merge Sort — guaranteed O(n log n), stable, uses extra space
+cat <<'CPP'
+// Merge Sort (C++-style) — top-down recursive with temporary buffer
+void Merge(int numbers[], int i, int j, int k) {
+   int mergedSize = k - i + 1;
+   int* mergedNumbers = new int[mergedSize];
+
+   int mergePos = 0;
+   int leftPos  = i;
+   int rightPos = j + 1;
+
+   while (leftPos <= j && rightPos <= k) {
+      if (numbers[leftPos] <= numbers[rightPos]) {
+         mergedNumbers[mergePos++] = numbers[leftPos++];
+      }
+      else {
+         mergedNumbers[mergePos++] = numbers[rightPos++];
+      }
+   }
+   while (leftPos <= j) {
+      mergedNumbers[mergePos++] = numbers[leftPos++];
+   }
+   while (rightPos <= k) {
+      mergedNumbers[mergePos++] = numbers[rightPos++];
+   }
+   for (int m = 0; m < mergedSize; ++m) {
+      numbers[i + m] = mergedNumbers[m];
+   }
+   delete[] mergedNumbers;
+}
+
+void MergeSort(int numbers[], int i, int k) {
+   if (i < k) {
+      int j = i + (k - i) / 2;
+      MergeSort(numbers, i, j);
+      MergeSort(numbers, j + 1, k);
+      Merge(numbers, i, j, k);
+   }
+}
+CPP
+
+: '
+Use When:
+- Need stability, predictable O(n log n), or sorting linked lists / external data.
+Trade-off:
+- Requires O(n) extra memory for merging in array form.
+'
+
+
+# 4.6 Radix Sort — non-comparison; integers by digits; linear for fixed digit width
+cat <<'CPP'
+// Helpers for radix (C++-style)
+int GetLength(int value) {
+   if (value == 0) return 1;
+   int digits = 0;
+   while (value != 0) { ++digits; value /= 10; }
+   return digits;
+}
+
+int GetMaxDigits(const int array[], int size) {
+   int maxDigits = 0;
+   for (int i = 0; i < size; ++i) {
+      int d = GetLength(array[i]);
+      if (d > maxDigits) maxDigits = d;
+   }
+   return maxDigits;
+}
+
+// Radix sort for non-negative integers (LSD, base 10)
+#include <vector>
+void RadixSortNonNeg(int array[], int size) {
+   if (size <= 1) return;
+   int maxDigits = GetMaxDigits(array, size);
+   int pow10 = 1;
+
+   for (int pass = 0; pass < maxDigits; ++pass) {
+      std::vector<std::vector<int>> buckets(10);
+      for (int i = 0; i < size; ++i) {
+         int bucket = (array[i] / pow10) % 10;
+         if (bucket < 0) bucket = -bucket; // safety if negatives sneak in
+         buckets[bucket].push_back(array[i]);
+      }
+      int idx = 0;
+      for (int b = 0; b < 10; ++b) {
+         for (int v : buckets[b]) array[idx++] = v;
+      }
+      pow10 *= 10;
+   }
+}
+
+// Full radix for signed integers: sort by absolute value, then fix sign order
+#include <algorithm>
+void RadixSortSigned(int array[], int size) {
+   if (size <= 1) return;
+
+   // Split negatives and non-negatives
+   std::vector<int> neg, pos;
+   neg.reserve(size); pos.reserve(size);
+   for (int i = 0; i < size; ++i) {
+      if (array[i] < 0) neg.push_back(-array[i]); // store abs
+      else              pos.push_back(array[i]);
+   }
+
+   // Sort each part by absolute value via non-negative radix
+   if (!neg.empty()) {
+      std::vector<int> tmp = neg;
+      RadixSortNonNeg(tmp.data(), (int)tmp.size());
+      // reverse and restore sign: most negative first
+      std::reverse(tmp.begin(), tmp.end());
+      for (size_t i = 0; i < tmp.size(); ++i) neg[i] = -tmp[i];
+   }
+   if (!pos.empty()) {
+      RadixSortNonNeg(pos.data(), (int)pos.size());
+   }
+
+   // Stitch back: negatives (ascending) followed by non-negatives
+   int idx = 0;
+   for (int v : neg) array[idx++] = v;
+   for (int v : pos) array[idx++] = v;
+}
+CPP
+
+: '
+Use When:
+- Keys are integers (or fixed-length strings with an analogous digit/character pass).
+- Bypasses comparison lower bound; stable by digit pass.
+Trade-off:
+- Needs bucket storage; performance depends on digit width and distribution.
+'
+
+
+#-----------------------------------------
+# 5) RELATIONSHIPS & CHOOSING WISELY
+#-----------------------------------------
+: '
+Binary search depends on sorting:
+- If you have many lookups, sorting once (O(n log n)) + many queries (O(log n) each) beats repeated linear scans.
+
+Quicksort vs Merge Sort vs Heap Sort:
+- Quicksort: in-place, average O(n log n), great constants, watch worst case.
+- Merge sort: stable, guaranteed O(n log n), extra memory; ideal for linked lists/external sorting.
+- Heap sort: in-place O(n log n) worst-case; useful when you need strict worst-case guarantees and minimal extra memory.
+
+Shell & Insertion:
+- Shell reduces disorder with gaps; final insertion (gap=1) becomes cheap. Insertion alone is ideal for nearly-sorted data.
+
+Data structure ↔ operation patterns:
+- Many middle inserts/removes: linked list or a tree (or a balanced tree-backed list).
+- Fast random access + binary search: arrays/vectors with data kept sorted (or sort in batches).
+- Exact-key lookups at scale: hash table (average O(1)).
+- Priority-by-key processing: heap-backed priority queue.
+'
+
+
+#-----------------------------------------
+# 6) QUICK DRIVER (OPTIONAL) — drop in a main() to test
+#-----------------------------------------
+cat <<'CPP'
+// Optional test harness (C++-style)
+#include <iostream>
+using namespace std;
+
+int main() {
+   int data[] = {10, 2, 78, 4, 45, 32, 7, 11};
+   int n = sizeof(data)/sizeof(data[0]);
+
+   // Linear search
+   cout << "LinearSearch(45): " << LinearSearch(data, n, 45) << "\n";
+
+   // Quicksort
+   int qd[] = {10, 2, 78, 4, 45, 32, 7, 11};
+   Quicksort(qd, 0, n - 1);
+   cout << "Quicksort: ";
+   for (int x : qd) cout << x << " ";
+   cout << "\n";
+
+   // Merge sort
+   int md[] = {10, 2, 78, 4, 45, 32, 7, 11};
+   MergeSort(md, 0, n - 1);
+   cout << "MergeSort: ";
+   for (int x : md) cout << x << " ";
+   cout << "\n";
+
+   // Radix (signed)
+   int rd[] = {44, -12, 501, 5, 92, -78, 46, 61};
+   int rn = sizeof(rd)/sizeof(rd[0]);
+   RadixSortSigned(rd, rn);
+   cout << "RadixSigned: ";
+   for (int x : rd) cout << x << " ";
+   cout << "\n";
+
+   // Binary search on sorted md
+   cout << "BinarySearch(32): " << BinarySearch(md, 0, n-1, 32) << "\n";
+   return 0;
+}
+CPP
+
+
+#-----------------------------------------
+# 7) CHEAT SHEET — When to Pick What
+#-----------------------------------------
+: '
+- Need fast lookups by exact key: Hash Table (avg O(1)).
+- Need ordered data with inserts/deletes: Balanced BST (O(log n)).
+- Need always pick min/max next: Heap/Priority Queue.
+- Need fast by-index access & binary search: Array (keep sorted).
+- Few elements or nearly-sorted: Insertion sort.
+- General-purpose array sort: Quicksort (avg O(n log n)).
+- Stable + guaranteed O(n log n): Merge sort.
+- Integers w/ bounded digits: Radix sort.
+'

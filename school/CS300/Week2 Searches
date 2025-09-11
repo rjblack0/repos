@@ -1,0 +1,290 @@
+// Text Notes
+
+/*
+
+#Data Structures#
+
+Array - contiguous, indexed storage. Fast random access; inserts in the middle shift elements (costly). Great for indexing, iteration, and binary search prerequisites.
+Linked list – nodes with pointers define order; no shifting to insert/remove at known positions (esp. head/tail). No random access (linear to reach index).
+Binary tree – each node has up to two children; enables hierarchical organization (search trees, heaps).
+Hash table – maps keys to array slots (buckets) via a hash; supports fast lookups for exact keys (unordered). (Introduced in list; detailed perf covered later in course.)
+Heap – specialized tree for priority access (max/min at the root). Ideal for priority queues and scheduling.
+Graph – models connections among items (vertices/edges); foundation for routing, dependency analysis, social networks.
+   #Choosing: pick the structure that matches your dominant operations (e.g., “lots of inserts anywhere” → linked list; “frequent by-index access + sorted operations”
+   Standard libraries: languages ship ADTs (lists, sets, maps, queues/deques); often you can pick the backing structure (e.g., Java List via array or linked list).
+
+#Search Types#
+
+Linear Search (Universal)
+   Scan elements one by one until match or end.
+   Method: Loop from index 0 to N–1; compare each element to key; return index or “not found”.
+
+Binary Search (Fast, requires setup)
+   Repeatedly check the middle and halve the search space.
+   Requirements: Data is sorted and there is random access to elements (requires Array)
+   Method: Compare key to middle; if smaller search left half, else right; stop on match or empty range.
+   Each step halves remaining candidates (lorgarithmic)
+   Tip: If you need frequent inserts/removes and fast search by order, arrays (great for binary search) become costly to mutate; that’s where trees or hash tables come in (covered later), or you sort in batches then binary-search.
+
+#Efficiency#
+
+Count operations, not seconds.
+Lower bound is better than Best Case
+Big O Rules:
+   Keep highest-order term; drop constants; combine using composition rules. (Ex: O(734·N) → O(N); O(12N^2+…)=O(N^2)).
+   Count operations in code to get f(N), then convert to Big-O; often focus on worst case.
+
+#Sorting#
+
+Fast sorts have O(N log N) or better.
+
+Comparison Sorts:
+   Selection sort – repeatedly select the smallest remaining and swap to front (two nested loops). Simple but O(N^2). Good for tiny N or teaching.
+   Insertion sort – build a sorted prefix by inserting each new element into place (like sorting cards). Average O(N^2); shines when the data is nearly sorted. (Classification as non-fast appears in the table.)
+   Shell sort – “gapped” insertion sorts to move far-off items sooner; still not in the “fast” O(N log N) bucket by average classification here.
+   Quicksort – pick a pivot; partition less/greater; recurse. Average O(N log N), worst O(N^2). Usually fastest in practice on arrays.
+   Merge sort – split in halves, sort recursively, then merge. Always O(N log N) (best/avg/worst). Good when you can allocate extra space.
+   Heap sort – build a heap; repeatedly extract min/max. O(N log N) all cases; in-place array heap.
+
+Non-comparison sorts (Numeric)
+
+   Radix sort – sorts integers by digits using “buckets,” typically from least-significant digit upward. Runs in O(d·(N + k)), which is linear in N for fixed digit width; uses extra bucket space.
+
+#Formulas#
+
+Append to list ADT
+   Array-backed: read length, enlarge capacity if needed, write at last index.
+   Linked-list-backed: set tail.next = newNode, move tail. No shifting.
+
+Insert at beginning
+   Array: shift all N elements right ⇒ expensive.
+   Linked list: make new.next = head, move head ⇒ O(1).
+
+Linear search (any structure)
+   For each element, if a[i] == key return i; else continue; if end, return not-found. (Worst O(N)).
+
+Binary search (sorted array)
+   Set low=0, high=N-1.
+   While low<=high, mid = floor((low+high)/2).
+   If a[mid]==key done; if key<a[mid], set high=mid-1; else low=mid+1. (O(log N)).
+
+Radix sort (integers)
+   For each digit place (1s, 10s, 100s…), place numbers into digit buckets 0–9.
+   Concatenate buckets to rebuild array; move to next digit; repeat up to max digits.
+
+#Gauge Efficiency#
+
+Efficiency analysis (how to actually compute Big-O)
+
+Count operations: assignments, arithmetic, comparisons, loop controls. (Example walk-through in the chapter.)
+
+Form f(N) and apply Big-O rules (keep dominant term, drop constants).
+
+State bound & case: e.g., “worst-case O(N) for linear search; average O(N log N) for quicksort.”
+
+##Quicksheet##
+
+Need fast by-index access? 
+   Array. 
+   
+Need fast head/tail edits? 
+   Linked list.
+
+Search once, mutate rarely, already sorted? 
+   Array + binary search.
+
+Large general sorting job? 
+   Quicksort/Merge/Heap (avg O(N log N)). Integers with bounded digits? Radix.
+
+Count operations?
+   Big-O to compare algorithm choices objectively.
+
+*/
+
+
+// Linear Search
+
+int LinearSearch(int numbers[], int numbersSize, int key) {
+   for (int i = 0; i < numbersSize; ++i) {
+      if (numbers[i] == key) {
+         return i;   // key found
+      }
+   }
+   return -1;  // not found
+}
+
+// Binary Search
+
+int BinarySearch(int numbers[], int low, int high, int key) {
+   if (low > high) {
+      return -1; // not found
+   }
+   int mid = (low + high) / 2;
+   if (numbers[mid] < key) {
+      return BinarySearch(numbers, mid + 1, high, key);
+   }
+   else if (numbers[mid] > key) {
+      return BinarySearch(numbers, low, mid - 1, key);
+   }
+   else {
+      return mid; // key found
+   }
+}
+
+// Insertion Sort
+
+void InsertionSort(int numbers[], int numbersSize) {
+   int i, j, temp;
+   for (i = 1; i < numbersSize; ++i) {
+      j = i;
+      while (j > 0 && numbers[j] < numbers[j - 1]) {
+         temp = numbers[j];
+         numbers[j] = numbers[j - 1];
+         numbers[j - 1] = temp;
+         --j;
+      }
+   }
+}
+
+// Selection Sort
+
+void SelectionSort(int numbers[], int numbersSize) {
+   int i, j, indexSmallest, temp;
+   for (i = 0; i < numbersSize - 1; ++i) {
+      indexSmallest = i;
+      for (j = i + 1; j < numbersSize; ++j) {
+         if (numbers[j] < numbers[indexSmallest]) {
+            indexSmallest = j;
+         }
+      }
+      temp = numbers[i];
+      numbers[i] = numbers[indexSmallest];
+      numbers[indexSmallest] = temp;
+   }
+}
+
+// Quicksort
+
+int Partition(int numbers[], int lowIndex, int highIndex) {
+   int midpoint = lowIndex + (highIndex - lowIndex) / 2;
+   int pivot = numbers[midpoint];
+   bool done = false;
+   while (!done) {
+      while (numbers[lowIndex] < pivot) {
+         lowIndex += 1;
+      }
+      while (pivot < numbers[highIndex]) {
+         highIndex -= 1;
+      }
+      if (lowIndex >= highIndex) {
+         done = true;
+      }
+      else {
+         int temp = numbers[lowIndex];
+         numbers[lowIndex] = numbers[highIndex];
+         numbers[highIndex] = temp;
+         lowIndex += 1;
+         highIndex -= 1;
+      }
+   }
+   return highIndex;
+}
+
+void Quicksort(int numbers[], int lowIndex, int highIndex) {
+   if (lowIndex >= highIndex) {
+      return;
+   }
+   int lowEndIndex = Partition(numbers, lowIndex, highIndex);
+   Quicksort(numbers, lowIndex, lowEndIndex);
+   Quicksort(numbers, lowEndIndex + 1, highIndex);
+}
+
+// Merge Sort
+
+void Merge(int numbers[], int i, int j, int k) {
+   int mergedSize = k - i + 1;
+   int mergePos = 0;
+   int leftPos = i;
+   int rightPos = j + 1;
+   int* mergedNumbers = new int[mergedSize];
+
+   while (leftPos <= j && rightPos <= k) {
+      if (numbers[leftPos] <= numbers[rightPos]) {
+         mergedNumbers[mergePos] = numbers[leftPos];
+         ++leftPos;
+      }
+      else {
+         mergedNumbers[mergePos] = numbers[rightPos];
+         ++rightPos;
+      }
+      ++mergePos;
+   }
+
+   while (leftPos <= j) {
+      mergedNumbers[mergePos] = numbers[leftPos];
+      ++leftPos;
+      ++mergePos;
+   }
+
+   while (rightPos <= k) {
+      mergedNumbers[mergePos] = numbers[rightPos];
+      ++rightPos;
+      ++mergePos;
+   }
+
+   for (mergePos = 0; mergePos < mergedSize; ++mergePos) {
+      numbers[i + mergePos] = mergedNumbers[mergePos];
+   }
+   delete[] mergedNumbers;
+}
+
+void MergeSort(int numbers[], int i, int k) {
+   if (i < k) {
+      int j = (i + k) / 2;
+      MergeSort(numbers, i, j);
+      MergeSort(numbers, j + 1, k);
+      Merge(numbers, i, j, k);
+   }
+}
+
+// Radix Sort
+
+int GetLength(int value) {
+   if (value == 0) return 1;
+   int digits = 0;
+   while (value != 0) {
+      digits++;
+      value /= 10;
+   }
+   return digits;
+}
+
+int GetMaxDigits(int array[], int size) {
+   int maxDigits = 0;
+   for (int i = 0; i < size; i++) {
+      int len = GetLength(array[i]);
+      if (len > maxDigits) {
+         maxDigits = len;
+      }
+   }
+   return maxDigits;
+}
+
+void RadixSort(int array[], int size) {
+   int maxDigits = GetMaxDigits(array, size);
+   int pow10 = 1;
+   for (int digitIndex = 0; digitIndex < maxDigits; digitIndex++) {
+      vector<vector<int>> buckets(10);
+      for (int i = 0; i < size; i++) {
+         int bucketIndex = abs(array[i] / pow10) % 10;
+         buckets[bucketIndex].push_back(array[i]);
+      }
+      int idx = 0;
+      for (int b = 0; b < 10; b++) {
+         for (int val : buckets[b]) {
+            array[idx++] = val;
+         }
+      }
+      pow10 *= 10;
+   }
+}
