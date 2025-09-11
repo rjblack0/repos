@@ -1,1 +1,16 @@
-{}
+{
+  "multi-user.target": {
+    "error": "HTTP 429"
+  },
+  "network.target": {
+    "indicator": "network.target",
+    "geo": {
+      "country": null,
+      "region": null,
+      "city": null
+    },
+    "asn": null,
+    "org": null,
+    "last_checked": "2025-09-11T00:19:30.998929"
+  }
+}
