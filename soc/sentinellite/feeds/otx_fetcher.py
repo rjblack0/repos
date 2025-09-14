@@ -1,10 +1,12 @@
 # feeds/otx_fetcher.py
 
-import os
+import sys, os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import requests
 import json
 from dotenv import load_dotenv
-from datetime import datetime
+from datetime import datetime, timezone
+now = datetime.now(timezone.utc)
 from utils.config_loader import load_config
 
 # Load env variables and config

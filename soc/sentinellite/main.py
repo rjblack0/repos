@@ -2,6 +2,7 @@
 
 import subprocess
 from datetime import datetime, timezone
+now = datetime.now(timezone.utc)
 
 def print_banner():
     print("=" * 50)

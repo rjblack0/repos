@@ -1,0 +1,57 @@
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtualenvs (top-level or nested)
+.venv/
+venv/
+**/venv/
+
+# Editors/IDEs
+.vscode/
+.idea/
+*.code-workspace
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Logs, caches, artifacts
+*.log
+*.sqlite3
+*.db
+*.pid
+.cache/
+.mypy_cache/
+.pytest_cache/
+
+# Project outputs
+feeds/output/
+sentinellite/output/
+output/
+logs/
+*.pcap
+*.pcapng
+*.zip
+*.tar.gz
+
+# Secrets & config
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.pfx
+*.der
+
+# Node (if ever used)
+node_modules/
+
+# Misc
+*.bak
+*.swp
+
+# Legacy folder
+sentinellite legacy/
