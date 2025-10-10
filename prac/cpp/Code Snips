@@ -1,0 +1,10 @@
+#include <vector>
+
+template <typename T>
+T FindFirstLessThan(const std::vector<T>& list, const T& value) {
+    for (const T& element : list) {
+        if (element < value)
+            return element;
+    }
+    return value; // no lesser value found
+}
