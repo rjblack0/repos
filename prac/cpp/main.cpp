@@ -5,11 +5,30 @@
 
 using namespace std;     // so we can just write "cout" instead of "std::cout"
 
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
 int main() {
-    std::cout << "Hello, World!";
+    string name;
+    int age;
+    double height;
+
+    cout << "Hello\n\n\n\n Who are you?";
+    cin >> name;
+
+    cout << "Enter your age: ";
+    cin >> age;
+
+    cout << "Enter your height in meters: ";
+    cin >> height;
+
+    cout << "Name: " << name << endl;
+    cout << "Age: " << age << endl;
+    cout << "Height: " << height << endl;
+
     return 0;
 }
 
-pair<int,int> twoSum(vector<int> nums, int target) {
-
-}

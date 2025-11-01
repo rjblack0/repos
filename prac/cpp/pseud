@@ -1,0 +1,444 @@
+// ##Sum and average of a list##
+
+START sumAndAvg()              //Check for error, end loop immediately
+
+    list = {1,2,3,4,5}
+
+    n = list.length
+
+    if list.length == 0
+        RETURN "Error"
+    
+    int total = {};          //Define list
+
+    for i in list;          //For each item inside the list
+        total = total + i;
+    }
+
+    double average = total / list.length
+
+    std:: "Sum =", total
+    std:: "Average =", average
+
+// Complexity - O(n) - Each element visited once
+// Space - O(1) - low variables used
+
+/*
+Loop through the list once, keeping a running total and counting how many numbers I’ve added.
+When I’m done, I divide total by count to get the average.
+This runs in O(n) time and uses constant space.
+I also check for an empty list so I don’t divide by zero.
+*/
+
+// ##Find the Factorial##
+
+START Factorial
+
+    if n < 0 THEN;             //reject any 0's
+        ERROR;
+
+    result = 1                  //Initialize result
+    FOR i = 2; i <= n;          //Cycle from 1 to the inputted value as long as i is less than input
+        result = result * i;    //Multiply current i by next i
+
+    OUTPUT result
+
+// Complexity - O(n)
+
+
+// Find if Number is Prime
+
+START primecheck {
+
+    IF n < 2;               //Reject less than 1
+        RETURN false;
+    IF n % 2 == 0;
+        n == 2
+
+    for (i = 3;             //Begin at 3;
+        i * i <= n;          // For as long as i squared is less than n;
+            i += 2)         //Add 2 to i
+
+        IF n % i == 0;            // Check if anything divides evenly into n
+            RETURN false;
+    RETURN true;       //number is prime
+    
+}
+
+// Sort a list (Bubble Sort)
+
+START sortList()
+
+    list = {5, 2, 8, 1, 3}       // Example list to be sorted
+    n = list.length              // Store list size
+
+    for i = 0; i < n - 1; ++i        // Outer loop: passes through entire list
+        for j = 0; j < n - i - 1; ++j    // Inner loop: compare adjacent elements
+            if list[j] > list[j + 1]      // If current element greater than next
+                swap(list[j], list[j + 1]) // Swap them (ascending order)
+
+    PRINT "Sorted list:", list
+
+// Reverse a list
+
+START reverseList()
+
+    list = {5, 2, 8, 1, 3}       // Example list to reverse
+    n = list.length              // Store list size
+
+    for i = 0; i < n / 2; ++i        // Only loop halfway
+        swap(list[i], list[n - i - 1])   // Swap from both ends moving inward
+    ENDFOR
+
+    PRINT "Reversed list:", list
+
+// Linear Search
+// Searches the list sequentially until match or end
+
+START linearSearch(list, target)
+
+    for i = 0; i < list.length; ++i
+        if list[i] == target
+            PRINT "Found at index:", i
+            RETURN i
+
+// Binary Search
+// Requires sorted; repeatedly halves the search range
+
+START binarySearch(sortedList, target)
+
+    low = 0
+    high = sortedList.length - 1
+
+    while low <= high
+        mid = (low + high) / 2      // Midpoint of current range
+
+        if sortedList[mid] == target
+            PRINT "Found at index:", mid
+            RETURN mid
+
+        else if sortedList[mid] < target
+            low = mid + 1           // Search right half
+
+        else
+            high = mid - 1          // Search left half
+
+//Count characters in a string
+START countCharacter()
+
+    str = "Implementation Consultant"
+    target = 't'                     // Character to count
+    count = 0                        // Running counter
+
+    for i = 0; i < str.length; ++i   // Loop through each character
+        if str[i] == target
+            count++
+        ENDIF
+    ENDFOR
+
+    PRINT "Character", target, "appears", count, "times."
+
+//Reverse a string
+START reverseString()
+
+    str = "FAST"
+    n = str.length
+
+    for i = 0; i < n / 2; ++i
+        swap(str[i], str[n - i - 1])     // Swap front and back
+    ENDFOR
+
+    PRINT "Reversed string:", str
+
+//Count words in a sentence
+START countWords()
+
+    sentence = "FAST builds enterprise software."
+    count = 0
+
+    for i = 0; i < sentence.length; ++i
+        if sentence[i] == ' '           // Detect space between words
+            count++
+        ENDIF
+    ENDFOR
+
+    count++                             // Add 1 for final word
+    PRINT "Word count:", count
+
+//Stack Operations - Last In, First Out
+
+START stackExample()
+
+    stack = []                  // Initialize empty stack
+
+    // --- Push operations ---
+    PUSH(stack, A);
+    PUSH(stack, B);
+    PUSH(stack, C);
+
+    PRINT "Stack after pushes:", stack    // Output: [A, B, C]
+
+    // --- Pop operation ---
+    IF stack is not empty
+        topValue = POP(stack)             // Removes last inserted item
+        PRINT "Popped value:", topValue
+    ELSE
+        PRINT "Error: Stack is empty"
+    ENDIF
+
+    PRINT "Stack after pop:", stack
+RETURN 0;
+
+// ## Queue Operations (FIFO – First In, First Out) ##
+
+START queueExample()
+
+    queue = []                      // Initialize empty queue
+
+    // --- Enqueue operations ---
+    ENQUEUE(queue, A);
+    ENQUEUE(queue, B);
+    ENQUEUE(queue, C);
+
+    PRINT "Queue after enqueues:", queue    // Output: [A, B, C]
+
+    // --- Dequeue operation ---
+    IF queue is not empty
+        frontValue = DEQUEUE(queue)         // Removes first inserted item
+        PRINT "Dequeued value:", frontValue
+    ELSE
+        PRINT "Error: Queue is empty"
+    ENDIF
+
+    PRINT "Queue after dequeue:", queue
+
+// ## Conceptual SQL Example Using Queue Logic ##
+// (How these structures relate to database operations)
+
+START processTaskQueue()
+
+    // Simulated table 'TaskQueue' with columns (id, task_name, status)
+
+    WHILE EXISTS(SELECT * FROM TaskQueue WHERE status = 'pending')
+        task = SELECT TOP 1 * FROM TaskQueue WHERE status = 'pending' ORDER BY id ASC
+        PRINT "Processing task:", task.task_name
+        UPDATE TaskQueue SET status = 'completed' WHERE id = task.id
+    ENDWHILE
+
+// ## Linked List Traversal ##
+// Visit every node and print its data
+
+START traverseList()
+
+    node = head                      // Begin at first node
+
+    IF node == NULL
+        PRINT "List is empty"
+        RETURN
+    ENDIF
+
+    WHILE node != NULL               // Continue until end of list
+        PRINT node.data              // Access current node value
+        node = node.next             // Move to next node
+    ENDWHILE
+
+// ## Insert Node at End of Linked List ##
+
+START insertEnd(value)
+
+    newNode = CREATE_NODE(value)     // Allocate new node with data
+    newNode.next = NULL              // Last node points to nothing
+
+    IF head == NULL
+        head = newNode               // Empty list becomes single node
+        RETURN
+    ENDIF
+
+    current = head                   // Otherwise traverse to end
+    WHILE current.next != NULL
+        current = current.next
+    ENDWHILE
+
+    current.next = newNode           // Link last node to new node
+    PRINT "Inserted", value, "at end"
+
+// ## Delete Node by Value ##
+
+START deleteValue(target)
+
+    IF head == NULL
+        PRINT "List is empty"
+        RETURN
+    ENDIF
+
+    // --- Case 1: Delete head node ---
+    IF head.data == target
+        head = head.next
+        PRINT "Deleted head node:", target
+        RETURN
+    ENDIF
+
+    // --- Case 2: Delete in middle or end ---
+    prev = head
+    current = head.next
+
+    WHILE current != NULL
+        IF current.data == target
+            prev.next = current.next     // Bypass current node
+            PRINT "Deleted node:", target
+            RETURN
+        ENDIF
+        prev = current
+        current = current.next
+    ENDWHILE
+
+    PRINT "Value not found"
+
+// ## Hash Table (Separate Chaining) ##
+// Buckets are lists; collisions are stored in the same bucket.
+
+START HashTable_Chaining(capacity)
+
+    table = array of capacity buckets            // each bucket is an empty list
+    size = 0
+
+    FUNCTION hash(key)
+        RETURN (hashCode(key) % capacity)        // assume non-negative result
+
+    FUNCTION loadFactor()
+        RETURN size / capacity
+
+    // --- INSERT (key, value) ---
+    FUNCTION put(key, value)
+        idx = hash(key)
+        bucket = table[idx]
+
+        // update if key exists
+        for each (k, v) in bucket
+            if k == key
+                v = value
+                RETURN
+        endfor
+
+        // otherwise append
+        bucket.append( (key, value) )
+        size++
+
+        // optional: rehash when load factor too high
+        if loadFactor() > 0.75
+            REHASH(capacity * 2)
+
+    // --- SEARCH key ---
+    FUNCTION get(key)
+        idx = hash(key)
+        bucket = table[idx]
+        for each (k, v) in bucket
+            if k == key
+                RETURN v
+        endfor
+        RETURN NOT_FOUND
+
+    // --- DELETE key ---
+    FUNCTION erase(key)
+        idx = hash(key)
+        bucket = table[idx]
+        for i = 0; i < bucket.length; ++i
+            if bucket[i].key == key
+                REMOVE bucket[i]
+                size--
+                RETURN true
+        endfor
+        RETURN false
+
+    // --- REHASH to newCapacity ---
+    FUNCTION REHASH(newCapacity)
+        oldTable = table
+        capacity = newCapacity
+        table = array of capacity empty buckets
+        size = 0
+        for each bucket in oldTable
+            for each (k, v) in bucket
+                put(k, v)             // reinsert using new capacity
+            endfor
+        endfor
+
+// ## Hash Table (Open Addressing: Linear Probing) ##
+// Single array of entries; collisions resolved by probing next slots.
+
+START HashTable_LinearProbing(capacity)
+
+    struct Entry { key, value, state } 
+    // state ∈ {EMPTY, OCCUPIED, DELETED}  // tombstone needed for deletion
+
+    table = array[capacity] of Entry with state=EMPTY
+    size = 0
+
+    FUNCTION hash(key)
+        RETURN (hashCode(key) % capacity)
+
+    FUNCTION loadFactor()
+        RETURN size / capacity
+
+    // --- FIND SLOT (for search/insert), linear probe ---
+    FUNCTION findSlot(key)
+        idx = hash(key)
+        firstDeleted = -1
+        steps = 0
+
+        WHILE steps < capacity
+            e = table[idx]
+            if e.state == EMPTY
+                // empty: key not present; return a place to insert
+                RETURN (found=false, index = (firstDeleted != -1 ? firstDeleted : idx))
+            else if e.state == DELETED
+                if firstDeleted == -1
+                    firstDeleted = idx         // remember first tombstone for insertion
+            else if e.state == OCCUPIED AND e.key == key
+                RETURN (found=true, index=idx) // exact key found
+
+            idx = (idx + 1) % capacity         // probe next
+            steps++
+        ENDWHILE
+
+        RETURN (found=false, index=-1)          // table full
+
+    // --- INSERT (key, value) ---
+    FUNCTION put(key, value)
+        (found, idx) = findSlot(key)
+        if idx == -1
+            REHASH(capacity * 2)
+            (found, idx) = findSlot(key)
+        if found
+            table[idx].value = value
+            RETURN
+        table[idx] = Entry{key, value, OCCUPIED}
+        size++
+        if loadFactor() > 0.5                   // keep LF conservative for probing
+            REHASH(capacity * 2)
+
+    // --- SEARCH key ---
+    FUNCTION get(key)
+        (found, idx) = findSlot(key)
+        if found
+            RETURN table[idx].value
+        RETURN NOT_FOUND
+
+    // --- DELETE key (tombstone) ---
+    FUNCTION erase(key)
+        (found, idx) = findSlot(key)
+        if not found
+            RETURN false
+        table[idx].state = DELETED              // leave tombstone to preserve probe chains
+        size--
+        RETURN true
+
+    // --- REHASH: rebuild without tombstones ---
+    FUNCTION REHASH(newCapacity)
+        old = table
+        capacity = newCapacity
+        table = array[capacity] of Entry with state=EMPTY
+        size = 0
+        for each e in old
+            if e.state == OCCUPIED
+                put(e.key, e.value)            // reinserts compactly
+        endfor

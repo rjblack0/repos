@@ -1,0 +1,15 @@
+C:\repos\prac\cs\HelloWorldApp\bin\Debug\net9.0\HelloWorldApp.exe
+C:\repos\prac\cs\HelloWorldApp\bin\Debug\net9.0\HelloWorldApp.deps.json
+C:\repos\prac\cs\HelloWorldApp\bin\Debug\net9.0\HelloWorldApp.runtimeconfig.json
+C:\repos\prac\cs\HelloWorldApp\bin\Debug\net9.0\HelloWorldApp.dll
+C:\repos\prac\cs\HelloWorldApp\bin\Debug\net9.0\HelloWorldApp.pdb
+C:\repos\prac\cs\HelloWorldApp\obj\Debug\net9.0\HelloWorldApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\repos\prac\cs\HelloWorldApp\obj\Debug\net9.0\HelloWorldApp.AssemblyInfoInputs.cache
+C:\repos\prac\cs\HelloWorldApp\obj\Debug\net9.0\HelloWorldApp.AssemblyInfo.cs
+C:\repos\prac\cs\HelloWorldApp\obj\Debug\net9.0\HelloWorldApp.csproj.CoreCompileInputs.cache
+C:\repos\prac\cs\HelloWorldApp\obj\Debug\net9.0\HelloWorldApp.sourcelink.json
+C:\repos\prac\cs\HelloWorldApp\obj\Debug\net9.0\HelloWorldApp.dll
+C:\repos\prac\cs\HelloWorldApp\obj\Debug\net9.0\refint\HelloWorldApp.dll
+C:\repos\prac\cs\HelloWorldApp\obj\Debug\net9.0\HelloWorldApp.pdb
+C:\repos\prac\cs\HelloWorldApp\obj\Debug\net9.0\HelloWorldApp.genruntimeconfig.cache
+C:\repos\prac\cs\HelloWorldApp\obj\Debug\net9.0\ref\HelloWorldApp.dll

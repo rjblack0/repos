@@ -3,6 +3,14 @@
         "cs210 assignment wk 7": "cpp",
         "ostream": "cpp",
         "iostream": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "pseud": "cpp",
+        "vector": "cpp",
+        "algorithm": "cpp",
+        "format": "cpp",
+        "chrono": "cpp",
+        "functional": "cpp",
+        "text_encoding": "cpp",
+        "typeinfo": "cpp"
     }
 }
