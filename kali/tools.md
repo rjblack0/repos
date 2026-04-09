@@ -441,15 +441,12 @@ sqlmap -u "URL" -- threads=10                               - Increase the numbe
 sqlmap -u "URL" -- forms                                    - Automatically test a web form for SQL injection
 sqlmap -r request.txt                                       - Test a custom HTTP request for SQL injection
 sqlmap -u "URL" --cookie="PHPSESSID=xyz"                    - Required for authenticated testing
-
-## NMAP
-# Network scanner for: Hosts | Ports | Services | OS detection
-
+---
+# NMAP
+#Network scanner for: Hosts | Ports | Services | OS detection
+---
 ## Workflow
-Discover hosts
-Scan ports
-Identify services
-Run scripts
+1. Discover hosts | 2. Scan ports | 3. Identify services | 4. Run scripts |
 
 nmap -sn 192.168.1.0/24                 - Performs host discovery only (no ports), identifies which IPs respond on the network
 
