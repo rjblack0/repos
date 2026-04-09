@@ -7,11 +7,8 @@ Network protocol analyzer for: Traffic | Packets | Protocols | Forensics
 ## Workflow
 1. Capture traffic (interface or file)
 2. Apply display filters
-
 3. Identify protocols and anomalies
-
 4. Follow streams (TCP/HTTP)
-
 5. Extract useful data (credentials, DNS, indicators)
 
 ```console
@@ -23,7 +20,8 @@ tcp.port == 80 or udp.port == 53            - Displays traffic on specific ports
 frame.len > 100                             - Filters out very small packets to reduce noise and focus on meaningful traffic
 frame.len > 1000                            - Highlights large packets which may indicate file transfers or data exfiltration
 
-eth.src == xx:xx:xx:xx:xx:xx or eth.dst == xx:xx:xx:xx:xx:xx    - Filters traffic by MAC address to track specific devices on a network
+eth.src == xx:xx:xx:xx:xx:xx                - Filters traffic by MAC address to track specific devices on a network
+// or eth.dst == xx:xx:xx:xx:xx:xx
 
 http.response.code == 200                   - Shows successful HTTP responses to verify normal web activity
 http.response.code == 404                   - Identifies missing resources which may indicate scanning or broken paths
