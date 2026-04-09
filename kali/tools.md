@@ -122,11 +122,8 @@ icmp.type == 0 and icmp.code == 0   - ICMP echo reply
 ```console
 
 ip.src == x.x.x.x       - Filter by source IP  
-
 ip.dst == x.x.x.x      - Filter by destination IP  
 ```
-
----
 
 ### Notes
 - Use filters incrementally to narrow results  
@@ -134,17 +131,24 @@ ip.dst == x.x.x.x      - Filter by destination IP
 - Follow TCP streams to reconstruct sessions  
 - Large packet sizes may indicate data exfiltration
 
+---
+
 # Burp Suite
 Web application security testing platform / interception proxy
-
-Used for: Proxying | Request Modification | Repeater Testing | Intruder Attacks | Manual Web App Analysis
+Used for:
+1. Proxying 
+2. Request Modification 
+3. Repeater Testing 
+4. Intruder Attacks 
+5. Manual Web App Analysis
 
 ### Workflow
-Configure browser to use Burp proxy
-Intercept requests
-Send interesting requests to Repeater / Intruder
-Analyze responses
-Identify vulnerabilities manually
+1. Configure browser to use Burp proxy
+2. Intercept requests
+3. Send interesting requests to Repeater / Intruder
+4. Analyze responses
+5. Identify vulnerabilities manually
+
 ```console
 burpsuite                                                    - Launch Burp Suite
 # Proxy -> Intercept on                                      - Intercept HTTP/S traffic in browser
@@ -160,20 +164,20 @@ burpsuite                                                    - Launch Burp Suite
 ```
 
 ### Notes
-# Burp Suite Community is strong for manual testing but lacks automated Scanner
-# HTTPS interception requires Burp CA certificate installed in browser
-# Best paired with ffuf, katana, and mitmproxy for web testing
+Burp Suite Community is strong for manual testing but lacks automated Scanner
+HTTPS interception requires Burp CA certificate installed in browser
+Best paired with ffuf, katana, and mitmproxy for web testing
 
 # Gobuster
 Fast content discovery / brute force tool
 Used for: Directory Discovery | DNS Subdomain Bruteforce | Virtual Host Discovery
 
 ### Workflow
-Choose mode (dir / dns / vhost)
-Select target and wordlist
-Filter useful responses
-Expand findings manually
-Export results
+1. Choose mode (dir / dns / vhost)
+2. Select target and wordlist
+3. Filter useful responses
+4. Expand findings manually
+5..Export results
 
 ```console
 gobuster dir -u https://target.com -w wordlist.txt                     - Directory / file discovery
