@@ -1,6 +1,4 @@
-###### ###### ###### ###### ######
-###### COMMAND LISTS ###### ######
-###### ###### ###### ###### ######
+#### COMMAND LISTS
 
 ## Wireshark
 **Network protocol analyzer / packet inspection tool**
@@ -448,26 +446,40 @@ sqlmap -u "URL" --cookie="PHPSESSID=xyz"                    - Required for authe
 # Network scanner for: Hosts | Ports | Services | OS detection
 
 ## Workflow
-# Discover hosts
-# Scan ports
-# Identify services
-# Run scripts
+Discover hosts
+Scan ports
+Identify services
+Run scripts
 
-nmap -sn 192.168.1.0/24                 - Perform a ping scan of the target network
-nmap -sS 192.168.1.1                    - TCP SYN stealth scan
-nmap -sV 192.168.1.1                    - Detect service versions running on open ports
-nmap -p 1-65535 192.168.1.1             - Scan all TCP ports
-nmap -A 192.168.1.1                     - Enable OS detection, version detection and scripts
-nmap -F 192.168.1.1                     - Fast scan of common ports
-nmap -O 192.168.1.1                     - Attempt to detect the operating system
-nmap -sU 192.168.1.1                    - Perform a UDP port scan
-nmap -sC 192.168.1.1                    - Run default Nmap Scripting Engine (NSE) scripts
-nmap -Pn 192.168.1.1                    - Disable host discovery; treat all hosts as online
-nmap -sA 192.168.1.1                    - ACK scan for firewall ruleset mapping
-nmap -- top-ports 100 192.168.1.1       - Scan the top 100 common TCP ports
-nmap -iL targets.txt                    - Read target list from a file
-nmap -oN output.txt 192.168.1.1         - Save results in normal Nmap format
-nmap -sS -sV -sC -O -oA full_scan 192.168.1.1   - Essential Scan
+nmap -sn 192.168.1.0/24                 - Performs host discovery only (no ports), identifies which IPs respond on the network
+
+nmap -sS 192.168.1.1                    - Sends SYN packets to detect open ports without completing handshake (stealthy, requires root)
+
+nmap -sV 192.168.1.1                    - Probes open ports to identify service type and version (e.g., Apache 2.4.41)
+
+nmap -p 1-65535 192.168.1.1             - Scans all 65,535 TCP ports instead of default top ports to ensure nothing is missed
+
+nmap -A 192.168.1.1                     - Enables OS detection, version detection, script scanning, and traceroute in one aggressive scan
+
+nmap -F 192.168.1.1                     - Scans only the most common ports (~100) for quick surface-level assessment
+
+nmap -O 192.168.1.1                     - Attempts to fingerprint the target OS based on TCP/IP stack behavior (may be inaccurate)
+
+nmap -sU 192.168.1.1                    - Scans UDP ports (slow), useful for discovering services like DNS, SNMP, NTP
+
+nmap -sC 192.168.1.1                    - Runs default NSE scripts to identify common vulnerabilities and misconfigurations
+
+nmap -Pn 192.168.1.1                    - Skips host discovery and assumes host is up (used when ICMP/ping is blocked)
+
+nmap -sA 192.168.1.1                    - Sends ACK packets to map firewall rules and determine filtered vs unfiltered ports
+
+nmap --top-ports 100 192.168.1.1        - Scans the 100 most common ports based on frequency for efficient recon
+
+nmap -iL targets.txt                    - Reads multiple targets from a file and scans them sequentially
+
+nmap -oN output.txt 192.168.1.1         - Saves scan results in human-readable format for later analysis
+
+nmap -sS -sV -sC -O -oA full_scan 192.168.1.1   - Full recon scan: stealth scan + service versions + scripts + OS + all output formats
 
 ## Nuclei
 # Fast vulnerability scanner using templates (CVE-based).
