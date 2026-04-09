@@ -453,6 +453,7 @@ Network scanner for: Hosts | Ports | Services | OS detection
 
 4. Run scripts
 
+```console
 nmap -sn 192.168.1.0/24                 - Performs host discovery only (no ports), identifies which IPs respond on the network
 
 nmap -sS 192.168.1.1                    - Sends SYN packets to detect open ports without completing handshake (stealthy, requires root)
@@ -482,6 +483,7 @@ nmap -iL targets.txt                    - Reads multiple targets from a file and
 nmap -oN output.txt 192.168.1.1         - Saves scan results in human-readable format for later analysis
 
 nmap -sS -sV -sC -O -oA full_scan 192.168.1.1   - Full recon scan: stealth scan + service versions + scripts + OS + all output formats
+```
 
 ## Nuclei
 # Fast vulnerability scanner using templates (CVE-based).
