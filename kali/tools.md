@@ -71,15 +71,10 @@ http.cookie contains "sessionid"            - Packets containing specific cookie
 
 # TCP / Connection Analysis
 
-```console
-tcp.flags.syn == 1`  
-SYN packets (connection attempts)  
-
-tcp.stream eq 0`  
-Follow specific TCP stream  
-
-tcp.analysis.retransmission`  
-Detect retransmissions (network issues)  
+```console              
+tcp.flags.syn == 1          -SYN packets (connection attempts)  
+tcp.stream eq 0             -Follow specific TCP stream  
+tcp.analysis.retransmission -Detect retransmissions (network issues)  
 ```
 
 ---
