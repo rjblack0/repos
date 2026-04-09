@@ -60,22 +60,21 @@ ip.dst == x.x.x.x                                               - Shows traffic 
 # HTTP Analysis
 
 ```console
-`http.response.code == 200`  
+http.response.code == 200`  
 Successful HTTP responses  
 
-`http.response.code == 404`  
+http.response.code == 404`  
 HTTP errors (missing resources)  
 
-`http.request.method == "GET"`  
+http.request.method == "GET"`  
 HTTP GET requests  
 
-`http.request.uri contains "example.com"`  
+http.request.uri contains "example.com"`  
 HTTP requests containing specific string  
 
-`http.cookie contains "sessionid"`  
+http.cookie contains "sessionid"`  
 Packets containing specific cookie  
 ```
-
 ---
 
 # TCP / Connection Analysis
