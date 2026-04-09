@@ -443,10 +443,15 @@ sqlmap -r request.txt                                       - Test a custom HTTP
 sqlmap -u "URL" --cookie="PHPSESSID=xyz"                    - Required for authenticated testing
 ---
 # NMAP
-#Network scanner for: Hosts | Ports | Services | OS detection
----
+Network scanner for: Hosts | Ports | Services | OS detection
 ## Workflow
-1. Discover hosts | 2. Scan ports | 3. Identify services | 4. Run scripts |
+1. Discover hosts 
+
+2. Scan ports 
+
+3. Identify services 
+
+4. Run scripts
 
 nmap -sn 192.168.1.0/24                 - Performs host discovery only (no ports), identifies which IPs respond on the network
 
