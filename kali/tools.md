@@ -89,8 +89,7 @@ dns && !dns.flags.response          - DNS requests only
 # TLS / Encryption
 
 ```console
-tls.handshake.type == 1`  
-TLS ClientHello (initial handshake)  
+tls.handshake.type == 1 - TLS ClientHello (initial handshake)  
 ```
 
 ---
@@ -98,42 +97,35 @@ TLS ClientHello (initial handshake)
 # Network Protocol Filters
 
 ```console
-`tcp`  
-Show only TCP traffic  
 
-`udp`  
-Show only UDP traffic  
-
-`dns`  
-Show only DNS traffic  
-
-`http`  
-Show only HTTP traffic  
+tcp     - Show only TCP traffic  
+udp     - Show only UDP traffic  
+dns     - Show only DNS traffic  
+http    - Show only HTTP traffic  
 ```
 
 ---
 
 # ARP / ICMP
+
 ```console
-`arp.opcode == 1`  
-ARP requests  
 
-`icmp.type == 8 and icmp.code == 0`  
-ICMP echo request (ping)  
+arp.opcode == 1                     - ARP requests  
+icmp.type == 8 and icmp.code == 0   -ICMP echo request (ping)  
+icmp.type == 0 and icmp.code == 0   - ICMP echo reply  
 
-`icmp.type == 0 and icmp.code == 0`  
-ICMP echo reply  
 ```
+
 ---
 
 # Directional Filtering
 ```console
-`ip.src == x.x.x.x`  
-Filter by source IP  
 
-`ip.dst == x.x.x.x`  
-Filter by destination IP  
+ip.src == x.x.x.x       - Filter by source IP  
+
+ip.dst == x.x.x.x      - Filter by destination IP  
 ```
+
 ---
 
 ### Notes
