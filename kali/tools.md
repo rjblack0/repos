@@ -79,14 +79,9 @@ tcp.analysis.retransmission -Detect retransmissions (network issues)
 # DNS Analysis
 
 ```console
-dns.qry.name contains "example.com"`  
-DNS queries for domain  
-
-dns.flags.response == 1`  
-DNS responses  
-
-dns && !dns.flags.response`  
-DNS requests only  
+dns.qry.name contains "example.com" - DNS queries for domain  
+dns.flags.response == 1             - DNS responses  
+dns && !dns.flags.response          - DNS requests only  
 ```
 
 ---
