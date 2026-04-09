@@ -78,8 +78,9 @@ Packets containing specific cookie
 
 ---
 
-### TCP / Connection Analysis
+# TCP / Connection Analysis
 
+```console
 `tcp.flags.syn == 1`  
 SYN packets (connection attempts)  
 
@@ -88,11 +89,13 @@ Follow specific TCP stream
 
 `tcp.analysis.retransmission`  
 Detect retransmissions (network issues)  
+```
 
 ---
 
-### DNS Analysis
+# DNS Analysis
 
+```console
 `dns.qry.name contains "example.com"`  
 DNS queries for domain  
 
@@ -101,18 +104,22 @@ DNS responses
 
 `dns && !dns.flags.response`  
 DNS requests only  
+```
 
 ---
 
-### TLS / Encryption
+# TLS / Encryption
 
+```console
 `tls.handshake.type == 1`  
 TLS ClientHello (initial handshake)  
+```
 
 ---
 
-### Network Protocol Filters
+# Network Protocol Filters
 
+```console
 `tcp`  
 Show only TCP traffic  
 
@@ -124,11 +131,12 @@ Show only DNS traffic
 
 `http`  
 Show only HTTP traffic  
+```
 
 ---
 
-### ARP / ICMP
-
+# ARP / ICMP
+```console
 `arp.opcode == 1`  
 ARP requests  
 
@@ -137,17 +145,17 @@ ICMP echo request (ping)
 
 `icmp.type == 0 and icmp.code == 0`  
 ICMP echo reply  
-
+```
 ---
 
-### Directional Filtering
-
+# Directional Filtering
+```console
 `ip.src == x.x.x.x`  
 Filter by source IP  
 
 `ip.dst == x.x.x.x`  
 Filter by destination IP  
-
+```
 ---
 
 ### Notes
@@ -156,17 +164,18 @@ Filter by destination IP
 - Follow TCP streams to reconstruct sessions  
 - Large packet sizes may indicate data exfiltration
 
-## Burp Suite
-# Web application security testing platform / interception proxy
-# Used for: Proxying | Request Modification | Repeater Testing | Intruder Attacks | Manual Web App Analysis
+# Burp Suite
+Web application security testing platform / interception proxy
 
-## Workflow
-# Configure browser to use Burp proxy
-# Intercept requests
-# Send interesting requests to Repeater / Intruder
-# Analyze responses
-# Identify vulnerabilities manually
+Used for: Proxying | Request Modification | Repeater Testing | Intruder Attacks | Manual Web App Analysis
 
+### Workflow
+Configure browser to use Burp proxy
+Intercept requests
+Send interesting requests to Repeater / Intruder
+Analyze responses
+Identify vulnerabilities manually
+```console
 burpsuite                                                    - Launch Burp Suite
 # Proxy -> Intercept on                                      - Intercept HTTP/S traffic in browser
 # Proxy -> HTTP history                                      - Review captured requests and responses
@@ -178,23 +187,25 @@ burpsuite                                                    - Launch Burp Suite
 # Intruder -> Positions / Payloads / Start attack            - Launch targeted fuzzing attack
 # Comparer                                                   - Compare two requests or responses
 # Decoder                                                    - Encode / decode / hash data
+```
 
-# Notes
+### Notes
 # Burp Suite Community is strong for manual testing but lacks automated Scanner
 # HTTPS interception requires Burp CA certificate installed in browser
 # Best paired with ffuf, katana, and mitmproxy for web testing
 
-## Gobuster
-# Fast content discovery / brute force tool
-# Used for: Directory Discovery | DNS Subdomain Bruteforce | Virtual Host Discovery
+# Gobuster
+Fast content discovery / brute force tool
+Used for: Directory Discovery | DNS Subdomain Bruteforce | Virtual Host Discovery
 
-## Workflow
-# Choose mode (dir / dns / vhost)
-# Select target and wordlist
-# Filter useful responses
-# Expand findings manually
-# Export results
+### Workflow
+Choose mode (dir / dns / vhost)
+Select target and wordlist
+Filter useful responses
+Expand findings manually
+Export results
 
+```console
 gobuster dir -u https://target.com -w wordlist.txt                     - Directory / file discovery
 gobuster dir -u https://target.com -w wordlist.txt -x php,txt,html     - Search with file extensions
 gobuster dir -u https://target.com -w wordlist.txt -k                  - Skip TLS certificate verification
@@ -203,22 +214,24 @@ gobuster dir -u https://target.com -w wordlist.txt -b 404              - Exclude
 gobuster dir -u https://target.com -w wordlist.txt -o gobuster.txt     - Save output to file
 gobuster dns -d target.com -w subdomains.txt                           - DNS subdomain brute force
 gobuster vhost -u https://target.com -w subdomains.txt                 - Virtual host brute force
+```
 
-# Notes
-# Great for fast content discovery when ffuf is overkill
-# Use a clean wordlist and pay attention to wildcard responses
+###Notes
+Great for fast content discovery when ffuf is overkill
+Use a clean wordlist and pay attention to wildcard responses
 
-## Dirsearch
-# Web content discovery tool
-# Used for: Hidden Directories | Files | Backup Files | Extension-Based Discovery
+# Dirsearch
+Web content discovery tool
+Used for: Hidden Directories | Files | Backup Files | Extension-Based Discovery
 
-## Workflow
-# Select target
-# Pick wordlist / extensions
-# Filter noise
-# Review interesting hits
-# Export results
+### Workflow
+Select target
+Pick wordlist / extensions
+Filter noise
+Review interesting hits
+Export results
 
+```console
 dirsearch -u https://target.com                                        - Basic directory scan
 dirsearch -u https://target.com -e php,txt,html                        - Scan with file extensions
 dirsearch -u https://target.com -w wordlist.txt                        - Use custom wordlist
@@ -227,6 +240,7 @@ dirsearch -u https://target.com --random-agent                         - Use ran
 dirsearch -u https://target.com -o dirsearch.txt                       - Save results to file
 dirsearch -l targets.txt                                               - Scan multiple targets from file
 dirsearch -u https://target.com --recursive                            - Recursive directory scanning
+```
 
 # Notes
 # Similar role to Gobuster / ffuf
