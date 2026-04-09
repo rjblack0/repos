@@ -136,11 +136,11 @@ ip.dst == x.x.x.x      - Filter by destination IP
 # Burp Suite
 Web application security testing platform / interception proxy
 Used for:
-1. Proxying 
-2. Request Modification 
-3. Repeater Testing 
-4. Intruder Attacks 
-5. Manual Web App Analysis
+- Proxying 
+- Request Modification 
+- Repeater Testing 
+- Intruder Attacks 
+- Manual Web App Analysis
 
 ### Workflow
 1. Configure browser to use Burp proxy
