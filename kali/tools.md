@@ -57,8 +57,9 @@ ip.dst == x.x.x.x                                               - Shows traffic 
 ```
 ---
 
-### HTTP Analysis
+# HTTP Analysis
 
+```console
 `http.response.code == 200`  
 Successful HTTP responses  
 
@@ -73,6 +74,7 @@ HTTP requests containing specific string
 
 `http.cookie contains "sessionid"`  
 Packets containing specific cookie  
+```
 
 ---
 
