@@ -6,7 +6,6 @@ Network protocol analyzer for: Traffic | Packets | Protocols | Forensics
 
 ## Workflow
 1. Capture traffic (interface or file)
-
 2. Apply display filters
 
 3. Identify protocols and anomalies
@@ -16,56 +15,56 @@ Network protocol analyzer for: Traffic | Packets | Protocols | Forensics
 5. Extract useful data (credentials, DNS, indicators)
 
 ```console
-ip.addr == x.x.x.x                                              - Shows all traffic to/from a specific IP address for host-level investigation
-ip.addr >= x.x.x.x and ip.addr <= y.y.y.y                       - Filters traffic within an IP range to analyze subnet activity
+ip.addr == x.x.x.x                          - Shows all traffic to/from a specific IP address for host-level investigation
+ip.addr >= x.x.x.x and ip.addr <= y.y.y.y   - Filters traffic within an IP range to analyze subnet activity
 
-tcp.port == 80 or udp.port == 53                                - Displays traffic on specific ports to isolate services like HTTP or DNS
+tcp.port == 80 or udp.port == 53            - Displays traffic on specific ports to isolate services like HTTP or DNS
 
-frame.len > 100                                                 - Filters out very small packets to reduce noise and focus on meaningful traffic
-frame.len > 1000                                                - Highlights large packets which may indicate file transfers or data exfiltration
+frame.len > 100                             - Filters out very small packets to reduce noise and focus on meaningful traffic
+frame.len > 1000                            - Highlights large packets which may indicate file transfers or data exfiltration
 
 eth.src == xx:xx:xx:xx:xx:xx or eth.dst == xx:xx:xx:xx:xx:xx    - Filters traffic by MAC address to track specific devices on a network
 
-http.response.code == 200                                       - Shows successful HTTP responses to verify normal web activity
-http.response.code == 404                                       - Identifies missing resources which may indicate scanning or broken paths
-http.request.method == "GET"                                    - Displays HTTP GET requests to observe normal browsing or automated requests
-http.request.uri contains "example.com"                         - Filters requests containing specific strings to track targeted activity
-http.cookie contains "sessionid"                                - Identifies session cookies which may be useful for session analysis or hijacking detection
+http.response.code == 200                   - Shows successful HTTP responses to verify normal web activity
+http.response.code == 404                   - Identifies missing resources which may indicate scanning or broken paths
+http.request.method == "GET"                - Displays HTTP GET requests to observe normal browsing or automated requests
+http.request.uri contains "example.com"     - Filters requests containing specific strings to track targeted activity
+http.cookie contains "sessionid"            - Identifies session cookies which may be useful for session analysis or hijacking detection
 
-tcp.flags.syn == 1                                              - Shows SYN packets to identify connection attempts and potential scanning
-tcp.stream eq 0                                                 - Reconstructs a full TCP conversation for deep inspection of a session
-tcp.analysis.retransmission                                     - Detects retransmissions which may indicate packet loss or unstable connections
+tcp.flags.syn == 1                          - Shows SYN packets to identify connection attempts and potential scanning
+tcp.stream eq 0                             - Reconstructs a full TCP conversation for deep inspection of a session
+tcp.analysis.retransmission                 - Detects retransmissions which may indicate packet loss or unstable connections
 
-dns.qry.name contains "example.com"                             - Displays DNS queries for a domain to track resolution activity
-dns.flags.response == 1                                         - Shows DNS responses to analyze returned IPs
-dns && !dns.flags.response                                      - Filters only DNS requests to see what domains are being queried
+dns.qry.name contains "example.com"         - Displays DNS queries for a domain to track resolution activity
+dns.flags.response == 1                     - Shows DNS responses to analyze returned IPs
+dns && !dns.flags.response                  - Filters only DNS requests to see what domains are being queried
 
-tls.handshake.type == 1                                         - Identifies TLS ClientHello packets to analyze encrypted session initiation
+tls.handshake.type == 1                     - Identifies TLS ClientHello packets to analyze encrypted session initiation
 
-arp.opcode == 1                                                 - Shows ARP requests to identify devices discovering others on the network
+arp.opcode == 1                             - Shows ARP requests to identify devices discovering others on the network
 
-icmp.type == 8 and icmp.code == 0                               - Displays ICMP echo requests (ping) to identify probing activity
-icmp.type == 0 and icmp.code == 0                               - Displays ICMP echo replies to confirm responses from hosts
+icmp.type == 8 and icmp.code == 0           - Displays ICMP echo requests (ping) to identify probing activity
+icmp.type == 0 and icmp.code == 0           - Displays ICMP echo replies to confirm responses from hosts
 
-tcp                                                             - Filters only TCP traffic to focus on connection-based communication
-udp                                                             - Filters only UDP traffic to analyze connectionless protocols
-dns                                                             - Filters only DNS traffic for domain resolution analysis
-http                                                            - Filters only HTTP traffic for web activity inspection
+tcp                                         - Filters only TCP traffic to focus on connection-based communication
+udp                                         - Filters only UDP traffic to analyze connectionless protocols
+dns                                         - Filters only DNS traffic for domain resolution analysis
+http                                        - Filters only HTTP traffic for web activity inspection
 
-ip.src == x.x.x.x                                               - Shows traffic originating from a specific source host
-ip.dst == x.x.x.x                                               - Shows traffic destined for a specific host
+ip.src == x.x.x.x                           - Shows traffic originating from a specific source host
+ip.dst == x.x.x.x                           - Shows traffic destined for a specific host
 ```
 ---
 
 # HTTP Analysis
 
 ```console
-http.response.code == 200                   - Successful HTTP responses  
-http.response.code == 404                   - HTTP errors (missing resources)  
-http.request.method == "GET"                - HTTP GET requests  
+http.response.code == 200               - Successful HTTP responses  
+http.response.code == 404               - HTTP errors (missing resources)  
+http.request.method == "GET"            - HTTP GET requests  
 
-http.request.uri contains "example.com"     - HTTP requests containing specific string  
-http.cookie contains "sessionid"            - Packets containing specific cookie  
+http.request.uri contains "example.com" - HTTP requests containing specific string  
+http.cookie contains "sessionid"        - Packets containing specific cookie  
 ```
 ---
 
