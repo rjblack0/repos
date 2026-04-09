@@ -3,45 +3,143 @@
 ###### ###### ###### ###### ######
 
 ## Wireshark
-# Network protocol analyzer / packet inspection tool
-# Used for: Traffic Analysis | Network Troubleshooting | Threat Detection | Forensics
+**Network protocol analyzer / packet inspection tool**
 
-## Workflow
-# Capture traffic (interface or file)
-# Apply display filters
-# Identify protocols / anomalies
-# Follow streams (TCP/HTTP)
-# Extract useful data (credentials, DNS, indicators)
+**Used for:**
+- Traffic Analysis  
+- Network Troubleshooting  
+- Threat Detection  
+- Forensics  
 
-ip.addr == x.x.x.x                                              - Filter packets to/from a specific IP address
-ip.addr >= x.x.x.x and ip.addr <= y.y.y.y                       - Filter packets within an IP range
-tcp.port == 80 or udp.port == 53                                - Filter traffic on specific ports
-frame.len > 100                                                 - Filter packets larger than 100 bytes
-frame.len > 1000                                                - Filter large packets (possible exfiltration)
-eth.src == xx:xx:xx:xx:xx:xx or eth.dst == xx:xx:xx:xx:xx:xx    - Filter by MAC address
-http.response.code == 200                                       - Filter successful HTTP responses
-http.response.code == 404                                       - Filter HTTP errors (missing resources)
-http.request.method == "GET"                                    - Filter HTTP GET requests
-http.request.uri contains "example.com"                         - Filter HTTP requests containing specific string
-http.cookie contains "sessionid"                                - Filter packets with specific cookie
-tcp.flags.syn == 1                                              - Filter SYN packets (connection attempts)
-dns.qry.name contains "example.com"                             - Filter DNS queries for domain
-dns.flags.response == 1                                         - Show DNS response packets
-tls.handshake.type == 1                                         - TLS ClientHello (initial handshake)
-arp.opcode == 1                                                 - ARP requests
-icmp.type == 8 and icmp.code == 0                               - ICMP echo request (ping)
-icmp.type == 0 and icmp.code == 0                               - ICMP echo reply
-tcp                                                             - Show only TCP traffic
-udp                                                             - Show only UDP traffic
-dns                                                             - Show only DNS traffic
-http                                                            - Show only HTTP traffic
-tcp.stream eq 0                                                 - Follow specific TCP stream  
-http                                                            - Show only HTTP traffic  
-tcp.analysis.retransmission                                     - Detect retransmissions (network issues)  
-dns && !dns.flags.response                                      - DNS requests only  
-dns && dns.flags.response == 1                                  - DNS responses only  
-ip.src == x.x.x.x                                               - Filter by source IP  
-ip.dst == x.x.x.x                                               - Filter by destination IP  
+---
+
+### Workflow
+1. Capture traffic (interface or file)  
+2. Apply display filters  
+3. Identify protocols and anomalies  
+4. Follow streams (TCP/HTTP)  
+5. Extract useful data (credentials, DNS, indicators)  
+
+---
+
+### Common Filters
+
+`ip.addr == x.x.x.x`  
+Filter packets to/from a specific IP address  
+
+`ip.addr >= x.x.x.x and ip.addr <= y.y.y.y`  
+Filter packets within an IP range  
+
+`tcp.port == 80 or udp.port == 53`  
+Filter traffic on specific ports  
+
+`frame.len > 100`  
+Filter packets larger than 100 bytes  
+
+`frame.len > 1000`  
+Filter large packets (possible exfiltration)  
+
+`eth.src == xx:xx:xx:xx:xx:xx or eth.dst == xx:xx:xx:xx:xx:xx`  
+Filter by MAC address  
+
+---
+
+### HTTP Analysis
+
+`http.response.code == 200`  
+Successful HTTP responses  
+
+`http.response.code == 404`  
+HTTP errors (missing resources)  
+
+`http.request.method == "GET"`  
+HTTP GET requests  
+
+`http.request.uri contains "example.com"`  
+HTTP requests containing specific string  
+
+`http.cookie contains "sessionid"`  
+Packets containing specific cookie  
+
+---
+
+### TCP / Connection Analysis
+
+`tcp.flags.syn == 1`  
+SYN packets (connection attempts)  
+
+`tcp.stream eq 0`  
+Follow specific TCP stream  
+
+`tcp.analysis.retransmission`  
+Detect retransmissions (network issues)  
+
+---
+
+### DNS Analysis
+
+`dns.qry.name contains "example.com"`  
+DNS queries for domain  
+
+`dns.flags.response == 1`  
+DNS responses  
+
+`dns && !dns.flags.response`  
+DNS requests only  
+
+---
+
+### TLS / Encryption
+
+`tls.handshake.type == 1`  
+TLS ClientHello (initial handshake)  
+
+---
+
+### Network Protocol Filters
+
+`tcp`  
+Show only TCP traffic  
+
+`udp`  
+Show only UDP traffic  
+
+`dns`  
+Show only DNS traffic  
+
+`http`  
+Show only HTTP traffic  
+
+---
+
+### ARP / ICMP
+
+`arp.opcode == 1`  
+ARP requests  
+
+`icmp.type == 8 and icmp.code == 0`  
+ICMP echo request (ping)  
+
+`icmp.type == 0 and icmp.code == 0`  
+ICMP echo reply  
+
+---
+
+### Directional Filtering
+
+`ip.src == x.x.x.x`  
+Filter by source IP  
+
+`ip.dst == x.x.x.x`  
+Filter by destination IP  
+
+---
+
+### Notes
+- Use filters incrementally to narrow results  
+- Combine filters with `&&` and `||` for precision  
+- Follow TCP streams to reconstruct sessions  
+- Large packet sizes may indicate data exfiltration
 
 ## Burp Suite
 # Web application security testing platform / interception proxy

@@ -1,3 +1,12 @@
+## Tool Mapping:
+
+Recon / Intel:     Shodan, Censys, theHarvester
+Traffic Analysis:  Wireshark, tcpdump
+Scanning:          Nmap
+Web Validation:    httpx
+AD Analysis:       BloodHound
+Cracking Signals:  Hydra (detection of attacks, not use)
+
 ## SOC WORKFLOW
 # Goal: Detect, investigate, and respond to suspicious activity
 # Focus: Alerts → Validation → Evidence → Containment → Documentation
@@ -115,3 +124,42 @@ Multiple failed logins
 Logins from unusual locations
 New admin accounts
 
+## 7. IOC Enrichment
+
+# Tools:
+# Shodan
+# Censys
+# VirusTotal (external)
+# Threat intel feeds
+
+# Actions:
+# Enrich IPs, domains, hashes
+# Identify known malicious indicators
+
+## Goal:
+
+Turn raw data → intelligence
+
+## 8. Containment
+
+# Actions:
+# Isolate affected host
+# Block IP/domain
+# Disable compromised accounts
+# Kill malicious processes
+
+## 9. ERADICATION & RECOVERY
+
+# Actions:
+# Remove malware
+# Patch vulnerabilities
+# Reset credentials
+# Restore systems
+
+## 10. Documentation
+
+# Actions:
+# Record timeline
+# List IOCs
+# Document actions taken
+# Recommend improvements
