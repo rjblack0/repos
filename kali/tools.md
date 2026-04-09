@@ -60,33 +60,25 @@ ip.dst == x.x.x.x                                               - Shows traffic 
 # HTTP Analysis
 
 ```console
-http.response.code == 200`  
-Successful HTTP responses  
+http.response.code == 200                   - Successful HTTP responses  
+http.response.code == 404                   - HTTP errors (missing resources)  
+http.request.method == "GET"                - HTTP GET requests  
 
-http.response.code == 404`  
-HTTP errors (missing resources)  
-
-http.request.method == "GET"`  
-HTTP GET requests  
-
-http.request.uri contains "example.com"`  
-HTTP requests containing specific string  
-
-http.cookie contains "sessionid"`  
-Packets containing specific cookie  
+http.request.uri contains "example.com"     - HTTP requests containing specific string  
+http.cookie contains "sessionid"            - Packets containing specific cookie  
 ```
 ---
 
 # TCP / Connection Analysis
 
 ```console
-`tcp.flags.syn == 1`  
+tcp.flags.syn == 1`  
 SYN packets (connection attempts)  
 
-`tcp.stream eq 0`  
+tcp.stream eq 0`  
 Follow specific TCP stream  
 
-`tcp.analysis.retransmission`  
+tcp.analysis.retransmission`  
 Detect retransmissions (network issues)  
 ```
 
@@ -95,13 +87,13 @@ Detect retransmissions (network issues)
 # DNS Analysis
 
 ```console
-`dns.qry.name contains "example.com"`  
+dns.qry.name contains "example.com"`  
 DNS queries for domain  
 
-`dns.flags.response == 1`  
+dns.flags.response == 1`  
 DNS responses  
 
-`dns && !dns.flags.response`  
+dns && !dns.flags.response`  
 DNS requests only  
 ```
 
@@ -110,7 +102,7 @@ DNS requests only
 # TLS / Encryption
 
 ```console
-`tls.handshake.type == 1`  
+tls.handshake.type == 1`  
 TLS ClientHello (initial handshake)  
 ```
 
