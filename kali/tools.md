@@ -1,44 +1,59 @@
 #### COMMAND LISTS
 
-## Wireshark
-**Network protocol analyzer / packet inspection tool**
-
-**Used for:**
-- Traffic Analysis  
-- Network Troubleshooting  
-- Threat Detection  
-- Forensics  
-
 ---
+# WIRESHARK
+Network protocol analyzer for: Traffic | Packets | Protocols | Forensics
 
-### Workflow
-1. Capture traffic (interface or file)  
-2. Apply display filters  
-3. Identify protocols and anomalies  
-4. Follow streams (TCP/HTTP)  
-5. Extract useful data (credentials, DNS, indicators)  
+## Workflow
+1. Capture traffic (interface or file)
 
----
+2. Apply display filters
 
-### Common Filters
+3. Identify protocols and anomalies
 
-`ip.addr == x.x.x.x`  
-Filter packets to/from a specific IP address  
+4. Follow streams (TCP/HTTP)
 
-`ip.addr >= x.x.x.x and ip.addr <= y.y.y.y`  
-Filter packets within an IP range  
+5. Extract useful data (credentials, DNS, indicators)
 
-`tcp.port == 80 or udp.port == 53`  
-Filter traffic on specific ports  
+```console
+ip.addr == x.x.x.x                                              - Shows all traffic to/from a specific IP address for host-level investigation
+ip.addr >= x.x.x.x and ip.addr <= y.y.y.y                       - Filters traffic within an IP range to analyze subnet activity
 
-`frame.len > 100`  
-Filter packets larger than 100 bytes  
+tcp.port == 80 or udp.port == 53                                - Displays traffic on specific ports to isolate services like HTTP or DNS
 
-`frame.len > 1000`  
-Filter large packets (possible exfiltration)  
+frame.len > 100                                                 - Filters out very small packets to reduce noise and focus on meaningful traffic
+frame.len > 1000                                                - Highlights large packets which may indicate file transfers or data exfiltration
 
-`eth.src == xx:xx:xx:xx:xx:xx or eth.dst == xx:xx:xx:xx:xx:xx`  
-Filter by MAC address  
+eth.src == xx:xx:xx:xx:xx:xx or eth.dst == xx:xx:xx:xx:xx:xx    - Filters traffic by MAC address to track specific devices on a network
+
+http.response.code == 200                                       - Shows successful HTTP responses to verify normal web activity
+http.response.code == 404                                       - Identifies missing resources which may indicate scanning or broken paths
+http.request.method == "GET"                                    - Displays HTTP GET requests to observe normal browsing or automated requests
+http.request.uri contains "example.com"                         - Filters requests containing specific strings to track targeted activity
+http.cookie contains "sessionid"                                - Identifies session cookies which may be useful for session analysis or hijacking detection
+
+tcp.flags.syn == 1                                              - Shows SYN packets to identify connection attempts and potential scanning
+tcp.stream eq 0                                                 - Reconstructs a full TCP conversation for deep inspection of a session
+tcp.analysis.retransmission                                     - Detects retransmissions which may indicate packet loss or unstable connections
+
+dns.qry.name contains "example.com"                             - Displays DNS queries for a domain to track resolution activity
+dns.flags.response == 1                                         - Shows DNS responses to analyze returned IPs
+dns && !dns.flags.response                                      - Filters only DNS requests to see what domains are being queried
+
+tls.handshake.type == 1                                         - Identifies TLS ClientHello packets to analyze encrypted session initiation
+
+arp.opcode == 1                                                 - Shows ARP requests to identify devices discovering others on the network
+
+icmp.type == 8 and icmp.code == 0                               - Displays ICMP echo requests (ping) to identify probing activity
+icmp.type == 0 and icmp.code == 0                               - Displays ICMP echo replies to confirm responses from hosts
+
+tcp                                                             - Filters only TCP traffic to focus on connection-based communication
+udp                                                             - Filters only UDP traffic to analyze connectionless protocols
+dns                                                             - Filters only DNS traffic for domain resolution analysis
+http                                                            - Filters only HTTP traffic for web activity inspection
+
+ip.src == x.x.x.x                                               - Shows traffic originating from a specific source host
+ip.dst == x.x.x.x                                               - Shows traffic destined for a specific host
 
 ---
 
