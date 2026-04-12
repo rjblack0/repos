@@ -151,16 +151,16 @@ Used for:
 
 ```console
 burpsuite                                                    - Launch Burp Suite
-# Proxy -> Intercept on                                      - Intercept HTTP/S traffic in browser
-# Proxy -> HTTP history                                      - Review captured requests and responses
-# Right click request -> Send to Repeater                    - Send request to Repeater for manual testing
-# Right click request -> Send to Intruder                    - Send request to Intruder for fuzzing / brute force
-# Repeater -> Modify and Send                                - Manually test parameters and headers
-# Target -> Site map                                         - View discovered application structure
-# Scanner (Pro)                                              - Run automated vulnerability scan (Professional only)
-# Intruder -> Positions / Payloads / Start attack            - Launch targeted fuzzing attack
-# Comparer                                                   - Compare two requests or responses
-# Decoder                                                    - Encode / decode / hash data
+Proxy -> Intercept on                                      - Intercept HTTP/S traffic in browser
+Proxy -> HTTP history                                      - Review captured requests and responses
+Right click request -> Send to Repeater                    - Send request to Repeater for manual testing
+Right click request -> Send to Intruder                    - Send request to Intruder for fuzzing / brute force
+Repeater -> Modify and Send                                - Manually test parameters and headers
+Target -> Site map                                         - View discovered application structure
+Scanner (Pro)                                              - Run automated vulnerability scan (Professional only)
+Intruder -> Positions / Payloads / Start attack            - Launch targeted fuzzing attack
+Comparer                                                   - Compare two requests or responses
+Decoder                                                    - Encode / decode / hash data
 ```
 
 ### Notes
@@ -170,6 +170,7 @@ Best paired with ffuf, katana, and mitmproxy for web testing
 
 # Gobuster
 Fast content discovery / brute force tool
+
 Used for: Directory Discovery | DNS Subdomain Bruteforce | Virtual Host Discovery
 
 ### Workflow
@@ -199,11 +200,11 @@ Web content discovery tool
 Used for: Hidden Directories | Files | Backup Files | Extension-Based Discovery
 
 ### Workflow
-Select target
-Pick wordlist / extensions
-Filter noise
-Review interesting hits
-Export results
+1. Select target
+2. Pick wordlist / extensions
+3. Filter noise
+4. Review interesting hits
+5. Export results
 
 ```console
 dirsearch -u https://target.com                                        - Basic directory scan
@@ -216,21 +217,23 @@ dirsearch -l targets.txt                                               - Scan mu
 dirsearch -u https://target.com --recursive                            - Recursive directory scanning
 ```
 
-# Notes
-# Similar role to Gobuster / ffuf
-# Useful when you want recursive discovery with clean output
+### Notes
+Similar role to Gobuster / ffuf
 
-## tcpdump
-# Command-line packet capture and network analysis tool
-# Used for: Packet Capture | Network Troubleshooting | Threat Hunting | Quick CLI Forensics
+Useful when you want recursive discovery with clean output
 
-## Workflow
-# Identify interface
-# Capture traffic
-# Narrow with host / port / protocol filters
-# Save to PCAP if needed
-# Review in Wireshark if deeper analysis is needed
+# tcpdump
+Command-line packet capture and network analysis tool
 
+Used for: Packet Capture | Network Troubleshooting | Threat Hunting | Quick CLI Forensics
+
+### Workflow
+1. Identify interface
+2. Capture traffic
+3. Narrow with host / port / protocol filters
+4. Save to PCAP if needed
+5. Review in Wireshark if deeper analysis is needed
+```console
 tcpdump -D                                                              - List available network interfaces
 tcpdump -i eth0                                                         - Capture traffic on interface
 tcpdump -i eth0 host 192.168.1.10                                       - Capture traffic to/from a specific host
@@ -245,22 +248,24 @@ tcpdump -i eth0 -c 100                                                  - Captur
 tcpdump -i eth0 -w capture.pcap                                         - Write capture to PCAP file
 tcpdump -r capture.pcap                                                 - Read packets from saved PCAP file
 tcpdump -i eth0 'port 53 or port 80 or port 443'                        - Capture DNS / HTTP / HTTPS traffic
+```
 
 # Notes
-# Use -nn often to keep output fast and readable
-# tcpdump is ideal for quick CLI capture; Wireshark is better for deep analysis
+Use -nn often to keep output fast and readable
+
+tcpdump is ideal for quick CLI capture; Wireshark is better for deep analysis
 
 ## Impacket
 # Collection of Python tools for interacting with Windows / SMB / Active Directory
 # Used for: Remote Execution | Credential Attacks | SMB Enumeration | Kerberos Abuse | Lateral Movement
 
-## Workflow
-# Identify Windows / AD target
-# Choose correct Impacket script
-# Provide creds / hashes / tickets
-# Execute action
-# Validate results and pivot carefully
-
+### Workflow
+1. Identify Windows / AD target
+2.Choose correct Impacket script
+3.Provide creds / hashes / tickets
+4. Execute action
+5. Validate results and pivot carefully
+```console
 impacket-psexec DOMAIN/user:password@192.168.1.10                       - Execute commands via PsExec-style service creation
 impacket-wmiexec DOMAIN/user:password@192.168.1.10                      - Execute commands via WMI
 impacket-smbexec DOMAIN/user:password@192.168.1.10                      - Execute commands via SMB service method
@@ -273,23 +278,25 @@ impacket-rpcdump @192.168.1.10                                          - Dump R
 impacket-mssqlclient DOMAIN/user:password@192.168.1.10                  - Connect to MSSQL server
 impacket-atexec DOMAIN/user:password@192.168.1.10                       - Execute commands through Task Scheduler
 impacket-psexec -hashes LMHASH:NTHASH DOMAIN/user@192.168.1.10          - Pass-the-hash execution
+```
+### Notes
+Exact script names vary by install method; some environments use psexec.py, wmiexec.py, etc.
 
-# Notes
-# Exact script names vary by install method; some environments use psexec.py, wmiexec.py, etc.
-# Many Impacket actions require valid credentials, hashes, or elevated privileges
-# One of the most important toolsets for Windows / AD work
+Many Impacket actions require valid credentials, hashes, or elevated privileges
 
-## BloodHound
+One of the most important toolsets for Windows / AD work
+
+# BloodHound
 # Active Directory attack path mapping and privilege analysis tool
 # Used for: AD Enumeration | Attack Path Analysis | Privilege Escalation Mapping | Misconfiguration Discovery
 
-## Workflow
-# Collect AD data from domain
-# Import data into BloodHound
-# Analyze attack paths and privileges
-# Identify shortest path to high-value targets
-# Validate findings manually
-
+### Workflow
+1. Collect AD data from domain
+2. Import data into BloodHound
+3. Analyze attack paths and privileges
+4. Identify shortest path to high-value targets
+5. Validate findings manually
+```console
 bloodhound                                                           - Launch BloodHound GUI
 bloodhound-python -d domain.local -u user -p password -ns 192.168.1.10 -c All - Collect AD data with bloodhound-python
 bloodhound-python -d domain.local -u user -p password -dc dc.domain.local -c All - Collect from specific domain controller
@@ -301,23 +308,25 @@ neo4j console                                                         - Start Ne
 # Upload generated ZIP / JSON into BloodHound GUI                      - Import collected data for graph analysis
 # Search for "Shortest Paths to Domain Admins"                         - Built-in analysis query
 # Search for "Find Principals with DCSync Rights"                      - Built-in privilege query
+```
+### Notes
+BloodHound itself is the graph analysis tool; bloodhound-python is a common Linux collector
 
-# Notes
-# BloodHound itself is the graph analysis tool; bloodhound-python is a common Linux collector
-# SharpHound is the common Windows collector
-# Excellent for understanding privilege paths in AD, but findings still need manual validation
+SharpHound is the common Windows collector
+Excellent for understanding privilege paths in AD, but findings still need manual validation
 
 
-## Nikto
-# Web server vulnerability scanner
-# Checks for: Misconfigurations | Dangerous Files | Outdated Software | Known Vulnerabilities
+# Nikto
+Web server vulnerability scanner
 
-## Workflow
-# Identify target (NMAP)
-# Run baseline scan
-# Narrow Scope (ports, paths, tuning)
-# Export, Validate
+Checks for: Misconfigurations | Dangerous Files | Outdated Software | Known Vulnerabilities
 
+### Workflow
+1. Identify target (NMAP)
+2. Run baseline scan
+3. Narrow Scope (ports, paths, tuning)
+4. Export, Validate
+```console
 nikto -h http://192.168.1.10                - Perform a basic scan against the target web server
 nikto -h http://example.com                 - Scan a website for common vulnerabilities
 nikto -h http://example.com -ask no         - Prevents prompts (important for automation)
@@ -334,20 +343,24 @@ nikto -h http://example.com -timeout 10     - Set request timeout
 nikto -h http://example.com -C all          - Check for interesting CGIs
 nikto -h http://example.com -D a            - Check for all server software versions
 nikto -h http://example.com -root /cms/     - Set the root path for testing
+```
 
-## Netexec
-# Replaces CrackMapExec.
-# SMB / LDAP / WinRM enumeration
-# Credential spraying
-# Lateral Movement
+# Netexec
+Replaces CrackMapExec.
 
-## Workflow
-# Identify Host (NMAP)
-# Check SMB/LDAP exposure
-# Test Credentials
-# Enumerate users/shares
-# Attempt privilege escalation
+SMB / LDAP / WinRM enumeration
 
+Credential spraying
+
+Lateral Movement
+
+### Workflow
+1. Identify Host (NMAP)
+2. Check SMB/LDAP exposure
+3. Test Credentials
+4. Enumerate users/shares
+5. Attempt privilege escalation
+```console
 nxc smb 192.168.1.10                                - Enumerate SMB information from the target
 nxc smb 192.168.1.10 -u user -p pass -d DOMAIN      - 
 nxc smb 192.168.1.10 -u admin -p password           - Authenticate to SMB using credentials
@@ -364,19 +377,22 @@ nxc ldap 192.168.1.10 -u admin -p password          - Query LDAP information
 nxc smb 192.168.1.10 -- local-auth                  - Authenticate using local credentials
 nxc smb 192.168.1.10 -- kerberoast                  - Roast Kerberos SPNs (service principal names)
 nxc smb 192.168.1.10 -- sam-dump                    - Dump the SAM (Security Account Manager) database (**REQUIRES ADMIN PRIVILEGES)
+```
 
-## Metasploit
-# Exploitation
-# Payload delivery
-# Post-exploitation
+# Metasploit
+Exploitation
 
-## Workflow
-# Find exploit (search)
-# Configure target
-# Set payload
-# Run exploit
-# Manage sessions
+Payload delivery
 
+Post-exploitation
+
+### Workflow
+1. Find exploit (search)
+2. Configure target
+3. Set payload
+4. Run exploit
+5. Manage sessions
+```console
 msfconsole                                      - Launch the Metasploit Framework console
 search exploit windows                          - Search for Windows exploits in the database
 use exploit/windows/smb/ms17_010_eternalblue    - Select an exploit module
@@ -393,16 +409,16 @@ background                                      - Send the current session to ba
 search type:auxiliary scanner                   - Search for scanning modules
 use auxiliary/scanner/portscan/tcp              - Use a TCP port scanning module
 back                                            - Exit the current module or context
+```
 
-## Hydra
-# Password brute-force tool for network services.
-
-## Workflow
-# Identify login service (Nmap)
-# Gather usernames/passwords
-# Run Hydra
-# Validate hits
-
+# Hydra
+Password brute-force tool for network services.
+### Workflow
+1. Identify login service (Nmap)
+2. Gather usernames/passwords
+3. Run Hydra
+4. Validate hits
+```console
 hydra -I admin -P passwords.txt ssh://192.168.1.1               - Brute-force SSH login using a password list
 hydra -l users.txt -P passwords.txt ftp://192.168.1.1           - Attempt FTP login using username and password lists
 hydra -I admin -P passwords.txt http-get://192.168.1.1/login    - Test HTTP login authentication
@@ -419,17 +435,17 @@ hydra -I admin -P passwords.txt imap://192.168.1.1              - Attempt IMAP l
 hydra -I admin -P passwords.txt svn://192.168.1.1               - Brute-force SVN repository authentication
 hydra -I admin -P passwords.txt -t 4 ssh://192.168.1.1          - Run Hydra with multiple parallel tasks
 hydra -I admin -s ##                                            - Specify port when needed
+```
 
-## SQLMap
-# Automates SQL Injection explotation
-
-## Workflow
-# Identify injectable parameter
-# Run basic scan
-# Increase level/risk
-# Enumerate DB
-# Dump data
-
+# SQLMap
+Automates SQL Injection explotation
+### Workflow
+1. Identify injectable parameter
+2. Run basic scan
+3. Increase level/risk
+4. Enumerate DB
+5. Dump data
+```console
 sqlmap -u "http://target.com/page?id=1"                     - Test the URL for SQL injection vulnerabilities
 sqlmap -u "URL" -- dbs                                      - Enumerate available databases
 sqlmap -u "URL" -D database_name -- tables                  - List tables inside a database
@@ -446,16 +462,14 @@ sqlmap -u "URL" -- threads=10                               - Increase the numbe
 sqlmap -u "URL" -- forms                                    - Automatically test a web form for SQL injection
 sqlmap -r request.txt                                       - Test a custom HTTP request for SQL injection
 sqlmap -u "URL" --cookie="PHPSESSID=xyz"                    - Required for authenticated testing
----
+```
+
 # NMAP
 Network scanner for: Hosts | Ports | Services | OS detection
-## Workflow
+### Workflow
 1. Discover hosts 
-
 2. Scan ports 
-
 3. Identify services 
-
 4. Run scripts
 
 ```console
@@ -476,16 +490,15 @@ nmap -oN output.txt 192.168.1.1         - Saves scan results in human-readable f
 nmap -sS -sV -sC -O -oA full_scan 192.168.1.1   - Full recon scan: stealth scan + service versions + scripts + OS + all output formats
 ```
 
-## Nuclei
-# Fast vulnerability scanner using templates (CVE-based).
-
-## Workflow
-# Get targets
-# Update templates
-# Run scan
-# Filter severity
-# Export results
-
+# Nuclei
+Fast vulnerability scanner using templates (CVE-based).
+### Workflow
+1. Get targets
+2. Update templates
+3. Run scan
+4. Filter severity
+5. Export results
+```console
 nuclei -u https://example.com                           - Scan a single target for vulnerabilities
 nuclei -1 targets.txt                                   - Scan multiple targets from a list
 nuclei -u https://example.com -t templates/             - Run scan using specific templates
@@ -501,16 +514,16 @@ nuclei -u https://example.com -rate-limit 50            - Limit requests per sec
 nuclei -- list-templates                                - List all available templates
 nuclei -- severity info                                 - Scan for informational vulnerabilities
 nuclei -w templates/custom.yaml                         - Run a scan with a custom template file
+```
 
-## SpiderFoot
-# OSINT automation tool
-
-## Workflow
-# Start web UI
-# Add target
-# Select modules
-# Analyze results
-
+# SpiderFoot
+OSINT automation tool
+### Workflow
+1. Start web UI
+2. Add target
+3. Select modules
+4. Analyze results
+```console
 spiderfoot -l 127.0.0.1:5001                    - Start the SpiderFoot web interface locally
 spiderfoot -s example.com                       - Scan a target domain for OSINT intelligence
 spiderfoot -s 192.168.1.1                       - Gather intelligence about a specific IP address
@@ -526,17 +539,16 @@ spiderfoot -s example.com -f                    - Force a scan even if target is
 spiderfoot -s example.com -i                    - Run scan interactively with prompts
 spiderfoot -V                                   - Show current SpiderFoot version
 spiderfoot -h                                   - Display help and available command options
+```
 
-## BeEF
-# Browser Exploitation Framework
-
-## Workflow
-# Start server
-# Hook browser
-# Execute modules
-
+# BeEF
+Browser Exploitation Framework
+### Workflow
+1. Start server
+2. Hook browser
+3. Execute modules
 ### CONCEPTS; NOT COMMANDS
-
+```console
 beef-xss                        - Start the BeEF framework server
 http://127.0.0.1:3000/ui/panel  -Access the BeEF control panel
 hook. js                        - JavaScript hook used to connect a victim browser to BeEF
@@ -552,16 +564,16 @@ Screenshot Module               - Capture screenshots from the victim browser
 Social Engineering              - Perform attacks to trick hooked users
 Persistence                     - Maintain a connection to the victim browser
 Database                        - Store and manage data from hooked browsers
+```
 
-## THE HARVESTER
-# OSINT tool for emails/domains.
-
-## Workflow
-# Choose source
-# Run scan
-# Expand DNS
-# Export results
-
+# THE HARVESTER
+OSINT tool for emails/domains.
+### Workflow
+1. Choose source
+2. Run scan
+3. Expand DNS
+4. Export results
+```console
 theHarvester -d example.com -b google                   - Gather emails and subdomains from Google
 theHarvester -d example.com -b bing                     - Collect OSINT data from Bing search engine
 theHarvester -d example.com -b yahoo                    - Discover emails and domains using Yahoo
@@ -577,19 +589,20 @@ theHarvester -d example.com -b google -c                - Perform DNS reverse lo
 theHarvester -d example.com -b google -p                - Verify IP address ownership via ARIN/RIPE
 theHarvester -h                                         - Display help information for commands
 theHarvester -d example.com -b google -j results.json   - Save results to a JSON file
+```
 
-## SHODAN
-# Search engine for exposed internet devices
-
-## Workflow
-# Search services
-# Filter results
-# Investigate targets
-
+# SHODAN
+Search engine for exposed internet devices
+### Workflow
+1. Search services
+2. Filter results
+3. Investigate targets
+```console
 shodan search apache        - Search for servers running Apache
 shodan host 8.8.8.8         - Display information about a specific IP address
 shodan myip                 - Show your current public IP address
 shodan count nginx          - Count results matching a search query
+
 # Search Filters
 port: 22                    - Find devices running SSH on port 22
 port : 21                   - Search for FTP servers
@@ -602,14 +615,17 @@ os: "Windows 10"            - Search devices running a specific operating system
 city:Berlin                 - Find devices located in Berlin, Germany
 shodan info                 - Display information about your Shodan API key
 shodan scan example. com    - Scan a specific host using Shodan
+```
 
 ## MALTEGO
 # Graph-based OSINT investigation tool.
 
-## Workflow
-# Add entity
-# Run transforms
-# Analyze graph
+# Workflow
+Add entity
+
+Run transforms
+
+Analyze graph
 
 New Graph                   - Create a new investigation graph workspace
 Add Entity                  - Add a target such as domain, email, IP address or person
@@ -627,10 +643,10 @@ Import Data                 - Load data from external files into the graph
 Collaboration               - Share and collaborate on graphs with other users
 Layouts                     - Apply different visual layouts to organize the graph
 
-## AMASS
+# AMASS
 # Advanced sundomain enumeration
 
-## Workflow
+### Workflow
 # Passive scan
 # Active scan
 # Visualize results
@@ -652,10 +668,10 @@ amass db -show                                  - Display details of a specific 
 amass enum -config config.ini -d example.com    - Run enumeration with a custom configuration file
 amass db -summary                               - Show summary of discovered information from the database
 
-## WPScan
+# WPScan
 # Wordpress Vulnerability Scanner
 
-## Workflow
+### Workflow
 # Detect WordPress
 # Enumerate users/plugins
 # Check vulnerabilities
@@ -677,11 +693,11 @@ wpscan --url https://example.com -- enumerate ap                   - Enumerate a
 wpscan --url https://example.com -- enumerate at                   - Enumerate all themes (even not vulnerable)
 wpscan --url https://example.com -- enumerate tt                   - Enumerate timthumbs
 
-## httpx
+# httpx
 # Probes web servers and finds live hosts
 # Validates targets and identify accessible web infrastructure
 
-## Workflow
+### Workflow
 # Provide target list
 # Probe for live hosts
 # Enrich results (status, title, tech)
@@ -697,11 +713,12 @@ httpx -l targets.txt -o live_hosts.txt      - Save results to file
 httpx -l targets.txt -https                 - Probe HTTPS only
 httpx -l targets.txt -timeout 10            - Set timeout value
 
-## subfinder
-# Fast passive subdomain enumeration
-# Passive OSINT, discovers subdomains using multiple OSINT sources.
+# subfinder
+Fast passive subdomain enumeration
 
-## Workflow
+Passive OSINT, discovers subdomains using multiple OSINT sources.
+
+### Workflow
 # Provide domain(s)
 # Run passive enumeration
 # Expand sources if needed
@@ -717,11 +734,11 @@ subfinder -d target.com -recursive              - Recursive enumeration
 subfinder -d target.com -o subs.txt -ip         - Output with IP resolution
 subfinder -d target.com | httpx                 - Enumerate and pipe to httpx
 
-## naabu
+# naabu
 # Fast port scanner
 # Speed and Automation. Optimized for scanning large attack surfaces, integrates with nuclei and httpx.
 
-## Workflow
+### Workflow
 # Provide target(s)
 # Scan common or full port range
 # Adjust rate if needed
@@ -737,12 +754,12 @@ naabu -host target.com -p 22,80,443         - Scan specific ports
 naabu -host 192.168.1.0/24                  - Scan subnet range
 naabu -host target.com | httpx              - Pipe results to httpx
 
-## ffuf
+# ffuf
 # Web fuzzer for directory and parameter discovery
 # Discover hidden directories, files, virtual hosts, parameters.
 # Web application security testing and content discovery.
 
-## Workflow
+### Workflow
 # Choose target endpoint
 # Select wordlist
 # Run fuzzing (dirs, params, vhosts)
@@ -758,11 +775,11 @@ ffuf -u https://target.com/FUZZ -w wordlist.txt -o results.json             - Sa
 ffuf -u https://target.com/FUZZ -w wordlist.txt -t 50                       - Set number of threads
 ffuf -u https://target.com/FUZZ -w wordlist.txt -recursion                  - Recursive fuzzing
 
-## Katana
+# Katana
 # Web crawler, attack surface discovery
 # Supports Javascript parsing, automatic form extraction, tool integration (nuclei).
 
-## Workflow
+### Workflow
 # Provide target(s)
 # Crawl site structure
 # Enable JS parsing if needed
@@ -778,12 +795,12 @@ katana -u https://target.com -ps                                - Extract URLs w
 katana -u https://target.com -silent                            - Silent mode output
 katana -u https://target.com | nuclei -t ~/nuclei-templates/    - Crawl and pipe to nuclei
 
-## Evilginx2
+# Evilginx2
 # Phishing framework for credential capture
 # Man-in-the-middle, captures authentication credentials and session tokens.
 # Uses reverse proxy techniques to intercept login traffic and analyze authentication flows
 
-## Workflow
+### Workflow
 # Start Evilginx2
 # Load and enable a phishlet (target service template)
 # Configure domain + DNS properly
@@ -813,11 +830,11 @@ DNS A record: *.phishing-domain.com → YOUR_PUBLIC_IP
 HTTPS certificates handled automatically but required
 /
 
-## enum4linux-ng
+# enum4linux-ng
 # Windows / SMB enumeration tool
 # Extracts: Users | Shares | Policies | Domain Info | System Configuration
 
-## Workflow
+### Workflow
 # Identify SMB target (NMAP)
 # Run basic enumeration
 # Attempt anonymous enumeration
@@ -842,11 +859,11 @@ Credentialed scans provide significantly more data
 Use alongside Nmap + NetExec for full SMB/AD enumeration
 //
 
-## mitmproxy
+# mitmproxy
 # Interactive HTTP/HTTPS interception proxy
 # Used for: Traffic Inspection | Request Modification | API Testing | Vulnerability Analysis
 
-## Workflow
+### Workflow
 # Start proxy listener
 # Configure browser/device to use proxy
 # Install mitmproxy certificate (for HTTPS)
@@ -871,11 +888,11 @@ Often used alongside Burp Suite for advanced testing
 Great for API/mobile app traffic analysis
 //
 
-## John the Ripper
+# John the Ripper
 # Offline password cracking tool
 # Used for: Hash Cracking | Password Recovery | Credential Attacks
 
-## Workflow
+### Workflow
 # Obtain password hashes (dump, leak, etc.)
 # Identify hash type
 # Run wordlist attack
@@ -898,11 +915,12 @@ john --restore=job1                                          - Restore previous 
 # Complements Hydra (online) with offline attacks
 
 
-## Netcat
-# Network utility for reading/writing data across connections
-# Used for: Reverse Shells | Port Listening | Banner Grabbing | Debugging
+# Netcat
+Network utility for reading/writing data across connections
 
-## Workflow
+Used for: Reverse Shells | Port Listening | Banner Grabbing | Debugging
+
+### Workflow
 # Identify target or need (listener / client)
 # Open listener or connect to target
 # Transfer data or establish shell
@@ -916,17 +934,17 @@ nc -lvnp 4444 > file.txt                                     - Receive file
 nc 192.168.1.10 4444 < file.txt                              - Send file
 nc -lvnp 4444 -k                                             - Persistent listener
 
-# Notes
-# Some versions disable -e for security (use bash alternatives if needed)
-# Essential for quick shells and debugging
-# Often used during exploitation and post-exploitation
+### Notes
+Some versions disable -e for security (use bash alternatives if needed)
+Essential for quick shells and debugging
+Often used during exploitation and post-exploitation
 
 
-## Masscan
+# Masscan
 # High-speed port scanner
 # Used for: Large-scale scanning | Internet-wide discovery | Fast port identification
 
-## Workflow
+### Workflow
 # Define target range
 # Set scan rate carefully
 # Scan ports
@@ -941,17 +959,19 @@ masscan -iL targets.txt -p80                                 - Scan targets from
 masscan 192.168.1.0/24 -oG masscan.txt                       - Output in grepable format
 masscan 192.168.1.0/24 -oX masscan.xml                       - Output in XML format
 
-# Notes
-# VERY fast but less accurate than Nmap
-# Always control --rate to avoid network disruption
-# Best used for discovery, then validate with Nmap
+### Notes
+VERY fast but less accurate than Nmap
+
+Always control --rate to avoid network disruption
+
+Best used for discovery, then validate with Nmap
 
 
-## Google Dorking
+# Google Dorking
 # Advanced search techniques using search engine operators
 # Used for: OSINT | Sensitive Data Discovery | Exposure Identification
 
-## Workflow
+### Workflow
 # Define target or data type
 # Use search operators
 # Refine queries
@@ -977,11 +997,11 @@ related:example.com                                          - Find related webs
 # Internet-wide asset search engine (similar to Shodan)
 # Used for: Certificate Search | Host Discovery | Exposure Analysis
 
-## Workflow
-# Search hosts / domains
-# Filter results (ports, certs, orgs)
-# Identify exposed services
-# Pivot to deeper scanning
+# Workflow
+Search hosts / domains
+Filter results (ports, certs, orgs)
+Identify exposed services
+Pivot to deeper scanning
 
 censys search "apache"                          - Search for Apache servers
 censys host 8.8.8.8                             - View detailed host info
@@ -994,55 +1014,59 @@ censys search "location.country:US"             - Filter by country
 # Complements Shodan
 
 
-## FOFA
+# FOFA
 # Internet asset search engine (Chinese-based Shodan alternative)
 # Used for: Asset Discovery | Service Enumeration | Global Exposure
 
-## Workflow
+### Workflow
 # Search using query syntax
 # Filter by country / service / port
 # Identify targets
 # Export results
 
-# Example queries (web UI or API)
+### Example queries (web UI or API):
+```console
 app="nginx"                                    - Search nginx servers
 port="22"                                      - Find SSH services
 country="US"                                   - Filter by country
 domain="example.com"                           - Search domain assets
+```
 
-# Notes
-# Web-based tool, not CLI-focused
-# Strong for global reconnaissance
+### Notes
+Web-based tool, not CLI-focused
+
+Strong for global reconnaissance
+
+# DNSDumpster
+DNS reconnaissance tool
+Used for: Subdomain Discovery | DNS Records | Network Mapping
+
+### Workflow
+1. Input domain
+2. Enumerate DNS records
+3. Identify subdomains and hosts
+4. Export findings
+
+Web tool: https://dnsdumpster.com
+No CLI by default
+
+### Notes
+Good for quick visual recon
+
+Often used alongside Amass / Subfinder
 
 
-## DNSDumpster
-# DNS reconnaissance tool
-# Used for: Subdomain Discovery | DNS Records | Network Mapping
+# crt.sh
+Certificate transparency log search
 
-## Workflow
-# Input domain
-# Enumerate DNS records
-# Identify subdomains and hosts
-# Export findings
+Used for: Subdomain Discovery | SSL Certificate Enumeration
 
-# Web tool: https://dnsdumpster.com
-# No CLI by default
+### Workflow
+1. Search domain
+2. Extract subdomains from certificates
+3. Feed into recon tools
 
-# Notes
-# Good for quick visual recon
-# Often used alongside Amass / Subfinder
-
-
-## crt.sh
-# Certificate transparency log search
-# Used for: Subdomain Discovery | SSL Certificate Enumeration
-
-## Workflow
-# Search domain
-# Extract subdomains from certificates
-# Feed into recon tools
-
-# Web usage
+Web usage
 https://crt.sh/?q=example.com
 
 # Notes
@@ -1050,16 +1074,16 @@ https://crt.sh/?q=example.com
 # Often finds hidden subdomains
 
 
-## Recon-ng
+# Recon-ng
 # Modular reconnaissance framework
 # Used for: OSINT Automation | Data Correlation | Target Profiling
 
-## Workflow
-# Start framework
-# Add workspace
-# Load modules
-# Run data collection
-# Export results
+### Workflow
+1. Start framework
+2. Add workspace
+3. Load modules
+4. Run data collection
+5. Export results
 
 recon-ng                                      - Launch framework
 workspaces create test                        - Create workspace
@@ -1069,16 +1093,17 @@ options set SOURCE example.com                - Set target
 run                                           - Execute module
 show hosts                                    - View results
 
-# Notes
-# Similar to Metasploit but for recon
-# Good for structured OSINT workflows
+### Notes
+Similar to Metasploit but for recon
+
+Good for structured OSINT workflows
 
 
-## ExifTool
+# ExifTool
 # Metadata extraction tool
 # Used for: File Metadata Analysis | Forensics | OSINT
 
-## Workflow
+### Workflow
 # Provide file
 # Extract metadata
 # Analyze for sensitive info
@@ -1092,11 +1117,11 @@ exiftool -json file.jpg                       - Output in JSON format
 # Useful for finding hidden info in images/documents
 
 
-## Metagoofil
+# Metagoofil
 # Document metadata extraction tool
 # Used for: OSINT | Username Discovery | Internal Info Leakage
 
-## Workflow
+### Workflow
 # Define domain
 # Download documents
 # Extract metadata
@@ -1108,11 +1133,11 @@ metagoofil -d example.com -t pdf,doc,xls -l 100 -o output/ -f results.html
 # Often reveals usernames and internal paths
 
 
-## GitLeaks
+# GitLeaks
 # Git repository secret scanner
 # Used for: Credential Discovery | Secret Leakage Detection
 
-## Workflow
+### Workflow
 # Scan repository
 # Identify exposed secrets
 # Validate findings
@@ -1125,44 +1150,48 @@ gitleaks detect -r report.json                - Output report
 # Very useful for bug bounty and OSINT
 
 
-## theHarvester (Already added, but included for completeness)
-# OSINT collection tool
-# Used for: Emails | Subdomains | Hosts
+# theHarvester (Already added, but included for completeness)
+OSINT collection tool
+
+Used for: Emails | Subdomains | Hosts
 
 
-## Masscan (Already added, included in OSINT category)
+# Masscan
 
 
-## Mitaka
-# Browser extension for OSINT
-# Used for: Domain Analysis | Threat Intelligence | Quick Lookups
+# Mitaka
+Browser extension for OSINT
 
-# Notes
-# Browser-based (no CLI)
-# Integrates with multiple OSINT sources
+Used for: Domain Analysis | Threat Intelligence | Quick Lookups
+
+### Notes
+Browser-based (no CLI)
+
+Integrates with multiple OSINT sources
 
 
-## Wayback Machine
-# Web archive tool
-# Used for: Historical Content | Endpoint Discovery | Recon
+# Wayback Machine
+Web archive tool
 
-## Workflow
-# Search domain
-# Review archived pages
-# Identify old endpoints / leaks
+Used for: Historical Content | Endpoint Discovery | Recon
 
-# Web usage
+### Workflow
+Search domain
+Review archived pages
+Identify old endpoints / leaks
+
+### Web usage
 https://web.archive.org
 
-# Notes
-# Great for finding hidden or removed content
+### Notes
+Great for finding hidden or removed content
 
 
-## Onionscan
+# Onionscan
 # Tor hidden service analyzer
 # Used for: Hidden Service Discovery | Security Analysis
 
-## Workflow
+### Workflow
 # Provide onion address
 # Scan for vulnerabilities
 # Analyze results
@@ -1174,116 +1203,121 @@ onionscan http://example.onion
 # Niche but valuable
 
 
-## GeoSpy
-# Geolocation intelligence tool
-# Used for: Location Tracking | OSINT Analysis
+# GeoSpy
+Geolocation intelligence tool
 
-# Notes
-# Typically web-based or API-driven
-# Used in investigations
+Used for: Location Tracking | OSINT Analysis
+
+### Notes
+Typically web-based or API-driven
+
+Used in investigations
 
 
-## John the Ripper (Already added)
+# Hashcat
+Advanced password cracking tool (GPU-based)
 
+Used for: High-speed Hash Cracking
 
-## Hashcat
-# Advanced password cracking tool (GPU-based)
-# Used for: High-speed Hash Cracking
-
-## Workflow
-# Identify hash type
-# Select attack mode
-# Run cracking
-# Analyze results
+### Workflow
+1. Identify hash type
+2. Select attack mode
+3. Run cracking
+4. Analyze results
 
 hashcat -m 1000 -a 0 hashes.txt rockyou.txt    - Wordlist attack (NTLM example)
 hashcat -m 0 -a 3 hashes.txt ?a?a?a?a?a?a      - Brute-force attack
 hashcat --show hashes.txt                     - Show cracked passwords
 
-# Notes
-# Much faster than John (GPU)
-# Requires proper configuration
+### Notes
+Much faster than John (GPU)
+
+Requires proper configuration
 
 
-## Medusa
-# Parallel password brute-force tool
-# Used for: Network Authentication Attacks
+# Medusa
+Parallel password brute-force tool
 
-## Workflow
-# Define service
-# Provide credentials
-# Run attack
+Used for: Network Authentication Attacks
+
+### Workflow
+1. Define service
+2. Provide credentials
+3. Run attack
 
 medusa -h 192.168.1.10 -u admin -P passwords.txt -M ssh
 
-# Notes
+###
 # Similar to Hydra, less commonly used
 
+# OWASP ZAP
+Web application security scanner
 
-## OWASP ZAP
-# Web application security scanner
-# Used for: Automated Scanning | Proxying | Vulnerability Detection
+Used for: Automated Scanning | Proxying | Vulnerability Detection
 
-## Workflow
-# Start ZAP
-# Configure proxy
-# Scan target
-# Analyze findings
+### Workflow
+1. Start ZAP
+2. Configure proxy
+3. Scan target
+4. Analyze findings
 
 zaproxy                                     - Launch ZAP
 
-# Notes
-# Free alternative to Burp Suite
-# Strong automated scanning
+### Notes
+Free alternative to Burp Suite
+
+Strong automated scanning
 
 
-## ExploitDB (Searchsploit)
-# Exploit database search tool
-# Used for: Finding public exploits
+# ExploitDB (Searchsploit)
+Exploit database search tool
 
-## Workflow
-# Search for exploit
-# Review exploit code
-# Adapt for use
+Used for: Finding public exploits
+
+### Workflow
+1. Search for exploit
+2. Review exploit code
+3. Adapt for use
 
 searchsploit apache                          - Search exploits
 searchsploit -x exploit_id                   - View exploit details
 searchsploit -m exploit_id                   - Copy exploit locally
 
-# Notes
-# Integrated into Kali Linux
+### Notes
+Integrated into Kali Linux
 
 
-## Aircrack-ng
-# Wireless security auditing suite
-# Used for: WiFi Cracking | Packet Capture | Key Recovery
+# Aircrack-ng
+Wireless security auditing suite
 
-## Workflow
-# Capture packets
-# Analyze traffic
-# Crack key
+Used for: WiFi Cracking | Packet Capture | Key Recovery
+
+### Workflow
+1. Capture packets
+2. Analyze traffic
+3. Crack key
 
 airmon-ng start wlan0                        - Enable monitor mode
 airodump-ng wlan0mon                         - Capture packets
 aireplay-ng                                  - Inject packets
 aircrack-ng capture.cap                      - Crack password
 
-# Notes
-# Requires compatible wireless adapter
+### Notes
+Requires compatible wireless adapter
 
+# Airgeddon
+Wireless attack automation framework
 
-## Airgeddon
-# Wireless attack automation framework
-# Used for: WiFi Attacks | Evil Twin | Credential Capture
+Used for: WiFi Attacks | Evil Twin | Credential Capture
 
-## Workflow
-# Start tool
-# Select interface
-# Choose attack mode
-# Execute attack
+### Workflow
+1. Start tool
+2. Select interface
+3. Choose attack mode
+4. Execute attack
 
 airgeddon                                    - Launch tool
 
-# Notes
-# Menu-driven tool
-# Requires monitor mode support
+### Notes
+Menu-driven tool
+Requires monitor mode support
