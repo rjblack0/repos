@@ -255,14 +255,14 @@ Use -nn often to keep output fast and readable
 
 tcpdump is ideal for quick CLI capture; Wireshark is better for deep analysis
 
-## Impacket
-# Collection of Python tools for interacting with Windows / SMB / Active Directory
-# Used for: Remote Execution | Credential Attacks | SMB Enumeration | Kerberos Abuse | Lateral Movement
+# Impacket
+- Collection of Python tools for interacting with Windows / SMB / Active Directory
+- Used for: Remote Execution | Credential Attacks | SMB Enumeration | Kerberos Abuse | Lateral Movement
 
 ### Workflow
 1. Identify Windows / AD target
-2.Choose correct Impacket script
-3.Provide creds / hashes / tickets
+2. Choose correct Impacket script
+3. Provide creds / hashes / tickets
 4. Execute action
 5. Validate results and pivot carefully
 ```console
@@ -287,8 +287,9 @@ Many Impacket actions require valid credentials, hashes, or elevated privileges
 One of the most important toolsets for Windows / AD work
 
 # BloodHound
-# Active Directory attack path mapping and privilege analysis tool
-# Used for: AD Enumeration | Attack Path Analysis | Privilege Escalation Mapping | Misconfiguration Discovery
+Active Directory attack path mapping and privilege analysis tool
+
+Used for: AD Enumeration | Attack Path Analysis | Privilege Escalation Mapping | Misconfiguration Discovery
 
 ### Workflow
 1. Collect AD data from domain
@@ -314,7 +315,6 @@ BloodHound itself is the graph analysis tool; bloodhound-python is a common Linu
 
 SharpHound is the common Windows collector
 Excellent for understanding privilege paths in AD, but findings still need manual validation
-
 
 # Nikto
 Web server vulnerability scanner
@@ -617,16 +617,13 @@ shodan info                 - Display information about your Shodan API key
 shodan scan example. com    - Scan a specific host using Shodan
 ```
 
-## MALTEGO
-# Graph-based OSINT investigation tool.
-
-# Workflow
-Add entity
-
-Run transforms
-
-Analyze graph
-
+# MALTEGO
+Graph-based OSINT investigation tool.
+### Workflow
+1. Add entity
+2. Run transforms
+3. Analyze graph
+```console
 New Graph                   - Create a new investigation graph workspace
 Add Entity                  - Add a target such as domain, email, IP address or person
 Run Transform               - Execute transforms to gather intelligence about the entity
@@ -642,6 +639,7 @@ Transform Hub               - Install additional transforms and integrations
 Import Data                 - Load data from external files into the graph
 Collaboration               - Share and collaborate on graphs with other users
 Layouts                     - Apply different visual layouts to organize the graph
+```
 
 # AMASS
 # Advanced sundomain enumeration
