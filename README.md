@@ -1,9 +1,11 @@
-# repos
+# Ryan Blackburn Repository
 
-Ryan Blackburn
+## Bachelors of Science in Computer Science
 
-Bachelors of Science in Computer Science
+### repos/ Personal Archive Repository
+- Purpose: personal bucket for old work, unfinished work, practice, experiments, and university material
 
+For my Github Portfolio, [please click here.](https://github.com/rjblack0/rjblack0.github.io/)
 
 Resume:
 
