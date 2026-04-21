@@ -7,10 +7,6 @@
 
 For my Github Portfolio, [please click here.](https://github.com/rjblack0/rjblack0.github.io/)
 
-Resume:
+[View my Resume here.](https://docs.google.com/document/d/1X1GJCRSSEbeLUe5XeQ_FYqlOPnyM_BZC/edit?usp=sharing&ouid=112968391069267992621&rtpof=true&sd=true)
 
-https://docs.google.com/document/d/1X1GJCRSSEbeLUe5XeQ_FYqlOPnyM_BZC/edit?usp=sharing&ouid=112968391069267992621&rtpof=true&sd=true
-
-Linkedin:
-
-https://www.linkedin.com/in/ryan-blackburn-b97290207/
+[Visit me on Linkedin here:](https://www.linkedin.com/in/ryan-blackburn-b97290207/)
