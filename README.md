@@ -4,9 +4,6 @@ Ryan Blackburn
 
 Bachelors of Science in Computer Science
 
-Focus on Cyber Security
-
-  Blue Team, SOC Analyst
 
 Resume:
 

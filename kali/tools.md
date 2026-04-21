@@ -250,7 +250,7 @@ tcpdump -r capture.pcap                                                 - Read p
 tcpdump -i eth0 'port 53 or port 80 or port 443'                        - Capture DNS / HTTP / HTTPS traffic
 ```
 
-# Notes
+### Notes
 Use -nn often to keep output fast and readable
 
 tcpdump is ideal for quick CLI capture; Wireshark is better for deep analysis
@@ -1019,7 +1019,7 @@ Extremely effective for bug bounty and recon
 
 Combine with other tools (subfinder, httpx, nuclei)
 
-## Censys
+### Censys
 Internet-wide asset search engine (similar to Shodan)
 
 Used for: Certificate Search | Host Discovery | Exposure Analysis
@@ -1076,6 +1076,7 @@ Used for: Subdomain Discovery | DNS Records | Network Mapping
 4. Export findings
 
 Web tool: https://dnsdumpster.com
+
 No CLI by default
 
 ### Notes

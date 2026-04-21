@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/wt_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textAppBarDashboard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/wt_primary_light"
+            android:text="Weight Tracker"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/wt_text_primary"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textDateLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date:"
+            android:textColor="@color/wt_text_primary"
+            android:textStyle="bold"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/textAppBarDashboard"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textCurrentDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="11/21/2025"
+            android:textColor="@color/wt_text_primary"
+            android:layout_marginStart="8dp"
+            app:layout_constraintTop_toTopOf="@id/textDateLabel"
+            app:layout_constraintStart_toEndOf="@id/textDateLabel" />
+
+        <Button
+            android:id="@+id/buttonChangeDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notifications"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/wt_primary_light"
+            android:textColor="@color/wt_primary_dark"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintTop_toTopOf="@id/textDateLabel"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textLogTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Log Today's Weight"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/wt_text_primary"
+            android:gravity="center"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintTop_toBottomOf="@id/textDateLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/buttonDecreaseWeight"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="-"
+            android:textSize="24sp"
+            android:backgroundTint="@color/wt_primary_light"
+            android:textColor="@color/wt_primary_dark"
+            app:layout_constraintTop_toBottomOf="@id/textLogTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/textCurrentWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="170"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="@color/wt_text_primary"
+            app:layout_constraintTop_toTopOf="@id/buttonDecreaseWeight"
+            app:layout_constraintBottom_toBottomOf="@id/buttonDecreaseWeight"
+            app:layout_constraintStart_toEndOf="@id/buttonDecreaseWeight"
+            app:layout_constraintEnd_toStartOf="@id/buttonIncreaseWeight"
+            app:layout_constraintHorizontal_bias="0.5"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp" />
+
+        <Button
+            android:id="@+id/buttonIncreaseWeight"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="+"
+            android:textSize="24sp"
+            android:backgroundTint="@color/wt_primary_light"
+            android:textColor="@color/wt_primary_dark"
+            app:layout_constraintTop_toTopOf="@id/buttonDecreaseWeight"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="48dp" />
+
+        <TextView
+            android:id="@+id/textLastLogged"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Last Logged: 172 lbs — 2 days ago"
+            android:textSize="12sp"
+            android:textColor="@color/wt_text_secondary"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintTop_toBottomOf="@id/buttonDecreaseWeight"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/buttonSaveWeight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Save Weight"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/wt_primary"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/textLastLogged"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textProgressTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Progress"
+            android:textStyle="bold"
+            android:textColor="@color/wt_text_primary"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/buttonSaveWeight"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textGoal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Goal: 150 lbs"
+            android:textColor="@color/wt_text_primary"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/textProgressTitle"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textRemaining"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remaining: 10 lbs"
+            android:textColor="@color/wt_text_primary"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintTop_toTopOf="@id/textGoal"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/progressBarGoal"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="8dp"
+            android:progress="60"
+            android:max="100"
+            app:layout_constraintTop_toBottomOf="@id/textGoal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textStartingWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Starting Weight: 185 lbs"
+            android:textColor="@color/wt_text_secondary"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/progressBarGoal"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textSevenDayTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7 Day Trend"
+            android:textStyle="bold"
+            android:textColor="@color/wt_text_primary"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/textStartingWeight"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textSevenDayRow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="S   M   T   W   T   F   S"
+            android:textColor="@color/wt_text_secondary"
+            android:gravity="center"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/textSevenDayTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textRecentEntriesTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recent Entries"
+            android:textStyle="bold"
+            android:textColor="@color/wt_text_primary"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/textSevenDayRow"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TableLayout
+            android:id="@+id/tableRecentEntries"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1,2"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/textRecentEntriesTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TableRow>
+                <TextView
+                    android:text="Date"
+                    android:textStyle="bold"
+                    android:textColor="@color/wt_text_primary" />
+                <TextView
+                    android:text="Weight"
+                    android:textStyle="bold"
+                    android:textColor="@color/wt_text_primary" />
+                <TextView
+                    android:text="Progress"
+                    android:textStyle="bold"
+                    android:textColor="@color/wt_text_primary" />
+                <TextView
+                    android:text="Delete"
+                    android:textStyle="bold"
+                    android:textColor="@color/wt_text_primary" />
+            </TableRow>
+
+        </TableLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutBottomNav"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintTop_toBottomOf="@id/tableRecentEntries"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <Button
+                android:id="@+id/buttonHome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Home"
+                android:textAllCaps="false"
+                android:textColor="@color/wt_primary_dark"
+                android:backgroundTint="@color/wt_primary_light" />
+
+            <Button
+                android:id="@+id/buttonHistory"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="History"
+                android:textAllCaps="false"
+                android:textColor="@color/wt_primary_dark"
+                android:backgroundTint="@color/wt_primary_light"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/buttonGoals"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Goals"
+                android:textAllCaps="false"
+                android:textColor="@color/wt_primary_dark"
+                android:backgroundTint="@color/wt_primary_light" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

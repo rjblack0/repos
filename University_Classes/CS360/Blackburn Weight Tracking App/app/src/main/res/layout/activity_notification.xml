@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/wt_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textAppBarNotifications"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/wt_primary_light"
+            android:text="SMS Notifications"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/wt_text_primary"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textNotificationIntro"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Enable notifications to receive SMS alerts when you reach your goal weight."
+            android:textColor="@color/wt_text_primary"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/textAppBarNotifications"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Switch
+            android:id="@+id/switchEnableSms"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Enable SMS notifications"
+            android:textColor="@color/wt_text_primary"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/textNotificationIntro"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textAlertTypesTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alert Types"
+            android:textStyle="bold"
+            android:textColor="@color/wt_text_primary"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/switchEnableSms"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <CheckBox
+            android:id="@+id/checkGoalReached"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Notify me when I reach my goal weight"
+            android:textColor="@color/wt_text_primary"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/textAlertTypesTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <CheckBox
+            android:id="@+id/checkWeeklySummary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Send a weekly progress summary"
+            android:textColor="@color/wt_text_primary"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@id/checkGoalReached"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textPermissionExplanation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="To send SMS alerts, Weight Tracker must use your phone's SMS app. When you tap the button below, Android will ask you to allow or deny this permission."
+            android:textColor="@color/wt_text_secondary"
+            android:textSize="12sp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/checkWeeklySummary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/buttonRequestSmsPermission"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Request SMS Permission"
+            android:onClick="onRequestSmsPermissionClicked"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/wt_primary"
+            android:textColor="@color/white"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/textPermissionExplanation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textPermissionStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/wt_text_secondary"
+            android:textSize="12sp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintTop_toBottomOf="@id/buttonRequestSmsPermission"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

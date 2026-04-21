@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="wt_primary">#66BB6A</color>
+    <color name="wt_primary_light">#CBEFCE</color>
+    <color name="wt_primary_dark">#2E7D32</color>
+
+    <color name="wt_background">#FAFAFA</color>
+    <color name="wt_surface">#FFFFFF</color>
+
+    <color name="wt_text_primary">#212121</color>
+    <color name="wt_text_secondary">#616161</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
