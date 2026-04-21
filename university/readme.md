@@ -1,8 +1,8 @@
-*University Archive
+# University Archive
 
 This section highlights selected coursework and projects, grouped by the core technical skills they demonstrate.
 
-**Software Engineering & Full Stack Development
+## Software Engineering & Full Stack Development
 
 - **CS-465 – Full Stack Development**
   - Project: Full-stack web application (MEAN stack / REST API)
@@ -20,7 +20,7 @@ This section highlights selected coursework and projects, grouped by the core te
   - Project: SDLC documentation and planning artifacts
   - Focus: Agile methodology, requirements gathering, project planning, lifecycle management
 
-**Security & Secure Software Development
+## Security & Secure Software Development
 
 - **CS-305 – Software Security**
   - Project: Secure application and vulnerability analysis
@@ -30,31 +30,31 @@ This section highlights selected coursework and projects, grouped by the core te
   - Project: Reverse engineering and secure banking application enhancement
   - Focus: code analysis, vulnerability identification, authentication security, system hardening
 
-**Systems & Operating Environments
+## Systems & Operating Environments
 
 - **CS-230 – Operating Platforms**
   - Project: System-level analysis and design
   - Focus: operating systems, concurrency, memory management, virtualization concepts
 
-**Data Structures, Algorithms & Analysis
+## Data Structures, Algorithms & Analysis
 
 - **CS-300 – Data Structures and Algorithms**
   - Project: Algorithm implementation and performance analysis
   - Focus: data structures, efficiency, problem solving, algorithm design
 
-**Testing, Automation & Reliability
+## Testing, Automation & Reliability
 
 - **CS-320 – Software Test Automation**
   - Project: Automated test suite implementation
   - Focus: unit testing, test frameworks, validation, reliability engineering
 
-**Artificial Intelligence & Emerging Technologies
+## Artificial Intelligence & Emerging Technologies
 
 - **CS-370 – Current & Emerging Trends (AI Focus)**
   - Project: AI-based application with model training and implementation
   - Focus: machine learning fundamentals, model training, data handling, applied AI development
 
-**Supporting Foundations (Archived)
+## Supporting Foundations (Archived)
 
 - These courses contributed to foundational knowledge but are less directly relevant to current roles:
   - CS-210 – Object-Oriented Programming
